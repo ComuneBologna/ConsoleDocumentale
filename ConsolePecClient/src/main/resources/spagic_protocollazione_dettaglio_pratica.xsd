@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/spagic/protocollazione/dettaglio"
+	xmlns="http://comune.bologna.it/spagic/protocollazione/dettaglio"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="campo">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" />
+			<xs:element name="valore" type="xs:string" />
+			<xs:element name="visibile" type="xs:boolean" />
+			<xs:element name="modificabile" type="xs:boolean" />
+			<xs:element name="obbligatorio" type="xs:boolean" />
+			<xs:element name="tipoWidget" type="xs:string"/>
+			<xs:element name="lunghezza" type="xs:int"/>
+			<xs:element name="descrizione" type="xs:string"/>
+			<xs:element name="posizione" type="xs:int"/>
+			<xs:element name="maxoccorrenze" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="gruppocampo">
+		<xs:sequence>
+			<xs:element name="campo" type="campo" minOccurs="1"	maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="nome" type="xs:string" />
+		<xs:attribute name="descrizione" type="xs:string" />
+		<xs:attribute name="maxitem" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="tiporec">
+		<xs:sequence>
+			<xs:element name="campo" type="campo" minOccurs="0"	maxOccurs="unbounded" />
+			<xs:element name="gruppocampo" type="gruppocampo"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="valore" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element name="tiporec" type="tiporec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+		<!-- Request root -->
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:b="http://comune.bologna.it/base"
+	       xmlns="http://comune.bologna.it/spagic/iperfascicolo"
+		   targetNamespace="http://comune.bologna.it/spagic/iperfascicolo"
+	       elementFormDefault="qualified" 
+	       attributeFormDefault="unqualified">
+	       
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+	
+	<xs:complexType name="requestCreazioneCondivisione">
+		<xs:sequence>
+			<xs:element type="xs:string" name="nomeGruppo" maxOccurs="1" minOccurs="1"/>
+			<xs:element type="xs:string" name="pathFascicolo" maxOccurs="1" minOccurs="1"/>
+			<xs:element type="xs:string" name="operazioni" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="requestCreazioneCollegamento">
+		<xs:sequence>
+			<xs:element type="xs:string" name="pathFascicoloRemoto" maxOccurs="1" minOccurs="1"/>
+			<xs:element type="xs:string" name="pathFascicoloLocale" maxOccurs="1" minOccurs="1"/>
+			<xs:element type="xs:string" name="operazioniRemotePerUtenteLocale" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="requestCreazioneCondivisione" type="requestCreazioneCondivisione"/>
+	<xs:element name="requestCreazioneCollegamento" type="requestCreazioneCollegamento"/>
+	
+</xs:schema>

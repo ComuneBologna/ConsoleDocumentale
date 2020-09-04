@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+   <g:HTMLPanel styleName="oggetto-mail" ui:field="mainPanel">
+		<g:CheckBox styleName="checkbox-nonprot" ui:field="checkBox"></g:CheckBox>
+		<g:Image ui:field="iconaLabel" styleName="ico-mail" title="Fascicolo collegato"></g:Image>
+		<g:Anchor styleName="documento" ui:field="linkFascicoloCollegato"/>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

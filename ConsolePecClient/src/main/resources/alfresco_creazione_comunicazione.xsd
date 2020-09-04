@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/creazione/comunicazione"
+	xmlns="http://comune.bologna.it/alfresco/creazione/comunicazione"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="codice" type="xs:string"	maxOccurs="1" minOccurs="0" />
+			<xs:element name="descrizione" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="idTemplate" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			
+			<xs:element name="utente" type="xs:string" maxOccurs="1" minOccurs="0" />
+			
+			<xs:element name="username" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="ruolo" type="xs:string" maxOccurs="1"	minOccurs="0" />
+		
+			
+			
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	
+	<xs:element name="request" type="request" />
+
+</xs:schema>

@@ -1,0 +1,46 @@
+<ui:UiBinder xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:engitgrid="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datagrid"
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:engitform="urn:import:it.eng.portlet.consolepec.gwt.client.widget.formricerca"
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+	ui:generateLocales='default'>
+	
+	<g:HTMLPanel>
+		<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		<g:HTMLPanel ui:field="cellTablePratichePanel">
+			<h1 class="maintitle" ui:field="titolo" />
+			
+			<g:HTMLPanel styleName="filters">
+				<fieldset>
+					<div>
+						<engit:MessageAlertWidget ui:field="messageWidget" />
+					</div>
+				</fieldset>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="pannelloRicerca">
+			
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel>
+				<div style="display: inline-block;" class="global-actions">
+					<g:Button text="Accetta" styleName="btn" ui:field="accettaButton" enabled="false" />
+					<g:Button text="Firma" styleName="btn" ui:field="firmaButton" enabled="false" />
+					<g:Button text="Diniega" styleName="btn" ui:field="diniegaButton" enabled="false" />
+					<g:Button text="Rispondi" styleName="btn" ui:field="rispondiButton" enabled="false" />
+					<g:Button text="Ritira" styleName="btn" ui:field="ritiraButton" enabled="false" />
+					<g:Button text="Evadi" styleName="btn" ui:field="evadiButton" enabled="false" />
+				</div>
+				<div class="selected-documents" ui:field="documentiSelezionatiDiv"></div>
+			</g:HTMLPanel>
+
+			<engitgrid:DataGridWidget ui:field="dataGrid"></engitgrid:DataGridWidget>
+			<c:SimplePager ui:field="pager" stylePrimaryName="pager" />
+
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="dettaglioPanel"></g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel ui:field="container" stylePrimaryName="drive-ruoli">
+		<g:HTMLPanel ui:field="title" stylePrimaryName="drive-ruoli-title" />
+		<g:HTMLPanel stylePrimaryName="drive-ruoli-box">
+			<g:HTMLPanel stylePrimaryName="ricorsione-box">
+				<g:CheckBox ui:field="checkRicorsione" />
+				<g:InlineLabel>Applica ricorsivamente</g:InlineLabel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="ruoli" />
+			<g:HTMLPanel stylePrimaryName="ruolo-box-btn">
+				<g:Button ui:field="addBtn" />
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

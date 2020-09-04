@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:engitform="urn:import:it.eng.portlet.consolepec.gwt.client.widget.formricerca"
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:dp="urn:import:com.google.gwt.user.datepicker.client" xmlns:s="urn:import:it.eng.portlet.consolepec.gwt.client.widget.suggestBox">
+
+	<g:HTMLPanel>
+
+		<g:HTMLPanel>
+			<h1 class="maintitle"> Modifica Abilitazioni</h1>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel stylePrimaryName="single">
+			<engit:MessageAlertWidget ui:field="messageWidget" />
+			
+			<span class="label">Destinatari</span>
+			<g:HTMLPanel styleName="abstract" ui:field="destinatariInoltroLabel">
+							
+			</g:HTMLPanel>
+			<span class="label">Data Notifica</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="dataNotificaLabel"></g:Label>
+			</g:HTMLPanel>
+				
+			<g:HTMLPanel styleName="filters">
+				<g:HTMLPanel styleName="operazioni" >
+					<g:HTMLPanel ui:field="mainOperazioniPanel" />
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<hr />
+						<div class="cell">
+							<g:Button ui:field="annullaButton" styleName="btn black" text="Annulla" />
+							<g:Button ui:field="confermaButton" styleName="btn" text="Conferma" />
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+			
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,55 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/create/draft" xmlns="http://comune.bologna.it/alfresco/create/draft"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="destinatari" type="destinatari" />
+			<xs:element name="ccs" type="ccs" />
+			<xs:element name="allegati" type="allegati" />
+			<xs:element name="oggetto" type="xs:string" />
+			<xs:element name="body" type="xs:string" />
+			<xs:element name="mittente" type="xs:string" />
+			<xs:element name="messageIdReinoltro" type="xs:string" />
+			<xs:element name="interoperabile" type="xs:boolean" />
+			<xs:element name="replyTo" type="xs:string" />
+			<xs:element name="firma" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="invioimmediato" type="xs:boolean" use="required" />
+		<xs:attribute name="pathpratica" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="destinatari">
+		<xs:sequence>
+			<xs:element name="destinatario" type="xs:string"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="allegati">
+		<xs:sequence>
+			<xs:element name="allegato" type="allegato" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="allegato">
+		<xs:sequence>
+		    <xs:element name="pathOriginale" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="nome" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="dimensione" type="xs:long" minOccurs="1" maxOccurs="1" />
+			<xs:element name="firmato" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+			<xs:element name="firmatoHash" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+			<xs:element name="dataCaricamento" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ccs">
+		<xs:sequence>
+			<xs:element name="cc" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="response">
+		<xs:attribute name="codice" type="xs:string" use="required" />
+		<xs:attribute name="descrizione" type="xs:string" use="required" />
+	</xs:complexType>
+
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

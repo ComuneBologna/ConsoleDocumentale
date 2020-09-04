@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pratica versione="1.0">
+	<idDocumentale>MD139</idDocumentale>
+	<letto>true</letto>
+	<folderPath>/PEC/CONSOLE/MODULISTICA/MD139</folderPath>
+	<consoleFileName>metadati.xml</consoleFileName>
+	<stato>ARCHIVIATA</stato>
+	<utenteCreazione>Modulistica Modulistica</utenteCreazione>
+	<usernameCreazione>mod2cons</usernameCreazione>
+	<dataCreazione>2015-07-07T09:45:22.607+02:00</dataCreazione>
+	<tipo>PRATICA_MODULISTICA</tipo>
+	<titolo>Richiesta di gino ragazzi - ASD MIKI 3</titolo>
+	<fascicoloCollegato>
+		<alfrescoPath>/PEC/CONSOLE/PRATICHE/FS10751/metadati.xml
+		</alfrescoPath>
+		<tipo>FASCICOLO_SPORT_NAVILE</tipo>
+	</fascicoloCollegato>
+	<gruppivisibilita>
+		<gruppovisibilita>DOC_00000_modulisticaSport_Navile</gruppovisibilita>
+	</gruppivisibilita>
+	<modulistica nome="AssegnazioneImpiantiSportiviQuart">
+		<valori tipoNodo="SEZIONE" titolo="Richiedente">
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ANNO_SPORT_DA" valore="2015" etichetta="" descrizione="2015"
+				visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ANNO_SPORT_A" valore="2016" etichetta="" descrizione="2016"
+				visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="CONSOLE_DATA_INIZIO_BANDO" valore="20150608T00:00:00.000+0200"
+				etichetta="" descrizione="20150608T00:00:00.000+0200" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="CONSOLE_DATA_FINE_BANDO" valore="20150615T23:59:00.000+0200"
+				etichetta="" descrizione="20150615T23:59:00.000+0200" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="userId" valore="FederaProfile.RGZGNI64D26A944S" etichetta=""
+				descrizione="FederaProfile.RGZGNI64D26A944S" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_nome" valore="gino" etichetta="Nome" descrizione="gino"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_cognome" valore="ragazzi" etichetta="Cognome" descrizione="ragazzi"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_comune_nascita" valore="BO" etichetta="Nato a"
+				descrizione="BO" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_data_nascita" valore="26/04/1964" etichetta="Data di nascita"
+				descrizione="26/04/1964" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_cf" valore="RGZGNI64D26A944S" etichetta="Codice fiscale"
+				descrizione="RGZGNI64D26A944S" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_comune_residenza" valore="BOLOGNA" etichetta="Comune di residenza"
+				descrizione="BOLOGNA" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_indirizzo_residenza" valore="VIA DI CORTICELLA" etichetta="Indirizzo di residenza"
+				descrizione="VIA DI CORTICELLA" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_civico_residenza" valore="216/6" etichetta="N. civico"
+				descrizione="216/6" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_cap" valore="40128" etichetta="CAP" descrizione="40128"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_telefono" valore="3474202553" etichetta="Telefono"
+				descrizione="3474202553" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ric_email" valore="gino.ragazzi@alice.it" etichetta="Email personale"
+				descrizione="gino.ragazzi@alice.it" visibile="true" />
+		</valori>
+		<valori tipoNodo="SEZIONE" titolo="Società Richiedente">
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="RUOLORICHIEDENTE" valore="1" etichetta="In qualità di"
+				descrizione="Legale rappresentate" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="TIPO_SOC" valore="2" etichetta="Tipologia" descrizione="Associazione"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ENTE_ISCRIZIONE_SOC" valore="UISP" etichetta="Ente/Federazione"
+				descrizione="UISP" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="PIVA_SOC" valore="91264400374" etichetta="Codice fiscale o partita iva"
+				descrizione="91264400374" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DENOMINAZIONE_SOC" valore="ASD MIKI 3" etichetta="Denominazione"
+				descrizione="ASD MIKI 3" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ANNOFONDAZIONE_SOC" valore="2005" etichetta="Anno di fondazione"
+				descrizione="2005" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="COMUNESEDESOCIALE_SOC" valore="GRANAROLO DELL'EMILIA BO"
+				etichetta="Con sede legale nel comune di" descrizione="GRANAROLO DELL'EMILIA BO"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="COMUNERECAPITO_SOC" valore="" etichetta="Con recapito nel comune di"
+				descrizione="" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="SEDESOCIALE_SOC" valore="CADRIANO" etichetta="Indirizzo sede legale"
+				descrizione="CADRIANO" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="NUMCIVICO_SOC" valore="18" etichetta="Numero civico"
+				descrizione="18" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="CAP_SOC" valore="40057" etichetta="CAP" descrizione="40057"
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="TELCASA_SOC" valore="" etichetta="Telefono" descrizione=""
+				visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="TELLAVORO_SOC" valore="" etichetta="Telefono di lavoro"
+				descrizione="" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="CELL_SOC" valore="3474202553" etichetta="Cellulare"
+				descrizione="3474202553" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="EMAIL_SOC" valore="gino.ragazzi@alice.it" etichetta="E-mail"
+				descrizione="gino.ragazzi@alice.it" visibile="true" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="REFERENTE_AGGIUNTIVO" valore="N"
+				etichetta="Si desidera indicare un referente diverso dal richiedente"
+				descrizione="No" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="NOME_REFERENTE" valore="" etichetta="Nome referente"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="COGNOME_REFERENTE" valore="" etichetta="Cognome referente"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="COMUNE_REFERENTE" valore="" etichetta="Comune" descrizione=""
+				visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="INDIRIZZO_REFERENTE" valore="" etichetta="Indirizzo referente"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="TEL_REFERENTE" valore="" etichetta="Tel. referente"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="EMAIL_REFERENTE" valore="" etichetta="Email referente"
+				descrizione="" visibile="false" />
+		</valori>
+		<valori tipoNodo="SEZIONE" titolo="Ulteriore Documentazione">
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="ESENZIONE_BOLLO" valore="N" etichetta="Esente dal bollo"
+				descrizione="No" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ALTRI5ALLEG1" valore="N"
+				etichetta="Si desidera allegare da 1 a 5 file?" descrizione="No"
+				visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO2" valore="" etichetta="Descrizione primo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO3" valore="" etichetta="Descrizione secondo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO4" valore="" etichetta="Descrizione terzo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO5" valore="" etichetta="Descrizione quarto allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO6" valore="" etichetta="Descrizione quinto allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ALTRI5ALLEG2" valore="N" etichetta="Si desidera allegare altri 5 file?"
+				descrizione="No" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO7" valore="" etichetta="Descrizione sesto allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO8" valore="" etichetta="Descrizione settimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO9" valore="" etichetta="Descrizione ottavo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO10" valore="" etichetta="Descrizione nono allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO11" valore="" etichetta="Descrizione decimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ALTRI5ALLEG3" valore="N" etichetta="Si desidera allegare altri 5 file?"
+				descrizione="No" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO12" valore="" etichetta="Descrizione undicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO13" valore="" etichetta="Descrizione dodicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO14" valore="" etichetta="Descrizione tredicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO15" valore="" etichetta="Descrizione quattordicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO16" valore="" etichetta="Descrizione quindicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ALTRI3ALLEG4" valore="N" etichetta="Si desidera allegare altri 3 file?"
+				descrizione="No" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO17" valore="" etichetta="Descrizione sedicesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO18" valore="" etichetta="Descrizione diciassettesimo allegato"
+				descrizione="" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="DESC_ALLEGATO19" valore="" etichetta="Descrizione diciottesimo allegato"
+				descrizione="" visibile="false" />
+		</valori>
+		<valori tipoNodo="SEZIONE" titolo="Assunzione di responsabilità">
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ACCETTA1" valore="Si" etichetta="Ho preso visione e accetto"
+				descrizione="Si" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_CHIEDE" valore="Si" etichetta="Conferma" descrizione="Si"
+				visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ACCETTA2" valore="Si" etichetta="Ho preso visione e accetto"
+				descrizione="Si" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_ACCETTA3" valore="Si" etichetta="Ho preso visione e accetto"
+				descrizione="Si" visibile="false" />
+			<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+				nome="FLAG_LETTO" valore="Si" etichetta="Confermo per presa visione"
+				descrizione="Si" visibile="true" />
+		</valori>
+		<valori tipoNodo="SEZIONE" titolo="Schede Squadra">
+			<valoriSezione tipoNodo="SEZIONE" titolo="Scheda squadra 1 di 1">
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_TIPO_GRUPPO" valore="S" etichetta="Gruppo"
+					descrizione="Squadra" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_Denom_SQUADRA" valore="MIKI CALCIO" etichetta="Denominazione squadra/corso"
+					descrizione="MIKI CALCIO" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_FLAG_TIPOSQUADRA" valore="M" etichetta="Tipo di squadra/corso"
+					descrizione="Maschile" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_DISCIPLINA" valore="1" etichetta="Disciplina"
+					descrizione="CALCIO" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_NUMEROISCRITTI" valore="30" etichetta="Numero di iscritti"
+					descrizione="30" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_FLAG_TIPOUTENZA" valore="1" etichetta="Tipo di utenza"
+					descrizione="Adulti (maggiorenni)" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_ORGSPORTIVA" valore="6" etichetta="Organizzazione Sportiva"
+					descrizione="UISP" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_NOME_ALTRA_ORG_SPORTIVA" valore=""
+					etichetta="Nome dell'organizzazione sportiva" descrizione=""
+					visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_CATEGORIA" valore="40" etichetta="Categoria"
+					descrizione="SENIORES" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_NOME_ALTRA_CATEGORIA" valore="" etichetta="Nome della categoria"
+					descrizione="" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_SELEZIONEQUARTIERE" valore="2" etichetta="Quartiere"
+					descrizione="NAVILE" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_IMPIANTORICHIESTO" valore="7_6_2_5" etichetta="Impianto Richiesto"
+					descrizione="COMPLESSO SPORTIVO LA DOZZA - DOZZA 2" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_ALTERNATIVA1" valore="" etichetta="Prima Alternativa"
+					descrizione="" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_ALTERNATIVA2" valore="" etichetta="Seconda Alternativa"
+					descrizione="" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_NoteEventuali" valore="MEZZO CAMPO"
+					etichetta="Eventuali note aggiuntive sul tipo utilizzo"
+					descrizione="MEZZO CAMPO" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_DATAINIZIO" valore="01/09/2015" etichetta="Data di inizio"
+					descrizione="01/09/2015" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_DATAFINE" valore="31/05/2016" etichetta="Data di fine"
+					descrizione="31/05/2016" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Tabella"
+					nome="Squadra_0_tabella" etichetta="Turni settimanali" visibile="true">
+					<tabella>
+						<riga>
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Giorno" descrizione="Giorno" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Dalle" descrizione="Dalle" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Alle" descrizione="Alle" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Giorno alternativo" descrizione="Giorno alternativo"
+								visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Dalle" descrizione="Dalle" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore" nome=""
+								valore="" etichetta="Alle" descrizione="Alle" visibile="true" />
+						</riga>
+						<riga>
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_SELEZIONEGIORNOSETT" valore="3"
+								etichetta="Giorno" descrizione="Mercoledì" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_oraDalle" valore="20:00" etichetta="Dalle"
+								descrizione="20:00" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_oraAlle" valore="21:30" etichetta="Alle"
+								descrizione="21:30" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_SELEZIONEGIORNOSETTALTERN" valore=""
+								etichetta="Giorno alternativo" descrizione="" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_DalleALTERN" valore="" etichetta="Dalle"
+								descrizione="" visibile="true" />
+							<colonne tipoNodo="VALORE_MODULO" tipo="Valore"
+								nome="Squadra_0_tabella_0_AlleALTERN" valore="" etichetta="Alle"
+								descrizione="" visibile="true" />
+						</riga>
+					</tabella>
+				</valoriSezione>
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_Partite" valore="" etichetta="Nome del campionato"
+					descrizione="" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_FLAG_PARTITESTESSOIMPIANTO" valore="No"
+					etichetta="Stesso impianto" descrizione="No" visibile="true" />
+				<valoriSezione tipoNodo="VALORE_MODULO" tipo="Valore"
+					nome="Squadra_0_FLAG_PARTITEINFRASETTIMANALI" valore="No"
+					etichetta="Partite settimanali" descrizione="No" visibile="true" />
+			</valoriSezione>
+		</valori>
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="notifica"
+			valore="gino.ragazzi@alice.it" etichetta="Email di notifica"
+			descrizione="gino.ragazzi@alice.it" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="ip_address"
+			valore="192.168.238.117" etichetta="Indirizzo IP del mittente"
+			descrizione="192.168.238.117" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="timestamp_submit"
+			valore="07/07/2015 09:39:58.486+0200" etichetta="Data della richiesta"
+			descrizione="07/07/2015 09:39:58.486+0200" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="STATUS"
+			valore="SUBMIT" etichetta="Stato modulo" descrizione="SUBMIT"
+			visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore"
+			nome="template_inizio_validita" valore="20150608T00:00:00.000+0200"
+			etichetta="Inizio validità template" descrizione="20150608T00:00:00.000+0200"
+			visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="template_fine_validita"
+			valore="20160630T23:59:00.000+0200" etichetta="Fine validità template"
+			descrizione="20160630T23:59:00.000+0200" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="CONSOLE_NOMERICHIED"
+			valore="gino" etichetta="" descrizione="gino" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="CONSOLE_COGNOMERICHIED"
+			valore="ragazzi" etichetta="" descrizione="ragazzi" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore"
+			nome="CONSOLE_CODFISCALERICHIED" valore="RGZGNI64D26A944S" etichetta=""
+			descrizione="RGZGNI64D26A944S" visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="CONSOLE_EMAILRICHIED"
+			valore="gino.ragazzi@alice.it" etichetta="" descrizione="gino.ragazzi@alice.it"
+			visibile="false" />
+		<valori tipoNodo="VALORE_MODULO" tipo="Valore" nome="QUARTIERE_RICHIESTA"
+			valore="2" etichetta="Quartiere richiesta" descrizione="NAVILE"
+			visibile="false" />
+		<allegati>
+			<Documento>
+				<nome>PDF 1.ALLEGATO_BOLLO.pdf</nome>
+				<folderRelativePath>MODULISTICA</folderRelativePath>
+				<label>PDF 1.ALLEGATO_BOLLO.pdf</label>
+				<currentVersion>1.0</currentVersion>
+				<dimensioneBytes>1137861</dimensioneBytes>
+				<firmato>false</firmato>
+				<firmatoHash>false</firmatoHash>
+				<gruppivisibilita />
+			</Documento>
+			<Documento>
+				<nome>
+					Richiesta di assegnazione in uso di impianti sportivi 2015_2016.pdf
+				</nome>
+				<folderRelativePath>MODULISTICA</folderRelativePath>
+				<label>
+					Richiesta di assegnazione in uso di impianti sportivi 2015_2016.pdf
+				</label>
+				<currentVersion>1.0</currentVersion>
+				<dimensioneBytes>608532</dimensioneBytes>
+				<firmato>false</firmato>
+				<firmatoHash>false</firmatoHash>
+				<gruppivisibilita />
+			</Documento>
+		</allegati>
+		<praticheCollegate />
+	</modulistica>
+	<tasks>
+		<Task>
+			<id>1</id>
+			<attivo>false</attivo>
+			<assegnatari>
+				<assegnatarioCorrente>
+					<nome>DOC_00000_modulisticaSport_Navile</nome>
+					<dataInizio>2015-07-07T09:45:22.611+02:00</dataInizio>
+					<dataFine>2015-07-07T16:21:29.494+02:00</dataFine>
+				</assegnatarioCorrente>
+			</assegnatari>
+			<gestioneModulistica />
+		</Task>
+	</tasks>
+</pratica>

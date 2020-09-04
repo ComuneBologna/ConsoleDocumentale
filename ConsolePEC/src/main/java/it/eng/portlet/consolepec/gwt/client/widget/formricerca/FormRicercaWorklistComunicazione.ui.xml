@@ -1,0 +1,99 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:engitform="urn:import:it.eng.portlet.consolepec.gwt.client.widget.formricerca"
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	<g:HTMLPanel styleName="filterConsolePanel">
+		<g:HTMLPanel styleName="filters"
+			ui:field="messageWidgetPanel" visible="false">
+			<fieldset>
+				<div class="cell">
+					<engit:MessageAlertWidget
+						ui:field="messageWidget" />
+				</div>
+			</fieldset>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="contentfilter">
+			<g:HTMLPanel styleName="columnfilter fieldfilter filters">
+				<fieldset>
+					<div class="cell" style="display:none"> <!-- nascosti: non possono essere tolti altrimenti non compila la superclasse 
+							formricercabase -->
+						<g:TextBox ui:field="numeroPgTextBox" styleName="testo" />
+					</div>
+					<div class="cell" style="display:none">
+						<g:TextBox ui:field="annoPgTextBox" styleName="testo" />
+					</div>
+					<div class="cell" style="display:none">
+						<g:TextBox ui:field="titoloTextBox" styleName="testo" />
+					</div>
+					<div class="cell" style="display:none">
+						<g:TextBox ui:field="provenienzaTextBox"
+							styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="codiceTextBox" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="idTemplateTextBox"
+							styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:SuggestBox ui:field="statoSuggestBox"
+							styleName="testo"></g:SuggestBox>
+					</div>
+					<div class="cell">
+						<dp:DateBox ui:field="dataFrom" styleName="testo"></dp:DateBox>
+					</div>
+					<div class="cell">
+						<dp:DateBox ui:field="dataTo" styleName="testo"></dp:DateBox>
+					</div>
+				</fieldset>
+
+				<g:HTMLPanel ui:field="avanzatePanel" visible="false">
+					<g:HTMLPanel>
+						<!-- <g:HTMLPanel styleName="filters"> -->
+						<fieldset>
+							<div class="cell">
+								<g:TextBox ui:field="idDocumentaleTextBox"
+									styleName="testo" />
+							</div>
+							<div class="cell">
+								<g:SuggestBox ui:field="assegnatarioSuggestBox"
+									styleName="testo"></g:SuggestBox>
+							</div>
+							<div class="cell" style="display:none">
+								<g:CheckBox ui:field="daLeggereCheckBox"
+									checked="false"></g:CheckBox>
+							</div>
+
+						</fieldset>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="gruppoFiltriFissiPanel"
+						visible="false" />
+					<!-- <g:HTMLPanel ui:field="gruppoFiltriFissiPanel" styleName="filters" 
+						visible="false"/> -->
+					<!-- <div class="filters"> <div class="global-actions"> <g:Button text="Chiudi" 
+						styleName="btn black close" ui:field="chiudiAvanzatePanelButton" /> </div> 
+						</div> -->
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<div class="buttonfilter cell columnfilter filters">
+				<span class="fillerIE">&nbsp;</span>
+				<g:Button ui:field="avanzateButton" text="Avanzate"
+					styleName="btn black" />
+				<g:Button ui:field="pulisciButton" text="Pulisci"
+					styleName="btn black" />
+				<g:Button ui:field="cercaButton" text="Cerca"
+					styleName="btn" />
+			</div>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="chiudiAvanzatePanel"
+			styleName="chiudiBtnDiv" visible="false">
+			<g:Button ui:field="chiudiAvanzatePanelButton" text="Chiudi"
+				styleName="btn black close" />
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

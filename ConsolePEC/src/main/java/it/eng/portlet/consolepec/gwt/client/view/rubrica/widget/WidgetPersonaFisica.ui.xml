@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:r="urn:import:it.eng.portlet.consolepec.gwt.client.view.rubrica.widget"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	<g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="panel" stylePrimaryName="filters">
+			<fieldset>
+
+				<div class="cell acapo">
+					<span class="label">Codice Fiscale</span>
+					<g:HTMLPanel styleName="abstract" ui:field="cfPanel">
+						<g:TextBox ui:field="codiceFiscale" />
+					</g:HTMLPanel>
+					<g:Button ui:field="importaLagButton" text="Importa da Anagrafe" styleName="btn" />
+				</div>
+
+				<div class="cell acapo">
+					<span class="label">Nome</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:TextBox ui:field="nome" />
+					</g:HTMLPanel>
+				</div>
+
+				<div class="cell acapo">
+					<span class="label">Cognome</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:TextBox ui:field="cognome" />
+					</g:HTMLPanel>
+				</div>
+
+				<div class="cell acapo">
+					<span class="label">Data di nascita</span>
+					<g:HTMLPanel styleName="abstract">
+						<d:DateBox ui:field="dataNascita" />
+					</g:HTMLPanel>
+				</div>
+
+
+				<div class="cell acapo">
+					<span class="label">Luogo di nascita</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:TextBox ui:field="comuneNascita" />
+					</g:HTMLPanel>
+				</div>
+
+				<div class="cell acapo">
+					<span class="label">Stato Documentale</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:ListBox ui:field="stato" />
+					</g:HTMLPanel>
+				</div>
+
+			</fieldset>
+		</g:HTMLPanel>
+
+		<hr />
+		<r:WidgetListaIndirizzi ui:field="listaIndirizziWidget" />
+		<hr />
+		<r:WidgetListaTelefoni ui:field="listaTelefoniWidget" />
+		<hr />
+		<r:WidgetListaEmail ui:field="listaEmailWidget" />
+
+	</g:HTMLPanel>
+</ui:UiBinder>

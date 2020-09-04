@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget">
+	<g:HTMLPanel ui:field="selezionePanel" styleName="composizione-elemento-selezionato">
+		<g:HTMLPanel styleName="main-info">
+			<g:CheckBox ui:field="checkDeseleziona" value="true" />
+			<!--  g:Anchor ui:field="iconaDeseleziona" /-->
+			<g:Anchor ui:field="iconaElemento" />
+			<g:Anchor ui:field="infoElemento" />
+		</g:HTMLPanel>
+		<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+	</g:HTMLPanel>
+</ui:UiBinder>

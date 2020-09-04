@@ -1,0 +1,134 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:engit='urn:import:it.eng.portlet.consolepec.gwt.client.widget' ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat' ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+
+		<g:HTMLPanel>
+			<h1 class="maintitle" ui:field="mainTitle"/>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel>
+			<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+			<div class="filters button-filters">
+				<fieldset>
+					<div>
+						<engit:MessageAlertWidget ui:field="messageWidget" />
+					</div>
+					<div class="inline-block">
+						<g:Button ui:field="reinoltraButton" text="Reinoltra" styleName="btn" />
+					</div>
+					<div class="inline-block">
+						<g:Button ui:field="ricevutaButton" text="Ricevute consegna" styleName="btn" />
+					</div>
+					<div class="inline-block">
+						<g:Button ui:field="chiudiButton" text="Chiudi" styleName="btn black" />
+					</div>
+				</fieldset>
+			</div>
+		</g:HTMLPanel>
+		<hr />
+
+		<g:HTMLPanel stylePrimaryName="single">
+
+
+
+			<span class="label">P.G.</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="PG"></g:Label>
+			</g:HTMLPanel>
+
+			<span class="label"> Mittente </span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="mittente" text="-"></g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Destinatari</span>
+			<g:HTMLPanel styleName="abstract" ui:field="destinatariPanel"></g:HTMLPanel>
+
+			<span class="label">Destinatari CC</span>
+			<g:HTMLPanel styleName="abstract" ui:field="destinatariCCPanel"></g:HTMLPanel>
+			
+
+			<span class="label">Data</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="data">
+				</g:Label>
+			</g:HTMLPanel>
+
+
+			<span class="label"> Oggetto </span>
+			<g:HTMLPanel styleName="abstract">
+				<g:HTMLPanel styleName="abstract" ui:field="oggettoPanel"></g:HTMLPanel>
+			</g:HTMLPanel>
+
+
+			<span class="label"> ID documentale </span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="idDocumentale" text="-"></g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Tipo documento mail</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="tipoMail">
+				</g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Stato</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="stato">
+				</g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Visibile a</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="visibileA" text="-">
+				</g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Assegnato a</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="assegantario">
+				</g:Label>
+			</g:HTMLPanel>
+
+			<span class="label">Allegati</span>
+			<engit:DettaglioAllegatiWidget ui:field="dettaglioAllegatiWidget"></engit:DettaglioAllegatiWidget>
+
+			<span class="label"> ID mail </span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="idMail" text="-"></g:Label>
+			</g:HTMLPanel>
+			
+			<span class="label">ID reinoltro</span>
+			<g:HTMLPanel styleName="abstract">
+				<g:Label ui:field="idDocumentaleReinoltro">
+				</g:Label>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="interoperabilePanel" visible="false">
+				<span class="label"> Interoperabile </span>
+				<g:HTMLPanel styleName="abstract">
+					<g:Label ui:field="interoperabile" text="-"></g:Label>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+				
+			<hr></hr>
+			<span class="label">Corpo mail:</span>
+			<g:HTMLPanel styleName="corpo-mail" ui:field="bodyPanel" />
+			
+			<span class="label">Firma:</span>
+			<g:HTMLPanel styleName="abstract" ui:field="firmaPanel" />
+			
+			<hr />
+			<g:DisclosurePanel ui:field="praticheCollegatePanel" animationEnabled="true" open="true"/>
+			<hr ui:field="praticheCollegateHR"/>
+
+			<g:DisclosurePanel ui:field="errRicevutePanel" animationEnabled="true" open="true" />
+			<hr ui:field="errRicevutePanelHR"/>
+			
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

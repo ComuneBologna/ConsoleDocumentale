@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="accettazione" errore="nessuno">
+    <intestazione>
+        <mittente>ufficioelettorale@pec.comune.bologna.it</mittente>
+        <destinatari tipo="esterno">elettorale.pref_bologna@interno.it</destinatari>
+        <destinatari tipo="certificato">protocollo.prefbo@pec.interno.it</destinatari>
+        <destinatari tipo="certificato">mario.rossi@pec.pec.it</destinatari>
+        <risposte>ufficioelettorale@pec.comune.bologna.it</risposte>
+        <oggetto>Trasmissione verbali Comune di Bologna</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>09/05/2016</giorno>
+            <ora>12:49:11</ora>
+        </data>
+        <identificativo>opec281.20160509124911.27819.09.1.28@pec.actalis.it</identificativo>
+        <msgid>&lt;1597644098.885.1462790950615@spagicintrabld01&gt;</msgid>
+    </dati>
+</postacert>

@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:d="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datagrid">
+	<g:HTMLPanel>
+		<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+		<h1 class="maintitle" ui:field="mainTitle"> Rubrica </h1>
+		<g:HTMLPanel styleName="contentfilter">
+			<g:HTMLPanel styleName="columnfilter fieldfilter filters">
+				<fieldset>
+					<div class="cell">
+						<g:TextBox ui:field="identificativo" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="denominazione" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:SuggestBox ui:field="statoDocumentale" styleName="testo" />
+					</div>
+				</fieldset>
+
+			</g:HTMLPanel>
+			<div class="buttonfilter cell columnfilter filters">
+				<span class="fillerIE">&nbsp;</span>
+				<g:Button ui:field="pulisciButton" text="Pulisci" styleName="btn black" />
+				<g:Button ui:field="cercaButton" text="Cerca" styleName="btn" />
+				<g:Button ui:field="creaButton" text="Crea Anagrafica" styleName="btn" />
+			</div>
+		</g:HTMLPanel>
+
+		<div>
+			<div class="global-actions"></div>
+		</div>
+
+	<div class="filters sigle">
+		<d:DataGridWidget ui:field="dataGrid" />
+		<c:SimplePager ui:field="pager" stylePrimaryName="pager" />
+		<div ui:field="buttonsRadio">
+					<fieldset>
+						<hr/>		
+						<div class="cell">
+							<g:Button ui:field="annullaButton" text="Annulla"
+								styleName="btn black" />
+							<g:Button ui:field="avantiButton" text="Avanti"
+								styleName="btn" enabled="false"/>
+						</div>
+					</fieldset>
+		</div>
+	</div>
+
+	</g:HTMLPanel>
+</ui:UiBinder>
+

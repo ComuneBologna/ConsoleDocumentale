@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:HTMLPanel styleName="abstract">
+		<g:Label ui:field="nessunAllegatoLabel" visible="false">-</g:Label>
+		<div class="corpo">
+			<g:HTMLPanel ui:field="elencoAllegatiPanel" styleName="box-mail"></g:HTMLPanel>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

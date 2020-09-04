@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:r="urn:import:it.eng.portlet.consolepec.gwt.client.view.rubrica.widget">
+
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<h1 class="maintitle"> Crea Anagrafica </h1>
+		</g:HTMLPanel>
+
+
+		<g:HTMLPanel stylePrimaryName="single">
+			<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+
+
+			<g:HTMLPanel stylePrimaryName="filters">
+				<fieldset>
+					<div class="cell acapo">
+						<span class="label">Tipologia anagrafica</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:ListBox ui:field="tipologiaAnagrafica" stylePrimaryName="selectListBox" />
+						</g:HTMLPanel>
+					</div>
+				</fieldset>
+			</g:HTMLPanel>
+
+			<r:WidgetPersonaFisica ui:field="creaPersonaFisicaWidget" />
+			<r:WidgetPersonaGiuridica ui:field="creaPersonaGiuridicaWidget" visible="false" />
+
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<hr />
+						<div class="cell">
+							<g:Button ui:field="indietroButton" text="Indietro" styleName="btn black" />
+							<g:Button ui:field="creaButton" text="Crea" styleName="btn" />
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

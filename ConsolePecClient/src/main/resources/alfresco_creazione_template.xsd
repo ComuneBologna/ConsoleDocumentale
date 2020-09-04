@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/creazione/template"
+	xmlns="http://comune.bologna.it/alfresco/creazione/template"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="AbstractTemplateRequest">
+		<xs:sequence>
+			<xs:element name="idDocumentale" type="xs:string"	maxOccurs="1" minOccurs="0" />
+			<xs:element name="destination" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="utente" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="username" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="ruolo" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="descrizione" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="campo" type="campoTemplate" minOccurs="1" maxOccurs="unbounded" />
+			<xs:element name="fascicoliAbilitati" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="requestEmail">
+		<xs:complexContent>
+			<xs:extension base="AbstractTemplateRequest">
+				<xs:sequence>
+					<xs:element name="oggettoMail" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+					<xs:element name="corpoMail" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+					<xs:element name="mittente" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+					<xs:element name="destinatario" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+					<xs:element name="destinatarioCC" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="requestPdf">
+		<xs:complexContent>
+			<xs:extension base="AbstractTemplateRequest">
+				<xs:sequence>
+					<xs:element name="titoloFile" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="campoTemplate">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="formato" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="tipo" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="regexValidazione" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="lunghezzaMassima" type="xs:int" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="valoriLista" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			<xs:element name="campoMetadato" type="CampoMetadato" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CampoMetadato">
+		<xs:sequence>
+			<xs:element name="idMetadato" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="etichettaMetadato" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="requestCopiaTemplate">
+		<xs:sequence>
+			<xs:element name="idDocumentale" type="xs:string" maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="requestCopiaTemplate" type="requestCopiaTemplate" />
+	
+	<xs:element name="requestEmail" type="requestEmail" />
+	
+	<xs:element name="requestPdf" type="requestPdf" />
+
+</xs:schema>

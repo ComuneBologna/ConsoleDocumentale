@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/spagic/procedimenti/tipologie"
+	xmlns="http://comune.bologna.it/spagic/procedimenti/tipologie"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element type="tipologia" name="tipologie" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tipologia">
+		<xs:sequence>
+			<xs:element name="codice_procedimento" type="xs:integer" />
+			<xs:element name="descrizione_settore" type="xs:string" />
+			<xs:element name="qrt" type="xs:integer" />
+			<xs:element name="flag_territorialita" type="xs:string" />
+			<xs:element name="descrizione" type="xs:string" />
+			<xs:element name="modalita_avvio" type="xs:string" />
+			<xs:element name="data_inizio" type="xs:dateTime" />
+			<xs:element name="termine_normato" type="xs:integer" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element type="xs:dateTime" name="currentDateTime" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

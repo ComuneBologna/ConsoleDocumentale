@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+
+		<g:HTMLPanel>
+			<h1 class="maintitle">Aggiorna dati protocollazione</h1>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel stylePrimaryName="single">
+			<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+			<table class="gwt-DisclosurePanel">
+				<tr>
+					<td><p>Seleziona il PG da allineare con BA01</p></td>
+				</tr>
+				<tr>
+					<td>
+						<g:HTMLPanel ui:field="protocollazioni" />
+					</td>
+				</tr>
+			</table>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel>
+			<div class="filters">
+				<fieldset>
+					<hr />
+					<div class="cell">
+						<g:Button ui:field="confermaButton" styleName="btn" text="Conferma" />
+						<g:Button ui:field="annullaButton" styleName="btn black" text="Annulla" />
+					</div>
+				</fieldset>
+			</div>
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

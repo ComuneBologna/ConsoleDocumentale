@@ -1,0 +1,83 @@
+<pratica versione="1.1">
+    <_version>3</_version>
+    <_sync>false</_sync>
+    <idDocumentale>EU7683</idDocumentale>
+    <letto>true</letto>
+    <folderPath>/PEC/CONSOLE/OUT/EU7683</folderPath>
+    <consoleFileName>metadati.xml</consoleFileName>
+    <stato>BOZZA</stato>
+    <utenteCreazione>Anna Balestri</utenteCreazione>
+    <usernameCreazione>abalestr</usernameCreazione>
+    <dataCreazione>2016-04-21T15:07:30.478+02:00</dataCreazione>
+    <tipo>EMAIL_OUT</tipo>
+    <praticaCollegata>
+        <alfrescoPath>/PEC/CONSOLE/PRATICHE/FS58054/metadati.xml</alfrescoPath>
+        <tipo>FASCICOLO_GENERICO</tipo>
+        <dataCaricamento>2016-04-21T15:06:29.906+02:00</dataCaricamento>
+    </praticaCollegata>
+    <gruppivisibilita>
+        <gruppovisibilita>DOC_00947_Protocollo Generale</gruppovisibilita>
+    </gruppivisibilita>
+    <incaricoa>
+        <username>abalestr</username>
+        <nome>Anna</nome>
+        <cognome>Balestri</cognome>
+        <matricola>013806A</matricola>
+        <codicefiscale>BLSNNA55C68A726I</codicefiscale>
+        <datapresaincarico>2016-04-21T15:06:31.938+02:00</datapresaincarico>
+    </incaricoa>
+    <PEC>
+ <protocollazione>
+            <numeroPG>132881</numeroPG>
+            <annoPG>2016</annoPG>
+            <numerofascicolo>64</numerofascicolo>
+            <titolo>3</titolo>
+            <rubrica>1</rubrica>
+            <sezione>2</sezione>
+            <tipologiadocumento>21</tipologiadocumento>
+            <oggetto>CONVOCAZIONE SEDUTA DI Q.T. 22 APRILE 2016</oggetto>
+            <provenienza>SEGRETERIA GENERALEPROT GENER ARCHIVIO/</provenienza>
+            <utenteprotocollazione>013806A</utenteprotocollazione>
+            <dataprotocollazione>2016-04-21T00:00:00.000+02:00</dataprotocollazione>
+            <capofila>
+                <numeroPG>132665</numeroPG>
+                <annoPG>2016</annoPG>
+            </capofila>
+            <tipoProtocollazione>U</tipoProtocollazione>
+        </protocollazione>
+        <destinatari/>
+        <destinatariCC/>
+        <destinatariInoltro/>
+        <notificaRifiutoInoltro>false</notificaRifiutoInoltro>
+        <tipoEmail>PEC</tipoEmail>
+        <allegati>
+            <Documento>
+                <nome>fs58054_Q.T. 22 APRILE 2016 AGGIORNAMENTO.pdf</nome>
+                <folderRelativePath>MESSAGGIO</folderRelativePath>
+                <label>fs58054_Q.T. 22 APRILE 2016 AGGIORNAMENTO.pdf</label>
+                <currentVersion>1.0</currentVersion>
+                <dimensioneBytes>26992</dimensioneBytes>
+                <firmato>false</firmato>
+                <firmatoHash>false</firmatoHash>
+                <dataCaricamento>2016-04-21T15:06:45.598+02:00</dataCaricamento>
+            </Documento>
+        </allegati>
+        <hasRicevutaAccettazione>false</hasRicevutaAccettazione>
+        <hasRicevutaConsegna>false</hasRicevutaConsegna>
+        <EventiIter/>
+    </PEC>
+    <tasks>
+        <Task>
+            <id>1</id>
+            <attivo>true</attivo>
+<assegnatari>
+                <assegnatarioCorrente>
+                    <nome>DOC_00947_Protocollo Generale</nome>
+                    <dataInizio>2016-04-21T15:07:30.478+02:00</dataInizio>
+                    <dataFine>2016-04-21T15:07:31.478+02:00</dataFine>
+                </assegnatarioCorrente>
+            </assegnatari>
+            <gestionePEC/>
+        </Task>
+    </tasks>
+</pratica>

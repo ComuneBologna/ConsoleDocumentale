@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pratica versione="1.0">
+    <_version>0</_version>
+    <idDocumentale>EU1964</idDocumentale>
+    <letto>true</letto>
+    <folderPath>/PEC/CONSOLE/OUT/EU1964</folderPath>
+    <consoleFileName>metadati.xml</consoleFileName>
+    <provenienza>albopretoriomessicomunali@pec.comune.bologna.it</provenienza>
+    <stato>INATTESADIPRESAINCARICO</stato>
+    <utenteCreazione>adelise</utenteCreazione>
+    <dataCreazione>2015-11-09T08:51:27.279+01:00</dataCreazione>
+    <tipo>EMAIL_OUT</tipo>
+    <fascicoloCollegato>
+        <alfrescoPath>/PEC/CONSOLE/PRATICHE/FS18592/metadati.xml</alfrescoPath>
+        <tipo>FASCICOLO_ALBO_PRETORIO</tipo>
+    </fascicoloCollegato>
+    <gruppivisibilita>
+        <gruppovisibilita>DOC_00000_Albo Pretorio</gruppovisibilita>
+    </gruppivisibilita>
+    <PEC>
+        <messageID>2023597799.65.1447055944216.JavaMail.spagic@spagicintrabld01</messageID>
+        <dataInvio>2015-11-09T08:59:03.615+01:00</dataInvio>
+        <mittente>albopretoriomessicomunali@pec.comune.bologna.it</mittente>
+        <protocollazione>
+            <numeroPG>347126</numeroPG>
+            <annoPG>2015</annoPG>
+            <numerofascicolo>574</numerofascicolo>
+            <titolo>15</titolo>
+            <rubrica>1</rubrica>
+            <sezione>1</sezione>
+            <tipologiadocumento>9</tipologiadocumento>
+            <oggetto>INVIO REFERTOP DI PUBBLICAZIONE PG N.334450/15</oggetto>
+            <provenienza>SEGRETERIA GENERALEALBO PRETORIO/</provenienza>
+            <utenteprotocollazione>026514H</utenteprotocollazione>
+            <dataprotocollazione>2015-11-09T00:00:00.000+01:00</dataprotocollazione>
+            <capofila>
+                <numeroPG>334450</numeroPG>
+                <annoPG>2015</annoPG>
+            </capofila>
+            <tipoProtocollazione>U</tipoProtocollazione>
+        </protocollazione>
+        <destinatari>
+            <destinatario consegna="false" accettazione="false" tipo="certificato">
+                <email>areaterritoriale.bologna@pec.equitaliacentro.it</email>
+            </destinatario>
+        </destinatari>
+        <destinatariCC/>
+        <destinatariInoltro/>
+        <notificaRifiutoInoltro>false</notificaRifiutoInoltro>
+        <tipoEmail>PEC</tipoEmail>
+        <oggetto>INVIO REFERTO DI PUBBLICAZIONE PG N.334450/15</oggetto>
+        <body>&lt;p&gt;INVIO REFERTO DI PUBBLICAZIONE PG N.334450/15 DIST. SALUTI&lt;/p&gt;</body>
+        <allegati>
+            <Documento>
+                <nome>Relata20150003465.pdf</nome>
+                <folderRelativePath>MESSAGGIO</folderRelativePath>
+                <label>Relata20150003465.pdf</label>
+                <currentVersion>1.0</currentVersion>
+                <dimensioneBytes>33628</dimensioneBytes>
+                <firmato>false</firmato>
+                <firmatoHash>false</firmatoHash>
+            </Documento>
+            <Documento>
+                <nome>Relata20150003465.pdf.p7m</nome>
+                <folderRelativePath>MESSAGGIO</folderRelativePath>
+                <label>Relata20150003465.pdf.p7m</label>
+                <currentVersion>1.0</currentVersion>
+                <dimensioneBytes>36256</dimensioneBytes>
+                <firmato>true</firmato>
+                <firmatoHash>true</firmatoHash>
+                <tipoFirma>CADES</tipoFirma>
+            </Documento>
+        </allegati>
+        <hasRicevutaAccettazione>false</hasRicevutaAccettazione>
+        <hasRicevutaConsegna>false</hasRicevutaConsegna>
+        <EventiIter/>
+    </PEC>
+    <tasks>
+        <Task>
+            <id>1</id>
+            <attivo>true</attivo>
+            <assegnatari>
+                <assegnatarioCorrente>
+                    <nome>DOC_00000_Albo Pretorio</nome>
+                    <dataInizio>2015-11-09T08:51:27.279+01:00</dataInizio>
+                    <dataFine>2015-11-09T08:51:28.279+01:00</dataFine>
+                </assegnatarioCorrente>
+            </assegnatari>
+            <gestionePEC/>
+        </Task>
+    </tasks>
+</pratica>

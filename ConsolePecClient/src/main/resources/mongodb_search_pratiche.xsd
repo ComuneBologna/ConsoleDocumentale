@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/mongodb/search/pratiche"
+	xmlns="http://comune.bologna.it/mongodb/search/pratiche"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="limit" type="xs:int" />
+			<xs:element name="offset" type="xs:int" />
+			<xs:element name="count" type="xs:boolean" />
+			<xs:element name="sorts"  minOccurs="0" maxOccurs="unbounded" type="sort"/>
+			<xs:element name="filtri" minOccurs="0" maxOccurs="unbounded" type="filtro" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element name="pratiche" type="praticaResult" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="richiesteFirma" type="richiestaFirmaResult" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="count" type="xs:int" />
+	</xs:complexType>
+	
+	<xs:complexType name="filtro">
+		<xs:sequence>
+			<xs:element name="nome" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:choice>
+				<xs:element name="valoreSingolo" type="xs:string"  />
+				<xs:element name="valoreLista" type="xs:string"  maxOccurs="unbounded" />
+				<xs:element name="valoreMappa" maxOccurs="unbounded" >  
+					<xs:complexType>
+							<xs:sequence>
+								<xs:element name="chiave" type="xs:string"  />
+								<xs:element name="valore" type="xs:string" minOccurs="0" maxOccurs="1"/>
+								<xs:element name="valori" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>				
+					</xs:complexType>
+  				</xs:element>
+			</xs:choice>
+			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="metadato">
+		<xs:sequence>
+			<xs:element name="nome" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="valore" minOccurs="1" maxOccurs="1" type="xs:anySimpleType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="praticaResult">
+		<xs:sequence>
+			<xs:element name="metadato" minOccurs="0" maxOccurs="unbounded" type="metadato" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AllegatoRichiestaFirma">
+		<xs:sequence>
+			<xs:element name="nome" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="currentVersion" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioRichiestaFirma">
+		<xs:sequence>
+			<xs:element name="stato" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioUtenteRichiestaFirma">
+		<xs:complexContent>
+			<xs:extension base="DestinatarioRichiestaFirma">
+				<xs:sequence>
+					<xs:element name="userid" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="nome" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		   			<xs:element name="cognome" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="matricola" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="settore" type="xs:string" maxOccurs="1"	minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioGruppoRichiestaFirma">
+		<xs:complexContent>
+			<xs:extension base="DestinatarioRichiestaFirma">
+				<xs:sequence>
+					<xs:element name="nomeGruppo" type="xs:string" maxOccurs="1"	minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="richiestaFirmaResult">
+		<xs:sequence>
+			<xs:element name="praticaPath" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="allegato" type="AllegatoRichiestaFirma" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="gruppoProponente" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="dataProposta" type="xs:dateTime" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="tipo" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="stato" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="destinatari" type="DestinatarioRichiestaFirma" minOccurs="1" maxOccurs="unbounded"></xs:element>
+			<xs:element name="dataScadenza" type="xs:dateTime" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="mittenteOriginale" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="idTaskFirma" type="xs:int" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="operazioniDestinatarioAbilitate" type="xs:boolean" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="operazioniProponenteAbilitate" type="xs:boolean" minOccurs="1" maxOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="sort">
+		<xs:sequence>
+			<xs:element name="nome" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="type" minOccurs="1" maxOccurs="1" type="sortType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="sortType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ASC" />
+			<xs:enumeration value="DESC" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Request root -->
+	<xs:element name="request" type="request" />
+	<!-- Response root -->
+	<xs:element name="response" type="response" />
+
+</xs:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://comune.bologna.it/spagic/stampe" targetNamespace="http://comune.bologna.it/spagic/stampe"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="tipoStampa" type="tipoStampa" minOccurs="0" maxOccurs="1" />
+			<xs:element name="parametriStampa" type="parametroStampa" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="tipoStampa">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RIVERSAMENTO_CARTACEO" />
+			<xs:enumeration value="RICEVUTA_CONSEGNA" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="chiaviStampa">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PRATICA_PATH" />
+			<xs:enumeration value="NUM_PG" />
+			<xs:enumeration value="ANNO_PG" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="parametroStampa">
+		<xs:sequence>
+			<xs:element name="chiave" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="valore" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="request" type="request" />
+
+</xs:schema>

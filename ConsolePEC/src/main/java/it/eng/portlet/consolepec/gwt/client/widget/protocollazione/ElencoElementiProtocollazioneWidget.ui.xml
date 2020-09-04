@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel styleName="oggetto-mail" ui:field="mainPanel">
+		<g:Button ui:field="buttonElimina" text="Elimina" styleName="btn black"/>
+		<g:Image ui:field="iconaLabel" styleName="ico-mail" title="Visibilita"></g:Image>
+		<a class="documento">
+			<g:InlineLabel ui:field="labelOggetto"/>
+		</a>	
+	</g:HTMLPanel>
+</ui:UiBinder> 

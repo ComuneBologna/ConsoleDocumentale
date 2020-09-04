@@ -1,0 +1,91 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client"
+	xmlns:h="urn:import:com.gargoylesoftware.htmlunit.html" xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:engittemplate="urn:import:it.eng.portlet.consolepec.gwt.client.widget.template">
+
+
+	<g:HTMLPanel>
+		<fieldset>
+			<g:HTMLPanel ui:field="informazioniTemplatePanel" >
+				<h6>Inserisci le informazioni del modello</h6>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel styleName="cell" ui:field="idDocumentalePanel">
+				<span class="label">Id documentale</span>
+				<g:HTMLPanel styleName="abstract">
+					<g:Label ui:field="idDocumentaleLabel"></g:Label>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label">Nome *</span>
+				<g:HTMLPanel styleName="abstract">
+					<g:TextBox ui:field="nomeTextBox"></g:TextBox>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label">Descrizione</span>
+				<g:HTMLPanel styleName="abstract">
+					<g:TextBox ui:field="descrizioneTextBox"></g:TextBox>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label"> Utente di creazione </span>
+				<g:TextBox ui:field="utenteTextBox" styleName="disabilitato"
+					enabled="false"></g:TextBox>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label"> Data di creazione </span>
+				<dp:DateBox ui:field="dataCreazionePraticaDateBox" styleName="disabilitato" enabled="false"></dp:DateBox>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label">Assegna a *</span>
+				<g:HTMLPanel ui:field="elencoGruppiSuggestBoxPanel"
+					styleName="abstract"></g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label" ui:field="statoSpan" style="display:none">Stato</span>
+				<g:HTMLPanel styleName="abstract">
+					<g:Label ui:field="statoLabel" visible="false"></g:Label>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="cell acapo">
+				<span class="label">Titolo file</span>
+				<g:HTMLPanel styleName="abstract">
+					<g:TextBox ui:field="titoloFileTextBox"></g:TextBox>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<hr />
+		
+
+			<g:HTMLPanel styleName="cell acapo">
+				<g:DisclosurePanel ui:field="tipiFascicoloDisclosurePanel" animationEnabled="true" open="false">
+				
+					<g:HTMLPanel styleName="abstract">
+						<engittemplate:ElencoTipiFascicoloWidget ui:field="elencoTipiFascicoloWidget" />
+					</g:HTMLPanel>
+									
+				</g:DisclosurePanel>
+			</g:HTMLPanel>
+
+			<hr />
+
+			<g:HTMLPanel styleName="cell acapo">
+
+				<g:DisclosurePanel ui:field="listaCampiDisclosurePanel" animationEnabled="true" open="false">
+					<g:HTMLPanel styleName="abstract" ui:field="listaCampiTemplatePanel">
+<!-- 						<engittemplate:ListaCampiTemplateWidget ui:field="listaCampiTemplateWidget" />
+ -->					</g:HTMLPanel>
+				</g:DisclosurePanel>
+			</g:HTMLPanel>
+
+		</fieldset>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

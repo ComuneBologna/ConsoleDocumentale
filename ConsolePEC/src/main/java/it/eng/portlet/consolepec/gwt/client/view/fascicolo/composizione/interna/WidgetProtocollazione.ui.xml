@@ -1,0 +1,8 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel ui:field="protocollazionePanel">
+		<g:InlineLabel ui:field="infoProtocollazione" />
+		<g:HTMLPanel ui:field="gruppoElementi" />
+		<g:HTMLPanel ui:field="gruppoProtocollazioni" />
+	</g:HTMLPanel>
+</ui:UiBinder>

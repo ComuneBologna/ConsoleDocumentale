@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b="http://comune.bologna.it/base"
+	targetNamespace="http://comune.bologna.it/alfresco/creazione/fascicolo"
+	xmlns="http://comune.bologna.it/alfresco/creazione/fascicolo"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+	
+	<xs:complexType name="request">
+		<xs:sequence>
+		    <xs:element name="tipoFascicolo" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="titolo" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="utente" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="username" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="note" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="ruolo" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="numerocapofila" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="annocapofila" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="pathfascicolo" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="capofilaDetail" type="capofilaDetail" maxOccurs="1" minOccurs="0"/>
+			<xs:element name="numeroFattura" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="ragioneSociale" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="partitaIva" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="codicePartitaIva" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			<xs:element name="allegati">
+			<xs:complexType>
+					<xs:sequence>
+						<xs:element name="allegato" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="pratiche">
+			<xs:complexType>
+					<xs:sequence>
+						<xs:element name="pratica" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="datoAggiuntivo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="valori" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="tabella" type="b:tabella" minOccurs="0" />
+					</xs:sequence>	
+					<xs:attribute name="nome" type="xs:string" use="required" />
+					<xs:attribute name="valore" type="xs:string" />
+					<xs:attribute name="descrizione" type="xs:string" use="required" />
+					<xs:attribute name="tipo" type="xs:string" use="required" />
+					<xs:attribute name="obbligatorio" type="xs:boolean" use="required" />
+					<xs:attribute name="editabile" type="xs:boolean" use="required" />
+					<xs:attribute name="visibile" type="xs:boolean" use="required" />
+					<xs:attribute name="posizione" type="xs:integer" use="required" />
+					<xs:attribute name="idAnagrafica" type="xs:double" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="capofilaDetail">
+		<xs:sequence>
+			<xs:element name="numeroPg" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="numeroPgCapofila" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="oggetto" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="annoPg" type="xs:int" maxOccurs="1" minOccurs="0" />
+			<xs:element name="annoPgCapofila" type="xs:int" maxOccurs="1" minOccurs="0" />
+			<xs:element name="titolo" type="xs:int" maxOccurs="1" minOccurs="0" />
+			<xs:element name="rubrica" type="xs:int" maxOccurs="1" minOccurs="0" />
+			<xs:element name="sezione" type="xs:int" maxOccurs="1" minOccurs="0" />
+			<xs:element name="dataProtocollazione" type="xs:dateTime" maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="request" type="request" />
+	
+</xs:schema>

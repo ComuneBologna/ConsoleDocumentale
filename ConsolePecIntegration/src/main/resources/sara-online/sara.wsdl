@@ -1,0 +1,814 @@
+<wsdl:definitions targetNamespace="urn:sara:comune:bologna:it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:sara:comune:bologna:it" xmlns:intf="urn:sara:comune:bologna:it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="urn:sara:comune:bologna:it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="DettaglioContrassegnoRequest">
+    <complexType>
+     <sequence>
+      <element name="TipoContrassegno" nillable="true" type="xsd:string"/>
+      <element name="NumeroContrassegno" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <simpleType name="CodEsito">
+    <restriction base="xsd:string">
+     <enumeration value="OK"/>
+     <enumeration value="ERROR"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="ErrorCode">
+    <restriction base="xsd:string">
+     <enumeration value="E01"/>
+     <enumeration value="E02"/>
+     <enumeration value="E03"/>
+     <enumeration value="E04"/>
+     <enumeration value="E05"/>
+     <enumeration value="E06"/>
+     <enumeration value="E07"/>
+     <enumeration value="E08"/>
+     <enumeration value="E09"/>
+     <enumeration value="E10"/>
+     <enumeration value="E11"/>
+     <enumeration value="E12"/>
+     <enumeration value="E13"/>
+     <enumeration value="E18"/>
+     <enumeration value="E19"/>
+     <enumeration value="E21"/>
+     <enumeration value="ER01"/>
+     <enumeration value="E20"/>
+     <enumeration value="EI01"/>
+     <enumeration value="EI02"/>
+     <enumeration value="EI03"/>
+     <enumeration value="EI04"/>
+     <enumeration value="EI05"/>
+     <enumeration value="EI06"/>
+     <enumeration value="EI07"/>
+     <enumeration value="EI08"/>
+     <enumeration value="EI09"/>
+     <enumeration value="EI10"/>
+     <enumeration value="EI11"/>
+    </restriction>
+   </simpleType>
+   <complexType name="Esito">
+    <sequence/>
+    <attribute name="CodEsito" type="impl:CodEsito"/>
+    <attribute name="Descrizione" type="xsd:string"/>
+    <attribute name="ErrorCode" type="impl:ErrorCode"/>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <simpleType name="Sesso">
+    <restriction base="xsd:string">
+     <enumeration value="M"/>
+     <enumeration value="F"/>
+    </restriction>
+   </simpleType>
+   <complexType name="Titolare">
+    <sequence/>
+    <attribute name="CodiceFiscale" type="xsd:string"/>
+    <attribute name="Cognome" type="xsd:string"/>
+    <attribute name="DataNascita" type="xsd:date"/>
+    <attribute name="IdTitolare" type="xsd:string"/>
+    <attribute name="Nome" type="xsd:string"/>
+    <attribute name="Sesso" type="impl:Sesso"/>
+    <attribute name="TelefonoCellulare" type="xsd:string"/>
+    <attribute name="TelefonoFisso" type="xsd:string"/>
+   </complexType>
+   <simpleType name="FlagEcoNeco">
+    <restriction base="xsd:string">
+     <enumeration value="E"/>
+     <enumeration value="NE"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="FlagCessato">
+    <restriction base="xsd:string">
+     <enumeration value="A"/>
+     <enumeration value="C"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="FlagItalianoEstero">
+    <restriction base="xsd:string">
+     <enumeration value="I"/>
+     <enumeration value="E"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="FlagPermanenteAggiuntivo">
+    <restriction base="xsd:string">
+     <enumeration value="P"/>
+     <enumeration value="T"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="TipoVeicolo">
+    <restriction base="xsd:string">
+     <enumeration value="1"/>
+     <enumeration value="2"/>
+     <enumeration value="3"/>
+     <enumeration value="4"/>
+     <enumeration value="5"/>
+     <enumeration value="6"/>
+     <enumeration value="8"/>
+     <enumeration value="9"/>
+    </restriction>
+   </simpleType>
+   <complexType name="VeicoloDettaglio">
+    <sequence/>
+    <attribute name="AlimentazioneVeicolo" type="xsd:string"/>
+    <attribute name="CompatibilitaAmbientale" type="xsd:string"/>
+    <attribute name="DataFineValidita" type="xsd:date"/>
+    <attribute name="DataInizioValidita" type="xsd:date"/>
+    <attribute name="Direttiva" type="xsd:int"/>
+    <attribute name="DirettivaDesc" type="xsd:string"/>
+    <attribute name="DirettivaMctc" type="xsd:string"/>
+    <attribute name="EcoNeco" type="impl:FlagEcoNeco"/>
+    <attribute name="FlagCessato" type="impl:FlagCessato"/>
+    <attribute name="FlagItalianoEstero" type="impl:FlagItalianoEstero"/>
+    <attribute name="FlagPermanenteAggiuntivo" type="impl:FlagPermanenteAggiuntivo"/>
+    <attribute name="IdPermessoVeicolo" type="xsd:string"/>
+    <attribute name="IndEuro" type="xsd:string"/>
+    <attribute name="Targa" type="xsd:string"/>
+    <attribute name="TipoVeicolo" type="impl:TipoVeicolo"/>
+    <attribute name="TipoVeicoloDesc" type="xsd:string"/>
+   </complexType>
+   <complexType name="ArrayOfVeicoloDettaglio">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:VeicoloDettaglio"/>
+    </sequence>
+   </complexType>
+   <complexType name="Contrassegno">
+    <sequence>
+     <element name="Titolare" nillable="true" type="impl:Titolare"/>
+     <element maxOccurs="1" minOccurs="0" name="Veicoli" nillable="true" type="impl:ArrayOfVeicoloDettaglio"/>
+     <element maxOccurs="1" minOccurs="0" name="VeicoliAggiuntivi" nillable="true" type="impl:ArrayOfVeicoloDettaglio"/>
+    </sequence>
+    <attribute name="DataFineValidita" type="xsd:date"/>
+    <attribute name="DataInizioValidita" type="xsd:date"/>
+    <attribute name="EcoNeco" type="impl:FlagEcoNeco"/>
+    <attribute name="FlagTargaEstera" type="xsd:boolean"/>
+    <attribute name="IndirizzoRiferimento" type="xsd:string"/>
+    <attribute name="NumCambiTargaAggiuntiviResidui" type="xsd:int"/>
+    <attribute name="NumCambiTargaPermanentiResidui" type="xsd:int"/>
+    <attribute name="NumeroContrassegno" type="xsd:int"/>
+    <attribute name="SecondoSettore" type="xsd:string"/>
+    <attribute name="Settore" type="xsd:string"/>
+    <attribute name="SostaPagamento" type="xsd:string"/>
+    <attribute name="TipoContrassegno" type="xsd:string"/>
+    <attribute name="ZoneSirio" type="xsd:string"/>
+   </complexType>
+   <element name="DettaglioContrassegnoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      <element maxOccurs="1" minOccurs="0" name="Contrassegno" nillable="true" type="impl:Contrassegno"/>
+     </sequence>
+    </complexType>
+   </element>
+   <simpleType name="CategoriaContrassegno">
+    <restriction base="xsd:string">
+     <enumeration value="RESIDENTI"/>
+     <enumeration value="VETROFANIE"/>
+    </restriction>
+   </simpleType>
+   <complexType name="Veicolo">
+    <sequence/>
+    <attribute name="FlagItalianoEstero" type="impl:FlagItalianoEstero"/>
+    <attribute name="FlagPermanenteAggiuntivo" type="impl:FlagPermanenteAggiuntivo"/>
+    <attribute name="IdPermessoVeicolo" type="xsd:string"/>
+    <attribute name="Targa" type="xsd:string"/>
+    <attribute name="TipoVeicolo" type="impl:TipoVeicolo"/>
+   </complexType>
+   <complexType name="TitoloPossesso">
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="ProprietaPersonale" nillable="true">
+      <complexType>
+       <sequence/>
+       <attribute name="CodiceFiscale" type="xsd:string"/>
+      </complexType>
+     </element>
+     <element maxOccurs="1" minOccurs="0" name="ProprietaAltroMembro" nillable="true">
+      <complexType>
+       <sequence/>
+       <attribute name="CodiceFiscale" type="xsd:string"/>
+      </complexType>
+     </element>
+     <element maxOccurs="1" minOccurs="0" name="Contratto" nillable="true">
+      <complexType>
+       <sequence>
+        <element maxOccurs="1" minOccurs="0" name="Leasing" nillable="true">
+         <complexType>
+          <sequence/>
+          <attribute name="CodiceFiscaleAzienda" type="xsd:string"/>
+          <attribute name="DenominazioneAzienda" type="xsd:string"/>
+         </complexType>
+        </element>
+        <element maxOccurs="1" minOccurs="0" name="Noleggio" nillable="true">
+         <complexType>
+          <sequence/>
+          <attribute name="CodiceFiscaleAzienda" type="xsd:string"/>
+          <attribute name="DenominazioneAzienda" type="xsd:string"/>
+         </complexType>
+        </element>
+        <element maxOccurs="1" minOccurs="0" name="Comodato" nillable="true">
+         <complexType>
+          <sequence/>
+          <attribute name="LuogoRegistrazione" type="xsd:string"/>
+          <attribute name="NumeroRegistrazione" type="xsd:string"/>
+         </complexType>
+        </element>
+       </sequence>
+      </complexType>
+     </element>
+     <element maxOccurs="1" minOccurs="0" name="TrascrizioneLibretto" nillable="true">
+      <complexType>
+       <sequence/>
+       <attribute name="DataRegistrazione" type="xsd:date"/>
+       <attribute name="LuogoRegistrazione" type="xsd:string"/>
+       <attribute name="Protocollo" type="xsd:string"/>
+      </complexType>
+     </element>
+    </sequence>
+   </complexType>
+   <complexType name="DatiResidenti">
+    <sequence>
+     <element name="FlagPatente" type="xsd:boolean"/>
+     <element name="EnteEmissionePatente" nillable="true" type="xsd:string"/>
+     <element name="Gratuito" type="xsd:boolean"/>
+     <element name="Settore" nillable="true" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="0" name="SecondoSettore" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="EmissioneContrassegnoRequest">
+    <complexType>
+     <sequence>
+      <element name="CategoriaContrassegno" nillable="true" type="impl:CategoriaContrassegno"/>
+      <element name="NumeroMatricola" type="xsd:int"/>
+      <element name="Veicolo" nillable="true" type="impl:Veicolo"/>
+      <element name="TitoloPossesso" nillable="true" type="impl:TitoloPossesso"/>
+      <element maxOccurs="1" minOccurs="0" name="DatiResidenti" nillable="true" type="impl:DatiResidenti"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="EmissioneContrassegnoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="Contrassegno" nillable="true" type="impl:Contrassegno"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="RichiestaContrassegnoGratuitoRequest">
+    <complexType>
+     <sequence>
+      <element name="NumeroMatricola" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="RichiestaContrassegnoGratuitoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      <element maxOccurs="1" minOccurs="0" name="Gratuito" nillable="true" type="xsd:boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="SettoreDefaul" nillable="true" type="xsd:string"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaSettori1" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaSettori2" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      <element name="FlagTargaEstera" nillable="true" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOfVeicolo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Veicolo"/>
+    </sequence>
+   </complexType>
+   <element name="CambioTargaContrassegnoRequest">
+    <complexType>
+     <sequence>
+      <element name="TipoContrassegno" nillable="true" type="xsd:string"/>
+      <element name="NumeroContrassegno" type="xsd:int"/>
+      <element name="TitoloPossesso" nillable="true" type="impl:TitoloPossesso"/>
+      <element maxOccurs="1" minOccurs="0" name="VeicoliPermanenti" nillable="true" type="impl:ArrayOfVeicoloDettaglio"/>
+      <element name="CambioTarga" nillable="true">
+       <complexType>
+        <sequence>
+         <element maxOccurs="1" minOccurs="0" name="NuoviVeicoliPermanenti" nillable="true" type="impl:ArrayOfVeicolo"/>
+         <element maxOccurs="1" minOccurs="0" name="VeicoloAggiuntivo" nillable="true" type="impl:Veicolo"/>
+        </sequence>
+       </complexType>
+      </element>
+     </sequence>
+     <attribute name="DataCambioTarga" type="xsd:date"/>
+    </complexType>
+   </element>
+   <element name="CambioTargaContrassegnoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+     <attribute name="NumCambiTargaAggiuntiviEffettuati" type="xsd:int"/>
+     <attribute name="NumCambiTargaAggiuntiviResidui" type="xsd:int"/>
+     <attribute name="NumCambiTargaPermanentiEffettuati" type="xsd:int"/>
+     <attribute name="NumCambiTargaPermanentiResidui" type="xsd:int"/>
+    </complexType>
+   </element>
+   <element name="CessazioneContrassegnoRequest">
+    <complexType>
+     <sequence>
+      <element name="TipoContrassegno" nillable="true" type="xsd:string"/>
+      <element name="NumeroContrassegno" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="CessazioneContrassegnoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="DownloadRicevutaRequest">
+    <complexType>
+     <sequence>
+      <element name="TipoContrassegno" nillable="true" type="xsd:string"/>
+      <element name="NumeroContrassegno" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="File">
+    <sequence>
+     <element name="Content" nillable="true" type="xsd:base64Binary"/>
+     <element name="FileName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="DownloadRicevutaResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="File" nillable="true" type="impl:File"/>
+      <element maxOccurs="1" minOccurs="0" name="ListaCodMessaggio" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="dettaglioTargaEsteraVetrofaniaRequest">
+    <complexType>
+     <sequence>
+      <element name="NumeroMatricola" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="dettaglioTargaEsteraVetrofaniaResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element name="FlagTargaEstera" nillable="true" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <simpleType name="TipoPermesso">
+    <restriction base="xsd:string">
+     <enumeration value="XH"/>
+    </restriction>
+   </simpleType>
+   <complexType name="TitolareTestoLibero">
+    <sequence/>
+    <attribute name="Comune" type="xsd:string"/>
+    <attribute name="NomeCognome" type="xsd:string"/>
+    <attribute name="Provincia" type="xsd:string"/>
+    <attribute name="Stato" type="xsd:string"/>
+   </complexType>
+   <complexType name="TitolareGenerico">
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="Titolare" nillable="true" type="impl:Titolare"/>
+     <element maxOccurs="1" minOccurs="0" name="TitolareTestoLibero" nillable="true" type="impl:TitolareTestoLibero"/>
+    </sequence>
+   </complexType>
+   <complexType name="VeicoloGenerico">
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="Veicolo" nillable="true" type="impl:Veicolo"/>
+     <element maxOccurs="1" minOccurs="0" name="VeicoloDettaglio" nillable="true" type="impl:VeicoloDettaglio"/>
+    </sequence>
+   </complexType>
+   <simpleType name="MotivoRilascio">
+    <restriction base="xsd:string">
+     <enumeration value="E_21"/>
+    </restriction>
+   </simpleType>
+   <element name="emissionePermessoRequest">
+    <complexType>
+     <sequence>
+      <element name="TipoPermesso" nillable="true" type="impl:TipoPermesso"/>
+      <element name="Titolare" nillable="true" type="impl:TitolareGenerico"/>
+      <element name="Veicolo" nillable="true" type="impl:VeicoloGenerico"/>
+      <element maxOccurs="1" minOccurs="0" name="DataIniVal" nillable="true" type="xsd:date"/>
+      <element maxOccurs="1" minOccurs="0" name="DataFineVal" nillable="true" type="xsd:date"/>
+      <element maxOccurs="1" minOccurs="0" name="MotivoRilascio" nillable="true" type="impl:MotivoRilascio"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="emissionePermessoResponse">
+    <complexType>
+     <sequence>
+      <element name="Esito" nillable="true" type="impl:Esito"/>
+      <element maxOccurs="1" minOccurs="0" name="File" nillable="true" type="impl:File"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="dettaglioTargaEsteraVetrofaniaRequest">
+
+      <wsdl:part element="impl:dettaglioTargaEsteraVetrofaniaRequest" name="dettaglioTargaEsteraVetrofaniaRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="emissioneContrassegnoResponse">
+
+      <wsdl:part element="impl:EmissioneContrassegnoResponse" name="EmissioneContrassegnoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="downloadRicevutaRequest">
+
+      <wsdl:part element="impl:DownloadRicevutaRequest" name="DownloadRicevutaRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="richiestaContrassegnoGratuitoResponse">
+
+      <wsdl:part element="impl:RichiestaContrassegnoGratuitoResponse" name="RichiestaContrassegnoGratuitoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="emissionePermessoResponse">
+
+      <wsdl:part element="impl:emissionePermessoResponse" name="emissionePermessoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="emissionePermessoRequest">
+
+      <wsdl:part element="impl:emissionePermessoRequest" name="emissionePermessoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="emissioneContrassegnoRequest">
+
+      <wsdl:part element="impl:EmissioneContrassegnoRequest" name="EmissioneContrassegnoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="downloadRicevutaResponse">
+
+      <wsdl:part element="impl:DownloadRicevutaResponse" name="DownloadRicevutaResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cessazioneContrassegnoRequest">
+
+      <wsdl:part element="impl:CessazioneContrassegnoRequest" name="CessazioneContrassegnoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="richiestaContrassegnoGratuitoRequest">
+
+      <wsdl:part element="impl:RichiestaContrassegnoGratuitoRequest" name="RichiestaContrassegnoGratuitoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cambioTargaContrassegnoRequest">
+
+      <wsdl:part element="impl:CambioTargaContrassegnoRequest" name="CambioTargaContrassegnoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cambioTargaContrassegnoResponse">
+
+      <wsdl:part element="impl:CambioTargaContrassegnoResponse" name="CambioTargaContrassegnoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dettaglioTargaEsteraVetrofaniaResponse">
+
+      <wsdl:part element="impl:dettaglioTargaEsteraVetrofaniaResponse" name="dettaglioTargaEsteraVetrofaniaResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cessazioneContrassegnoResponse">
+
+      <wsdl:part element="impl:CessazioneContrassegnoResponse" name="CessazioneContrassegnoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dettaglioContrassegnoResponse">
+
+      <wsdl:part element="impl:DettaglioContrassegnoResponse" name="DettaglioContrassegnoResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dettaglioContrassegnoRequest">
+
+      <wsdl:part element="impl:DettaglioContrassegnoRequest" name="DettaglioContrassegnoRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="wsSaraOnline">
+
+      <wsdl:operation name="dettaglioContrassegno" parameterOrder="DettaglioContrassegnoRequest">
+
+         <wsdl:input message="impl:dettaglioContrassegnoRequest" name="dettaglioContrassegnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:dettaglioContrassegnoResponse" name="dettaglioContrassegnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="emissioneContrassegno" parameterOrder="EmissioneContrassegnoRequest">
+
+         <wsdl:input message="impl:emissioneContrassegnoRequest" name="emissioneContrassegnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:emissioneContrassegnoResponse" name="emissioneContrassegnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="richiestaContrassegnoGratuito" parameterOrder="RichiestaContrassegnoGratuitoRequest">
+
+         <wsdl:input message="impl:richiestaContrassegnoGratuitoRequest" name="richiestaContrassegnoGratuitoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:richiestaContrassegnoGratuitoResponse" name="richiestaContrassegnoGratuitoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cambioTargaContrassegno" parameterOrder="CambioTargaContrassegnoRequest">
+
+         <wsdl:input message="impl:cambioTargaContrassegnoRequest" name="cambioTargaContrassegnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cambioTargaContrassegnoResponse" name="cambioTargaContrassegnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cessazioneContrassegno" parameterOrder="CessazioneContrassegnoRequest">
+
+         <wsdl:input message="impl:cessazioneContrassegnoRequest" name="cessazioneContrassegnoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cessazioneContrassegnoResponse" name="cessazioneContrassegnoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="downloadRicevuta" parameterOrder="DownloadRicevutaRequest">
+
+         <wsdl:input message="impl:downloadRicevutaRequest" name="downloadRicevutaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:downloadRicevutaResponse" name="downloadRicevutaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="dettaglioTargaEsteraVetrofania" parameterOrder="dettaglioTargaEsteraVetrofaniaRequest">
+
+         <wsdl:input message="impl:dettaglioTargaEsteraVetrofaniaRequest" name="dettaglioTargaEsteraVetrofaniaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:dettaglioTargaEsteraVetrofaniaResponse" name="dettaglioTargaEsteraVetrofaniaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="emissionePermesso" parameterOrder="emissionePermessoRequest">
+
+         <wsdl:input message="impl:emissionePermessoRequest" name="emissionePermessoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:emissionePermessoResponse" name="emissionePermessoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="wsSaraOnlineSoapBinding" type="impl:wsSaraOnline">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="dettaglioContrassegno">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/dettaglioContrassegno"/>
+
+         <wsdl:input name="dettaglioContrassegnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="dettaglioContrassegnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="emissioneContrassegno">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/emissioneContrassegno"/>
+
+         <wsdl:input name="emissioneContrassegnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="emissioneContrassegnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="richiestaContrassegnoGratuito">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/richiestaContrassegnoGratuito"/>
+
+         <wsdl:input name="richiestaContrassegnoGratuitoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="richiestaContrassegnoGratuitoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cambioTargaContrassegno">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/cambioTargaContrassegno"/>
+
+         <wsdl:input name="cambioTargaContrassegnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cambioTargaContrassegnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cessazioneContrassegno">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/cessazioneContrassegno"/>
+
+         <wsdl:input name="cessazioneContrassegnoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cessazioneContrassegnoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="downloadRicevuta">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/downloadRicevuta"/>
+
+         <wsdl:input name="downloadRicevutaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="downloadRicevutaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="dettaglioTargaEsteraVetrofania">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/dettaglioTargaEsteraVetrofania"/>
+
+         <wsdl:input name="dettaglioTargaEsteraVetrofaniaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="dettaglioTargaEsteraVetrofaniaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="emissionePermesso">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/emissionePermesso"/>
+
+         <wsdl:input name="emissionePermessoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="emissionePermessoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="wsSaraOnline">
+
+      <wsdl:port binding="impl:wsSaraOnlineSoapBinding" name="wsSaraOnline">
+
+         <wsdlsoap:address location="http://sara.test.comune.bologna.it/WSSaraOnlineService/services/wsSaraOnline"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/taskfirma"
+	targetNamespace="http://comune.bologna.it/spagic/taskfirma"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+
+	<xs:complexType name="Request">
+		<xs:sequence>
+			<xs:element name="operazioneTaskFirma" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="praticaAllegatiMap" type="PraticaAllegati" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="informazioniRichiesta" type="InformazioniRichiesta" maxOccurs="1" minOccurs="0" />
+			<xs:element name="riassegnazione" type="xs:boolean" maxOccurs="1" minOccurs="1" />
+			<xs:element name="informazioniNotifica" type="InformazioniNotifica" maxOccurs="1" minOccurs="0" />
+			<xs:element name="ruolo" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="tipoRisposta" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			<xs:element name="motivazione" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			<xs:element name="informazioniFirma" type="InformazioniFirma" maxOccurs="1" minOccurs="0" />
+			<xs:element name="praticaIdTaskMap" type="PraticaIdTask" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="fileNameMap" type="FileNameMap" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="FileNameMap">
+		<xs:sequence>
+			<xs:element name="pathPratica" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    <xs:element name="idFile" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    <xs:element name="fileName" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="InformazioniRichiesta">
+		<xs:sequence>
+		    <xs:element name="oggettoDocumento" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    <xs:element name="gruppoProponente" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		   	<xs:element name="tipoRichiesta" type="xs:string" maxOccurs="1" minOccurs="1" />
+		    <xs:element name="destinatariRichiesta" type="DestinatarioRichiestaRequest" maxOccurs="unbounded" minOccurs="1" />
+		    <xs:element name="mittenteOriginale" type="xs:string" maxOccurs="1"	minOccurs="0" />
+		    <xs:element name="dataScadenza" type="xs:dateTime" maxOccurs="1" minOccurs="0" />
+		    <xs:element name="oraScadenza" type="xs:int" maxOccurs="1"	minOccurs="0" />
+		    <xs:element name="minutoScadenza" type="xs:int" maxOccurs="1"	minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PraticaAllegati">
+		<xs:sequence>
+		    <xs:element name="pathPratica" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="files" type="xs:string" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PraticaIdTask">
+		<xs:sequence>
+		    <xs:element name="pathPratica" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="idTask" type="xs:int" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioRichiestaRequest">
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioUtenteRichiestaRequest">
+		<xs:complexContent>
+			<xs:extension base="DestinatarioRichiestaRequest">
+				<xs:sequence>
+					<xs:element name="userName" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="nome" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		   			<xs:element name="cognome" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="matricola" type="xs:string" maxOccurs="1"	minOccurs="1" />
+		    		<xs:element name="settore" type="xs:string" maxOccurs="1"	minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DestinatarioGruppoRichiestaRequest">
+		<xs:complexContent>
+			<xs:extension base="DestinatarioRichiestaRequest">
+				<xs:sequence>
+					<xs:element name="nomeGruppo" type="xs:string" maxOccurs="1"	minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="InformazioniFirma">
+		<xs:sequence>
+		    <xs:element name="userFirma" type="xs:string" maxOccurs="1"	minOccurs="1" />
+			<xs:element name="passFirma" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="otpFirma" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="tipoFirma" type="xs:string" maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="InformazioniNotifica">
+		<xs:sequence>
+		    <xs:element name="note" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="indirizziNotifica" type="xs:string" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="InformazioniRiassegnazione">
+		<xs:complexContent>
+			<xs:extension base="InformazioniNotifica">
+				<xs:sequence>
+		   		 <xs:element name="assegnatario" type="xs:string" maxOccurs="1"	minOccurs="1" />
+					<xs:element name="operatore" type="xs:string" maxOccurs="1" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="AllegatoResult">
+		<xs:sequence>
+		    <xs:element name="idTask" type="xs:int" maxOccurs="1" minOccurs="1" />
+			<xs:element type="xs:string" name="nomeAllegato" maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RichiestaResponse">
+		<xs:sequence>
+		   <xs:element type="b:lockedPratica" name="lockedPratica" maxOccurs="1" minOccurs="0" />
+			<xs:element type="AllegatoResult" name="allegatiResult" maxOccurs="unbounded" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Response">
+		<xs:choice>
+			<xs:element name="richiestaResponse" type="RichiestaResponse" maxOccurs="1" minOccurs="0" />
+			<xs:element type="b:lockedPratica" name="lockedPratiche" maxOccurs="unbounded" minOccurs="0" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:element name="Request" type="Request" />
+	<xs:element name="Response" type="Response" />
+	
+</xs:schema>

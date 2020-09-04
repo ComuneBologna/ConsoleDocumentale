@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/base"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="invioComunicazione">
+		<xs:sequence>
+			<xs:element name="isTest" type="xs:boolean" />
+			<xs:element name="stato" type="xs:string" />
+			<xs:element name="dataInserimento" type="xs:dateTime" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dettaglioComunicazioni">
+		<xs:sequence>
+			<xs:element name="codice" type="xs:string" />
+			<xs:element name="descrizione" type="xs:string" />
+			<xs:element name="idDocumentaleTemplate" type="xs:string" />
+			<xs:element name="numeroInviiEseguiti" type="xs:int" />
+			<xs:element name="numeroInviiEseguitiTest" type="xs:int" />
+			<xs:element name="dataInserimento" type="xs:dateTime" />
+			<xs:element name="inviiComunicazione" type="invioComunicazione" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="utente">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element type="xs:string" name="matricola" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="name" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="surname" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="username" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="codicefiscale" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:dateTime" name="dataPresaInCarico" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="ruoli" maxOccurs="unbounded" minOccurs="0" />
+				<xs:element type="xs:boolean" name="utenteEsterno" maxOccurs="1" minOccurs="1" />
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="error">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element type="xs:string" name="type" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="message" maxOccurs="1" minOccurs="1" />
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="lockedPratica">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element type="xs:string" name="xmlpratica" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="xmlfascicolo" maxOccurs="1" minOccurs="1" />
+				<xs:element type="xs:string" name="hashPratica" maxOccurs="1" minOccurs="0" />
+				<xs:element type="xs:string" name="hashFascicolo" maxOccurs="1" minOccurs="0" />
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="CellaDatoValoreSingolo">
+		<xs:complexContent>
+			<xs:extension base="Cella">
+				<xs:sequence>
+					<xs:element name="valore" type="xs:string" maxOccurs="1" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="CellaDatoValoreMultiplo">
+		<xs:complexContent>
+			<xs:extension base="Cella">
+				<xs:sequence>
+					<xs:element name="valori" type="xs:string" maxOccurs="unbounded" minOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="CellaDatoAnagrafica">
+		<xs:complexContent>
+			<xs:extension base="Cella">
+				<xs:sequence>
+					<xs:element name="idAnagrafica" type="xs:double" maxOccurs="1" minOccurs="1" nillable="true"/>
+					<xs:element name="valore" type="xs:string" maxOccurs="1" minOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Cella">
+	</xs:complexType>
+	
+	<xs:complexType name="Riga">
+		<xs:sequence>
+			<xs:element name="cella" type="Cella" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="datoAggiuntivo">
+	
+		<xs:sequence>
+			
+			<xs:element name="tabella" type="tabella" minOccurs="0" />
+			<xs:element name="valori" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			
+		</xs:sequence>
+		
+		<xs:attribute name="nome" type="xs:string" use="required" />
+		<xs:attribute name="valore" type="xs:string" use="required" />
+		<xs:attribute name="idAnagrafica" type="xs:double" use="required" />
+		<xs:attribute name="descrizione" type="xs:string" use="required" />
+		<xs:attribute name="tipo" type="xs:string" use="required" />
+		<xs:attribute name="obbligatorio" type="xs:boolean" use="required" />
+		<xs:attribute name="editabile" type="xs:boolean" use="required" />
+		<xs:attribute name="visibile" type="xs:boolean" use="required" />
+		<xs:attribute name="posizione" type="xs:integer" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="tabella">
+		<xs:sequence>
+			<xs:element name="intestazioni" type="datoAggiuntivo" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="riga" type="Riga" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="editabile" type="xs:boolean" use="required" />
+	</xs:complexType>
+
+</xs:schema>

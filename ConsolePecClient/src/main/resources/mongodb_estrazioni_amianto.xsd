@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/mongodb/estrazioni/amianto"
+	xmlns="http://comune.bologna.it/mongodb/estrazioni/amianto"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="estrazioneAmiantoRequest">
+		<xs:sequence>
+			<xs:element name="filters" type="xs:anySimpleType" maxOccurs="unbounded" />
+			<xs:element name="tipoEstrazione" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="estrazioneAmiantoResponse">
+		<xs:attribute name="result" type="xs:string" />
+	</xs:complexType>
+
+	<!-- Request root -->
+	<xs:element name="estrazioneAmiantoRequest" type="estrazioneAmiantoRequest" />
+	<!-- Response root -->
+	<xs:element name="estrazioneAmiantoResponse" type="estrazioneAmiantoResponse" />
+
+</xs:schema>

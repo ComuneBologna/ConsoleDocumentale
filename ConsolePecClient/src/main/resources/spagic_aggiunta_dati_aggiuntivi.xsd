@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/aggiuntadatiaggiuntivi"
+	targetNamespace="http://comune.bologna.it/spagic/aggiuntadatiaggiuntivi"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="praticapath" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="valori" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="valore" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+							
+								<xs:sequence>
+									<xs:element  name="tabella" type="b:tabella" minOccurs="0" />
+									<xs:element name="valori" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+								</xs:sequence>	
+							
+								<xs:attribute name="nome" type="xs:string" use="required" />
+								<xs:attribute name="valore" type="xs:string" />
+								<xs:attribute name="idAnagrafica" type="xs:double" />
+								<xs:attribute name="descrizione" type="xs:string" use="required" />
+								<xs:attribute name="tipo" type="xs:string" use="required" />
+								<xs:attribute name="obbligatorio" type="xs:boolean" use="required" />
+								<xs:attribute name="editabile" type="xs:boolean" use="required" />
+								<xs:attribute name="visibile" type="xs:boolean" use="required" />
+								<xs:attribute name="posizione" type="xs:integer" use="required" />
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:choice>
+			<xs:element type="b:error" name="error" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element type="b:lockedPratica" name="lockedPratica"
+				maxOccurs="1" minOccurs="0" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>
+	

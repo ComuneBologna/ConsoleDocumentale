@@ -1,0 +1,61 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:engittemplate="urn:import:it.eng.portlet.consolepec.gwt.client.widget.template"
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+		<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		<engit:UploadAllegatoWidget ui:field="uploadWidget" />
+		<g:HTMLPanel>
+			<h1 class="maintitle" ui:field="titoloFascicolo" />
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<div class="filters button-filters">
+				<fieldset ui:field="fildsetPulsantiera">
+					<!-- Messaggio d'errore -->
+					<engit:MessageAlertWidget ui:field="messageWidget" />
+					
+					<div class="inline-block">
+						<g:Button ui:field="chiudiButton" text="Chiudi"
+							styleName="btn black" />
+					</div>
+				</fieldset>
+			</div>
+		</g:HTMLPanel>
+		<hr />
+	
+		<g:HTMLPanel stylePrimaryName="single">
+			<g:DisclosurePanel ui:field="dettaglioPratica" animationEnabled="true" open="true">
+				<g:HTMLPanel ui:field="dettaglio" stylePrimaryName="single">
+					
+				
+			
+								
+					
+					
+				</g:HTMLPanel>
+			</g:DisclosurePanel>
+			<hr ui:field="dettaglioAllegatiHR" />
+			<g:DisclosurePanel ui:field="dettaglioAllegatiPanel">
+				
+				<g:HTMLPanel>
+					<div class="filters button-filters">
+						<fieldset style="display: block;">
+							<g:HTMLPanel ui:field="elencoAllegatiPanel"></g:HTMLPanel>
+						</fieldset>
+					</div>
+
+				</g:HTMLPanel>
+
+				
+			</g:DisclosurePanel>
+			
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

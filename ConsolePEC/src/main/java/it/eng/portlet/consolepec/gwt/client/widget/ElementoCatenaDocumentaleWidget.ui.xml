@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client">
+
+	<g:HTMLPanel styleName="documenti-mail" ui:field="mainPanel">
+		<g:CheckBox styleName="checkbox-nonprot" ui:field="checkBox"></g:CheckBox>
+		<g:Image ui:field="iconaLabel" ></g:Image>
+		<span class="documento-semplice">
+			<g:InlineLabel ui:field="labelPG"></g:InlineLabel>
+		</span>
+	</g:HTMLPanel>
+</ui:UiBinder> 

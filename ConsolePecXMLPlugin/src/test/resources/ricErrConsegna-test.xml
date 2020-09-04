@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="errore-consegna" errore="no-dest">
+    <intestazione>
+        <mittente>comune.bologna2@actaliscertymail.it</mittente>
+        <destinatari tipo="certificato">comune.bologna88@actaliscertymail.it</destinatari>
+        <risposte>comune.bologna2@actaliscertymail.it</risposte>
+        <oggetto>ric-manc-cons</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>31/05/2016</giorno>
+            <ora>10:17:40</ora>
+        </data>
+        <identificativo>opec281.20160531101740.19209.03.1.28@pec.actalis.it</identificativo>
+        <msgid>&lt;632005831.1.1464682560705.JavaMail.spagic@engispagic01&gt;</msgid>
+        <consegna>comune.bologna88@actaliscertymail.it</consegna>
+        <errore-esteso>5.1.1 - Actalis S.p.A. - Servizio PEC - AR - indirizzo non valido</errore-esteso>
+    </dati>
+</postacert>

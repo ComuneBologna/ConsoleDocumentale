@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:da="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datiaggiuntivi" xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat' ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator' xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<h1 class="maintitle"> Modifica fascicolo </h1>
+		</g:HTMLPanel>
+
+
+		<g:HTMLPanel stylePrimaryName="single">
+			<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+			<g:HTMLPanel stylePrimaryName="filters">
+				<fieldset>
+
+					<h6>Inserisci le informazioni da modificare</h6>
+
+					<g:HTMLPanel ui:field="titoloOriginalePanel" visible="false">
+						<div class="cell acapo">
+							<span class="label">Titolo originale</span>
+							<g:Label ui:field="titoloOriginaleLabel"></g:Label>
+						</div>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel>
+						<div class="cell acapo">
+							<span class="label">Titolo</span>
+							<g:TextBox ui:field="titoloTextBox"></g:TextBox>
+						</div>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel>
+						<div class="cell acapo">
+							<span class="label">Tipologia fascicolo</span>
+							<g:ListBox ui:field="tipologiaFascicolo" stylePrimaryName="selectListBox">
+							</g:ListBox>
+						</div>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel ui:field="datiAggiuntiviPanel">
+						<da:FormDatiAggiuntiviWidget ui:field="formDatiAggiuntiviWidget"></da:FormDatiAggiuntiviWidget>
+					</g:HTMLPanel>
+
+				</fieldset>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<hr />
+						<div class="cell">
+							<g:Button ui:field="annullaButton" text="Annulla" styleName="btn black" />
+							<g:Button ui:field="confermaButton" text="Conferma" styleName="btn" />
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>
+

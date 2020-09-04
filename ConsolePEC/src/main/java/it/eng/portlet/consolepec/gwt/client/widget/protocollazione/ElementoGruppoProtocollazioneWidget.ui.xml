@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="gruppoPanel" />
+		<g:HTMLPanel ui:field="elencoPanel">
+			<hr />
+			<g:Button ui:field="aggiungiButton" text="Aggiungi"	styleName="btn" />
+			<g:HTMLPanel ui:field="itemsPanel" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

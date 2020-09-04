@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="true"
+	     monitoring="autodetect" 
+	     dynamicConfig="true">
+ 
+	<diskStore path="java.io.tmpdir" />
+	
+	<cache name="tipologiaProcedimenti" 
+		   maxEntriesLocalHeap="1000"
+		   maxEntriesLocalDisk="5000" 
+		   eternal="false" 
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="82800" 
+		   timeToLiveSeconds="82800"
+		   memoryStoreEvictionPolicy="LFU" 
+		   transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="comboBoxesProtocollazione" 
+		    maxEntriesLocalHeap="1000"
+		   maxEntriesLocalDisk="5000" 
+		   eternal="false" 
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="82800" 
+		   timeToLiveSeconds="82800"
+		   memoryStoreEvictionPolicy="LFU" 
+		   transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="allIndirizziEmail" 
+		   maxEntriesLocalHeap="5000"
+		   maxEntriesLocalDisk="150000" 
+		   eternal="false" 
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="259200" 
+		   timeToLiveSeconds="518400"
+		   memoryStoreEvictionPolicy="LFU" 
+		   transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="indirizziEmailByKeyAndUser"
+	        maxEntriesLocalHeap="500"
+		   maxEntriesLocalDisk="1000" 
+		   eternal="false" 
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="300" 
+		   timeToLiveSeconds="600"
+		   memoryStoreEvictionPolicy="LFU" 
+		   transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<cache name="gruppiVisibilita" 
+		   maxEntriesLocalHeap="1000"
+		   maxEntriesLocalDisk="5000" 
+		   eternal="false"
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="82800" 
+		   timeToLiveSeconds="82800"
+		   memoryStoreEvictionPolicy="LFU" 
+		   transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+</ehcache>

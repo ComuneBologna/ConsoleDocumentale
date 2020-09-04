@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module>
+	<source path='validation' />
+	<source path='datiaggiuntivi' />
+	<source path='objects' />
+	<source path='generics' />
+	<source path='console' />
+	<source path='pratica' />
+	<source path="firmadigitale" />
+	<source path="configurazioni" />
+	<source path="io" />
+</module>

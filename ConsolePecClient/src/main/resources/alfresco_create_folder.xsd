@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/create/folder"
+	xmlns="http://comune.bologna.it/alfresco/create/folder"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="DOCUMENT">
+		<xs:sequence>
+			<xs:element type="xs:string" name="DOC_NAME" />
+			<xs:element type="xs:string" name="DOC_TITLE" />
+			<xs:element type="xs:string" name="DOC_DESCRIPTION" />
+			<xs:element type="xs:string" name="DOC_MIME_TYPE" />
+			<xs:element type="xs:string" name="VERSIONABLE" />
+			<xs:element type="xs:string" name="UUID_DOC" />
+			<xs:element type="xs:string" name="ATTACHMENT_ID_DOC" />
+			<xs:element type="INFOVERSIONE" name="INFOVERSIONE" minOccurs="0" maxOccurs="1" />
+			<xs:element type="xs:string" name="FILEPATH" minOccurs="0" maxOccurs="1"/>
+				
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="INFOVERSIONE">
+		<xs:sequence>
+			<xs:element name="USER" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PERMISSION">
+		<xs:attribute name="GROUP" type="xs:string" />
+		<xs:attribute name="TYPE" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="FOLDER">
+		<xs:sequence>
+			<xs:element name="FOLDER" type="FOLDER" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="DOCUMENT" type="DOCUMENT" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="PERMISSION" type="PERMISSION" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="NAME" type="xs:string" />
+		<xs:attribute name="EREDIT" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element type="xs:string" name="USER" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element type="xs:boolean" name="ERRORIFNOTEXIST"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element type="xs:string" name="PASSWORD" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element type="xs:string" name="DESTINATION" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="FOLDER" type="FOLDER" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SERVICE_RESPONSE">
+		<xs:sequence>
+			<xs:element name="DOCUMENT">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element type="xs:string" name="UUID_DOC" />
+						<xs:element type="xs:string" name="NAME" />
+						<xs:element type="xs:string" name="VERSION" />
+						<xs:element type="xs:string" name="SIZE" />
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="CODE" use="required" />
+		<xs:attribute type="xs:string" name="DESCR" use="required" />
+	</xs:complexType>
+
+	<!-- Root elemnts -->
+	<xs:element name="REQUEST" type="REQUEST" />
+	<xs:element name="SERVICE_RESPONSE" type="SERVICE_RESPONSE" />
+
+</xs:schema>

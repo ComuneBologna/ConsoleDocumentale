@@ -1,0 +1,94 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<h1 class="maintitle" ui:field="title"> Invia mail da CSV </h1>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel stylePrimaryName="single">
+
+			<g:HTMLPanel styleName="filters"
+				ui:field="messageWidgetPanel" visible="false">
+				<fieldset>
+					<engit:MessageAlertWidget
+						ui:field="messageWidget" />
+				</fieldset>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel stylePrimaryName="filters">
+				<fieldset>
+					<h6>Parametri CSV</h6>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Tipo separatore</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:ListBox ui:field="separatoreListBox"
+								stylePrimaryName="selectListBox"></g:ListBox>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Righe di intestazione</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:IntegerBox ui:field="headerIntegerBox"></g:IntegerBox>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Colonna indirizzo email destinatario</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:IntegerBox ui:field="indirizzoEmailIntegerBox"></g:IntegerBox>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Valorizza indirizzo email da modello se non
+							presente nel CSV</span>
+						<g:HTMLPanel>
+							<g:CheckBox styleName="checkbox-nonprot"
+								ui:field="indirizzoDestinatarioFromModelloCheckbox" />
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Colonna identificativo documentale fascicolo</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:IntegerBox ui:field="idDocumentaleIntegerBox"></g:IntegerBox>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Validazione dati prima dell'invio</span>
+						<g:HTMLPanel>
+							<g:CheckBox styleName="checkbox-nonprot"
+								ui:field="preValidazioneCheckBox" />
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Gruppo assegnatario</span>
+						<g:SuggestBox ui:field="assegnatarioSuggestBox"
+							styleName="testo"></g:SuggestBox>
+					</g:HTMLPanel>
+				</fieldset>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<hr />
+						<div class="cell">
+							<g:Button styleName="btn red" ui:field="avantiInvio" text="Scegli modello mail" />
+							<g:Button styleName="btn black" ui:field="annullaInvio" text="Annulla" />
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+
+</ui:UiBinder>

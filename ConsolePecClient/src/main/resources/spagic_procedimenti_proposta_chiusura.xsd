@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/procedimenti/propostachiusura"
+	targetNamespace="http://comune.bologna.it/spagic/procedimenti/propostachiusura"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base"
+		schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:attribute name="CodComune" type="xs:int" use="required" />						<!-- GELN-COD-CMN (6 num) -->
+		<xs:attribute name="TipoProtocollo" type="xs:string" use="required" />				<!-- GELN-TP-PROT (2 char) -->
+		<xs:attribute name="AnnoProtocollazione" type="xs:string" use="required" />			<!-- GELN-AA-PROT (4 char) -->
+		<xs:attribute name="NumProtocollazione" type="xs:string" use="required" />			<!-- GELN-NRO-PROT (7 char) -->
+		<xs:attribute name="TipoEstrazione" type="xs:string" use="required" />				<!-- GELG-FLG-ESTR (1 char) -->
+	</xs:complexType>
+
+	<xs:complexType name="testataPropostaChiusura">
+		<xs:attribute name="TipoRecord" type="xs:string" />						<!-- GELN-REC-OZ (1 char)- -->
+		<xs:attribute name="CodMessaggio" type="xs:string" />					<!-- GELN-COD-MSG (4 car) -->
+		<xs:attribute name="DescMessaggio" type="xs:string"  />					<!-- GELN-MSG (130 char) -->
+		<xs:attribute name="ErroreSQLCode" type="xs:string" />					<!-- GELN-SQLCODE (5 char) -->
+		<xs:attribute name="ErroreOperazione" type="xs:string" />				<!-- GELN-OPERAZ (6 char) -->
+		<xs:attribute name="ErroreNomeTabella" type="xs:string" />				<!-- GELN-NME-TAB (6 char) -->
+	</xs:complexType>
+	
+	<xs:complexType name="dettaglioPropostaChiusura">
+		<xs:attribute name="TipoRecord" type="xs:string" />						<!-- GELN-REC-O1 (1 char) -->
+		<xs:attribute name="TipoProtocolloCapofila" type="xs:string" />			<!-- GELN-TP-PG (2 char) -->
+		<xs:attribute name="AnnoProtocolloCapofila" type="xs:string" />			<!-- GELN-AA-PG (4 char) -->
+		<xs:attribute name="NumeroProtocolloCapofila" type="xs:string" />		<!-- GELN-NRO-PG (7 char) -->
+		<xs:attribute name="CodTipologiaProcedimento" type="xs:int" />			<!-- GELN-COD-PROC (6 char) -->
+		<xs:attribute name="CodQuartiere" type="xs:int" />						<!-- GELN-QRT (2 char) -->
+		<xs:attribute name="DataAvvio" type="xs:dateTime" />					<!-- GELN-DT-AVV (10 char)- -->
+		<xs:attribute name="DataInizioDecorrenza" type="xs:dateTime" />			<!-- GELN-DT-INI-DE (10 char) -->
+		<xs:attribute name="PrimaRigaDescrizione" type="xs:string" />			<!-- GELN-DES1_PROC (60 char) -->
+		<xs:attribute name="SecondaRigaDescrizione" type="xs:string" />			<!-- GELN-DES2_PROC (60 char) -->
+		<xs:attribute name="TerzaRigaDescrizione" type="xs:string" />			<!-- GELN-DES3_PROC (60 char) -->
+		<xs:attribute name="QuartaRigaDescrizione" type="xs:string" />			<!-- GELN-DES4_PROC (60 char) -->
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:complexContent>
+			<xs:extension base="testataPropostaChiusura">
+				<xs:sequence>
+					<xs:element type="b:error" name="error" minOccurs="0" maxOccurs="1" />
+					<xs:element name="procedimentiProposti" type="dettaglioPropostaChiusura" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

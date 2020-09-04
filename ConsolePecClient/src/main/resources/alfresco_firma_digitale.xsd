@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/firma/digitale"
+	xmlns="http://comune.bologna.it/alfresco/firma/digitale"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element name="USER" type="xs:string" maxOccurs="1"	minOccurs="1" />
+			<xs:element name="PASSWORD" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="UUID" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="NOMEFILE" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="PATH" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="DESTINATION" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="USERFIRMA" type="xs:string" maxOccurs="1"	minOccurs="0" />
+			<xs:element name="PASSFIRMA" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="OTPFIRMA" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="INFOVERSIONE" type="INFOVERSIONE" maxOccurs="1" minOccurs="0" />
+			<xs:element name="FIRMAHASH" type="xs:boolean" maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="INFOVERSIONE">
+		<xs:sequence>
+			<xs:element type="xs:string" name="USER" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SERVICE_RESPONSE">
+		<xs:attribute name="CODE" type="xs:string" use="required"/>
+		<xs:attribute name="DESCR" type="xs:string" use="required"/>
+		<xs:attribute name="SIZE" type="xs:int" use="required"/>
+		<xs:attribute name="UUID_DOC" type="xs:string" use="optional"/>
+		<xs:attribute name="NAME" type="xs:string" use="optional"/>
+		<xs:attribute name="VERSION" type="xs:string" use="optional"/>
+		<xs:attribute name="FIRMAHASH" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	
+	<!-- Request root -->
+	<xs:element name="REQUEST" type="REQUEST" />
+	<xs:element name="SERVICE_RESPONSE" type="SERVICE_RESPONSE" />
+
+</xs:schema>

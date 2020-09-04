@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:ConsoleDisclosurePanel ui:field="telefoniDisclosure" animationEnabled="true" open="true">
+		<g:HTMLPanel>
+			<g:HTMLPanel stylePrimaryName="filters">
+				<fieldset>
+					<div class="cell acapo">
+						<span class="label">Tipologia</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:TextBox ui:field="tipologiaBox" />
+						</g:HTMLPanel>
+					</div>
+
+					<div class="cell acapo">
+						<span class="label">Telefono</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:TextBox ui:field="numeroBox" />
+						</g:HTMLPanel>
+					</div>
+
+					<div class="cell acapo">
+						<g:Button ui:field="aggiungiTelefono" text="Aggiungi Telefono" styleName="btn" />
+					</div>
+
+				</fieldset>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel ui:field="telefoniPanel" stylePrimaryName="filters" />
+
+		</g:HTMLPanel>
+	</g:ConsoleDisclosurePanel>
+</ui:UiBinder>

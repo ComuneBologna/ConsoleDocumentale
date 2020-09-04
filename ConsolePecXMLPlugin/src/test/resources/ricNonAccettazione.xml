@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="non-accettazione" errore="altro">
+    <intestazione>
+        <mittente>ProtocolloGenerale@pec.comune.bologna.it</mittente>
+        <destinatari tipo="certificato">aoobo@cert.arpa.emr.it</destinatari>
+        <destinatari tipo="certificato">cm.bo@cert.cittametropolitana.bo.it</destinatari>
+        <destinatari tipo="esterno">enteparchibo@cert.prov.bo.it</destinatari>
+        <destinatari tipo="certificato">com.bologna@cert.vigilfuoco.it</destinatari>
+        <risposte>ProtocolloGenerale@pec.comune.bologna.it</risposte>
+        <oggetto>convocazione conferenza dei servizi - Protocollato con PG 134457/2016</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>22/04/2016</giorno>
+            <ora>13:46:11</ora>
+        </data>
+        <identificativo>opec281.20160422134610.24121.01.1.28@pec.actalis.it</identificativo>
+        <msgid>&lt;47290687.36991461325601962.JavaMail.ProtocolloGenerale@pec.comune.bologna.it&gt;</msgid>
+        <errore-esteso>superamento dimensione massima consentita</errore-esteso>
+    </dati>
+</postacert>

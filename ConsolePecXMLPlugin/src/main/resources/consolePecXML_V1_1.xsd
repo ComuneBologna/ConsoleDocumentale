@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- definizioni -->
+	<xsd:complexType name="destinatario">
+		<xsd:sequence>
+			<xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="consegna" type="xsd:boolean"/>
+		<xsd:attribute name="accettazione" type="xsd:boolean"/>
+		<xsd:attribute name="tipo" type="xsd:string"/>
+		<xsd:attribute name="errore" type="xsd:string"/>
+		<xsd:attribute name="statoDest" type="xsd:string"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="destinatarioRicevuta">
+		<xsd:sequence>
+			<xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="tipo" type="xsd:string"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="tipoRicevuta">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="accettazione"></xsd:enumeration>
+			<xsd:enumeration value="non-accettazione"></xsd:enumeration>
+			<xsd:enumeration value="preavviso-errore-consegna"></xsd:enumeration>
+			<xsd:enumeration value="avvenuta-consegna"></xsd:enumeration>
+			<xsd:enumeration value="errore-consegna"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="erroreRicevuta">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="nessuno"></xsd:enumeration>
+			<xsd:enumeration value="no-dest"></xsd:enumeration>
+			<xsd:enumeration value="no-dominio"></xsd:enumeration>
+			<xsd:enumeration value="virus"></xsd:enumeration>
+			<xsd:enumeration value="altro"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="dataPec">
+		<xsd:sequence>
+			<xsd:element name="zona" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="giorno" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ora" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="tipoConsegna">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="completa"></xsd:enumeration>
+			<xsd:enumeration value="breve"></xsd:enumeration>
+			<xsd:enumeration value="sintetica"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="ricevuta">
+		<xsd:sequence>
+			<xsd:element name="tipo" type="tipoRicevuta" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="errore" type="erroreRicevuta" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="mittente" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="destinatari" type="destinatarioRicevuta" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="risposte" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="oggetto" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="gestoreEmittente" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="data" type="dataPec" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="identificativo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="msgid" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ricevuta" type="tipoConsegna" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="consegna" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ricezione" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="erroreEsteso" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+	<xsd:complexType name="gruppivisibilita">
+		<xsd:sequence>
+			<xsd:element name="gruppovisibilita" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="TipoProtocollazione">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="E" />
+			<xsd:enumeration value="U" />
+			<xsd:enumeration value="I" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="procedimento">
+		<xsd:sequence>
+			<xsd:element name="CodUtente" type="xsd:string" minOccurs="1"></xsd:element>
+			<xsd:element name="PG" type="PG" minOccurs="1"></xsd:element>
+			<xsd:element name="CodTipologiaProcedimento" type="xsd:integer" minOccurs="1"></xsd:element>
+			<xsd:element name="DataInizioDecorrenzaProcedimento" type="xsd:dateTime" minOccurs="1"></xsd:element>
+			<xsd:element name="ModAvvioProcedimento" type="xsd:string" minOccurs="1"></xsd:element>
+			<xsd:element name="CodUnitaOrgResponsabile" type="xsd:integer" minOccurs="0"></xsd:element>
+			<xsd:element name="CodUnitaOrgCompetenza" type="xsd:integer" minOccurs="0"></xsd:element>
+			<xsd:element name="FlagInterruzione" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="CodQuartiere" type="xsd:integer" minOccurs="0"></xsd:element>
+			<xsd:element name="Durata" type="xsd:integer" minOccurs="1"></xsd:element>
+			<xsd:element name="Termine" type="xsd:integer" minOccurs="1"></xsd:element>
+			<xsd:element name="Responsabile" type="xsd:string" minOccurs="1"></xsd:element>
+			<xsd:element name="Provenienza" type="xsd:string" minOccurs="1"></xsd:element>
+			<xsd:element name="DataChiusura" type="xsd:dateTime" minOccurs="0"></xsd:element>
+			<xsd:element name="ModalitaChiusura" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="ChiusuraPG" type="PG" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PG">
+		<xsd:sequence>
+			<xsd:element name="numeroPG" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoPG" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProtocollazionePEC">
+		<xsd:sequence>
+			<xsd:element name="numeroPG" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoPG" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numerofascicolo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annofascicolo" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="titolo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="rubrica" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="sezione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipologiadocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="oggetto" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="provenienza" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="utenteprotocollazione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataprotocollazione" type="xsd:dateTime" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numeroRegistro" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoRegistro" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="capofila" type="PG" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipoProtocollazione" type="TipoProtocollazione" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Protocollazione">
+		<xsd:sequence>
+			<xsd:element name="numeroPG" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoPG" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numerofascicolo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="annofascicolo" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numeropraticamodulistica" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="titolo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="rubrica" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="sezione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipologiadocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="oggetto" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="provenienza" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="utenteprotocollazione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataprotocollazione" type="xsd:dateTime" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataArrivo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="oraArrivo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="numeroRegistro" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoRegistro" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipoProtocollazione" type="TipoProtocollazione" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:choice>
+				<xsd:element type="xsd:boolean" name="fromBA01" minOccurs="0" maxOccurs="1"/>
+				<xsd:sequence>
+					<xsd:element name="praticheCollegateProtocollate" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="praticaCollegata" type="praticaCollegata" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="allegatiProtocollati" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="allegatoProtocollato" type="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProtocollazioneCapofila">
+		<xsd:sequence>
+			<xsd:element name="numeroPG" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoPG" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numerofascicolo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="annofascicolo" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="numeropraticamodulistica" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="titolo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="rubrica" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="sezione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipologiadocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="oggetto" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="provenienza" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="utenteprotocollazione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataprotocollazione" type="xsd:dateTime" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataArrivo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="oraArrivo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="numeroRegistro" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="annoRegistro" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipoProtocollazione" type="TipoProtocollazione" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="protocollazioniCollegate" type="Protocollazione"	minOccurs="0" maxOccurs="unbounded" />
+			<xsd:choice>
+				<xsd:element type="xsd:boolean" name="fromBA01" minOccurs="0" maxOccurs="1" />
+				<xsd:sequence>
+					<xsd:element name="praticheCollegateProtocollate"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="praticaCollegata" type="praticaCollegata" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="allegatiProtocollati" minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="allegatoProtocollato" type="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Interoperabile">
+		<xsd:sequence>
+			<xsd:element name="stato" type="xsd:string" minOccurs="1" maxOccurs="1" /> <!-- valido, non valido, errore -->
+ 			<xsd:element name="oggettoMessaggio" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+ 			<xsd:element name="provenienzaMessaggio" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>				
+ 			<xsd:element name="codiceAmministrazione" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codiceAOO" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codiceRegistro" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="numeroRegistrazione" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="dataRegistrazione" type="xsd:dateTime" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="nomeDocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="oggettoDocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="titoloDocumento" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipologiaSegnatura" type="xsd:string"  maxOccurs="1" />
+			<xsd:element name="nomeAllegatoPrincipale" type="xsd:string"  maxOccurs="1" />
+			<xsd:element name="risposta" type="DestinatarioInteroperabile"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="destinatari" type="DestinatarioInteroperabile"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="copiaConoscenza" type="DestinatarioInteroperabile"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DestinatarioInteroperabile">
+		<xsd:sequence>
+			<xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="confermata" type="xsd:boolean" maxOccurs="1" />
+			<xsd:element name="aggiornata" type="xsd:boolean"  maxOccurs="1" />
+			<xsd:element name="annullata" type="xsd:boolean"  maxOccurs="1" />
+			<xsd:element name="confermaRicezione" type="xsd:boolean"  maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Documento">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="folderRelativePath" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="folderOriginPath" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="folderOriginName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="label" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="currentVersion" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="dimensioneBytes" type="xsd:long" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="firmato" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="firmatoHash" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipoFirma" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataInizioPubblicazione" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="dataFinePubblicazione" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="gruppivisibilita" type="gruppivisibilita" maxOccurs="1" minOccurs="1"/>
+			<xsd:element name="dataCaricamento" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="tipologiaAllegato" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+			<xsd:element name="oggettoDocumento" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+			<xsd:element name="lock" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="lockedBy" type="xsd:int" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="storicoVersioni" type="StoricoVersioniDocumento" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="campiEditabili" type="CampoEditabile" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="datiAggiuntivi" type="datoAggiuntivo" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="hash" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CampoEditabile">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="valore" type="xsd:string"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="abilitato" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StoricoVersioniDocumento">
+		<xsd:sequence>
+			<xsd:element name="versione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="utente" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="informazioniTaskFirma" type="InformazioniTaskFirmaDocumento"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="informazioniCopiaDocumento" type="InformazioniCopiaDocumento"  minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InformazioniTaskFirmaDocumento">
+		<xsd:sequence>
+			<xsd:element name="oggettoProposta" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="gruppoProponente" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipoRichiesta" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="operazioneEffettuata" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="statoRichiesta" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="destinatariRichiestaFirma" type="DestinatarioRichiestaFirmaJaxb"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="mittenteOriginale" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="motivazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataScadenza" type="xsd:dateTime" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InformazioniTaskFirmaCopiaDocumento">
+		<xsd:sequence>
+			<xsd:element name="versione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="informazioniTaskFirma" type="InformazioniTaskFirmaDocumento"  minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InformazioniCopiaDocumento">
+		<xsd:sequence>
+			<xsd:element name="idDocumentaleSorgente" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="informazioniTaskFirmaCopiaDocumento" type="InformazioniTaskFirmaCopiaDocumento"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AssegnatarioTask">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="etichetta" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataInizio" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="dataFine" type="xsd:dateTime"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="praticaCollegata">
+		<xsd:sequence>
+			<xsd:element name="alfrescoPath" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="tipo" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="dataCaricamento" minOccurs="0" maxOccurs="1" type="xsd:dateTime"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EventoIter">
+		<xsd:sequence>
+		    <xsd:element name="annoPg" minOccurs="0" maxOccurs="1" type="xsd:int"></xsd:element>
+		    <xsd:element name="numeroPg" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+		    <xsd:element name="serialized" minOccurs="1" maxOccurs="1" type="xsd:boolean"></xsd:element>
+		    <xsd:element name="isSerializationEnabled" minOccurs="1" maxOccurs="1" type="xsd:boolean"></xsd:element>
+		    <xsd:element name="tipoEvento" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="testoEvento" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="currentUser" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="dataEvento" minOccurs="1" maxOccurs="1" type="xsd:dateTime"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="utente">
+		<xsd:sequence>
+			<xsd:element name="username" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="cognome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="matricola" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="codicefiscale" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="datapresaincarico" type="xsd:dateTime" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="consegnato" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="assegnazioneEsterna">
+		<xsd:sequence>
+			<xsd:element name="destinatari" type="xsd:string"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="testoEmail" type="xsd:string"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="operazioni" type="operazioni" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataNotifica" type="xsd:dateTime" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+		<xsd:complexType name="notifica">
+		<xsd:sequence>
+			<xsd:element name="operazione" type="xsd:string"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipologia" type="xsd:string"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="parametriExtra" minOccurs="0" maxOccurs="1">
+	            <xsd:complexType>
+	            	<xsd:sequence>
+						<xsd:element name="indirizziEmail" type="xsd:string"  minOccurs="0" maxOccurs="unbounded" />
+						<xsd:element name="mittenteEmail" type="xsd:string"  minOccurs="0" maxOccurs="1" />
+						<xsd:element name="salvaEMLNotificaEmail" type="xsd:boolean"  minOccurs="0" maxOccurs="1" />
+						<xsd:element name="allegatiDaCaricare" type="Documento"  minOccurs="0" maxOccurs="unbounded" />
+						<xsd:element name="cancellaAllegatiCaricati" type="xsd:boolean"  minOccurs="0" maxOccurs="1" />
+						<xsd:element name="idTask" minOccurs="0" maxOccurs="1" type="xsd:int" />
+						<xsd:element name="operazioneTask" minOccurs="0" maxOccurs="1" type="xsd:string" />
+						<xsd:element name="noteTask" minOccurs="0" maxOccurs="1" type="xsd:string" />
+					</xsd:sequence>
+	            </xsd:complexType>
+     	   </xsd:element>
+			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="stepIter">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string"  minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="finale" type="xsd:boolean"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="iniziale" type="xsd:boolean"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="creaBozza" type="xsd:boolean"  minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="destinatariNotifica" type="xsd:string"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="dataAggiornamento" type="xsd:dateTime"  minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Sezione per dati di iper fascicolo -->
+	<xsd:complexType name="condivisione">
+		<xsd:sequence>
+			<xsd:element name="nomeGruppo" type="xsd:string"  minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataInizio" type="xsd:dateTime"  minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="operazioni" type="operazioni" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="elencoCondivisioni">
+	<xsd:sequence>
+		<xsd:element name="condivisioni" type="condivisione" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+	</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="operazione">
+		<xsd:sequence>
+			<xsd:element name="nomeOperazione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="abilitata" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="operazioni">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded" type="operazione" name="listaOperazioni"> </xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="collegamento">
+		<xsd:sequence>
+			<xsd:element name="gruppoCondivisione" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="dataCollegamento" type="xsd:dateTime" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="pathPratica" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="accessibileInLettura" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="operazioni" type="operazioni" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="collegamenti">
+		<xsd:sequence>
+			<xsd:element name="elencoCollegamenti" type="collegamento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- definizioni dei task -->
+	<!-- definizione task generico -->
+	<xsd:complexType name="Task">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:integer" minOccurs="1" maxOccurs="1" /> <!-- obbligatorio per ogni task -->
+			<xsd:element name="attivo" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true" />
+			<xsd:element name="stato" minOccurs="1" maxOccurs="1" type="xsd:string" />
+			<xsd:sequence>
+				<xsd:element name="assegnatari" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="assegnatarioCorrente" type="AssegnatarioTask" minOccurs="1" maxOccurs="1"></xsd:element>
+							<xsd:element name="assegnatarioPassato" type="AssegnatarioTask" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:element name="condivisioni" type="elencoCondivisioni" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:choice>
+				<xsd:element type="gestionePEC" name="gestionePEC" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="gestioneFascicolo" name="gestioneFascicolo" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="gestioneModulistica" name="gestioneModulistica" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="gestioneTemplateDocumentoPDF" name="gestioneTemplateDocumentoPDF" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="gestioneTemplate" name="gestioneTemplate" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="gestioneComunicazione" name="gestioneComunicazione" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="riportaInGestione" name="riportaInGestione" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element type="richiestaFirma" name="richiestaFirma" minOccurs="0" maxOccurs="1"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- definizione task di tipo riportaInGestione -->
+	<xsd:complexType name="riportaInGestione">
+		<xsd:sequence>
+			<xsd:element name="idTaskDaRiattivare" type="xsd:integer" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- definizione task di tipo gestionePEC -->
+	<xsd:complexType name="gestionePEC">
+
+	</xsd:complexType>
+	<!-- definizione task di tipo gestionePEC -->
+	<xsd:complexType name="gestioneFascicolo">
+
+	</xsd:complexType>
+	<!-- definizioni delle pratiche -->
+
+	<!-- definizione pratica di tipo Fascicolo -->
+	<xsd:complexType name="gestioneModulistica">
+
+	</xsd:complexType>	
+	
+	<xsd:complexType name="gestioneTemplateDocumentoPDF">
+
+	</xsd:complexType>	
+	
+	<xsd:complexType name="gestioneTemplate">
+
+	</xsd:complexType>	
+	<xsd:complexType name="gestioneComunicazione">
+
+	</xsd:complexType>	
+	
+	<xsd:complexType name="richiestaFirma">
+		<xsd:sequence>
+			<xsd:element name="dataCreazione" type="xsd:dateTime" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipo" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="riferimentoAllegato" type="RiferimentoAllegatoJaxb" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="destinatari" type="DestinatarioRichiestaFirmaJaxb" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="dataScadenza" type="xsd:dateTime" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="mittenteOriginale" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="valido" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="RiferimentoAllegatoJaxb">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="currentVersion" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="DestinatarioRichiestaFirmaJaxb" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="stato" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="DestinatarioUtenteRichiestaFirmaJaxb">
+		<xsd:complexContent>
+			<xsd:extension base="DestinatarioRichiestaFirmaJaxb">
+				<xsd:sequence>
+					<xsd:element name="nomeUtente" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+					<xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element name="cognome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element name="matricola" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element name="settore" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>			
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="DestinatarioGruppoRichiestaFirmaJaxb">
+		<xsd:complexContent>
+			<xsd:extension base="DestinatarioRichiestaFirmaJaxb">
+				<xsd:sequence>
+					<xsd:element name="nomeGruppo" type="xsd:string" maxOccurs="1" minOccurs="1" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<!-- *** Fascicolo *** -->
+	<xsd:complexType name="Fascicolo">
+		<xsd:sequence>
+			<xsd:element name="anagraficaFascicolo" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="titoloOriginale" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="idPraticheProcedi" minOccurs="0" maxOccurs="unbounded" type="xsd:string"></xsd:element>
+			<xsd:element name="numeroFattura" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ragioneSociale" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="pIva" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="codicePIva" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="protocollazione" minOccurs="0" maxOccurs="unbounded" type="ProtocollazioneCapofila"></xsd:element>
+			<xsd:element name="procedimenti" minOccurs="1" maxOccurs="unbounded" type="procedimento"></xsd:element>
+			<xsd:element name="operazioni" minOccurs="1" maxOccurs="1" type="operazioni"></xsd:element>
+			<xsd:element name="operazioniSuperUtente" minOccurs="1" maxOccurs="1" type="operazioni"></xsd:element>
+			<xsd:element name="collegamenti" minOccurs="1" maxOccurs="1" type="collegamenti"></xsd:element>
+			<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="stepIter" type="stepIter" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EventiIter" minOccurs="0" maxOccurs="1" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="EventoIter" name="EventoIter" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="allegati" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="Documento" name="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="datiAggiuntivi" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="valori" minOccurs="0" maxOccurs="1">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="valore" minOccurs="0" maxOccurs="unbounded" type="datoAggiuntivo" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="datoAggiuntivo">
+		<xsd:sequence>
+			<xsd:element name="tabella" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="intestazioni" type="datoAggiuntivo" minOccurs="0" maxOccurs="unbounded" />
+						<xsd:element name="riga" minOccurs="0" maxOccurs="unbounded" >
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="celle" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+			
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="nome" type="xsd:string" use="required" />
+		<xsd:attribute name="valore" type="xsd:string"  />
+		<xsd:attribute name="descrizione" type="xsd:string" use="required" />
+		<xsd:attribute name="tipo" type="xsd:string" use="required" />
+		<xsd:attribute name="obbligatorio" type="xsd:boolean" />
+		<xsd:attribute name="editabile" type="xsd:boolean"  />
+		<xsd:attribute name="visibile" type="xsd:boolean"  />
+		<xsd:attribute name="posizione" type="xsd:integer" use="required" />
+	</xsd:complexType>
+
+
+	<xsd:complexType name="modulistica">
+		<xsd:sequence>
+			<xsd:element name="valori" type="valoreModulo" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="protocollazione" minOccurs="0" maxOccurs="unbounded" type="ProtocollazioneCapofila"></xsd:element>
+			<xsd:element name="allegati" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="Documento" name="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="nome" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="valoreModulo">
+				<xsd:sequence>
+					<xsd:element name="tabella" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="riga" minOccurs="0" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="colonne" type="valoreModulo" minOccurs="0"	maxOccurs="unbounded" />
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="valoriSezione" minOccurs="0" maxOccurs="unbounded" type="valoreModulo" />
+					
+				</xsd:sequence>
+				<xsd:attribute name="tipoNodo" type="tipoNodoModulistica" />
+				<xsd:attribute name="tipo" type="xsd:string" />
+				<xsd:attribute name="nome" type="xsd:string" />
+				<xsd:attribute name="valore" type="xsd:string" />
+				<xsd:attribute name="etichetta" type="xsd:string" />
+				<xsd:attribute name="descrizione" type="xsd:string" />
+				<xsd:attribute name="visibile" type="xsd:boolean" />
+				<xsd:attribute name="titolo" type="xsd:string" />
+	
+	</xsd:complexType>
+	<xsd:simpleType name="tipoNodoModulistica">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SEZIONE" />
+			<xsd:enumeration value="VALORE_MODULO" />
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:complexType name="template">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="descrizione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	
+			<xsd:element name="oggettoMail" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+			<xsd:element name="corpoMail" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+			<xsd:element name="mittente" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+			<xsd:element name="destinatari" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			
+			<xsd:element name="destinatarioCC" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="campo" type="campoTemplate" minOccurs="1" maxOccurs="unbounded" />
+			<xsd:element name="titoloFile" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+			<xsd:element name="fascicoliAbilitati" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="allegati" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="Documento" name="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EventiIter" minOccurs="0" maxOccurs="1" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="EventoIter" name="EventoIter" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="campoTemplate">
+		<xsd:sequence>
+			<xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="formato" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="tipo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="regexValidazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="lunghezzaMassima" type="xsd:int" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="valoriLista" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="campoMetadato" type="CampoMetadato" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CampoMetadato">
+		<xsd:sequence>
+			<xsd:element name="idMetadato" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="etichetta" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="comunicazione">
+		<xsd:sequence>
+
+		
+		
+			<xsd:element name="idComunicazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="codComunicazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="descComunicazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="idTemplate" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="uteIns" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+			
+			<xsd:element name="invii" type="invioComunicazione" minOccurs="0" maxOccurs="unbounded" />
+				
+			<xsd:element name="allegati" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="Documento" name="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="EventiIter" minOccurs="0" maxOccurs="1" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="EventoIter" name="EventoIter" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="invioComunicazione">
+		<xsd:sequence>
+		
+			<xsd:element name="flgTestProd" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="numRecordTest" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="pecDestinazioneTest" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="codEsito" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	
+	<!-- definizione pratica di tipo PEC -->
+	<xsd:complexType name="PEC">
+		<xsd:sequence>
+			<xsd:element name="messageID" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="idEmailServer" minOccurs="0" maxOccurs="1" type="xsd:int"></xsd:element>
+			<xsd:element name="dataRicezione" minOccurs="0" maxOccurs="1" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="dataInvio" minOccurs="0" maxOccurs="1" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="mittente" minOccurs="1" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="protocollazione" minOccurs="0" maxOccurs="1" type="ProtocollazionePEC"></xsd:element>
+			<xsd:element name="interoperabile" minOccurs="0" maxOccurs="1" type="Interoperabile"></xsd:element>
+			<xsd:element name="messageIDReinoltro" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="replyTo" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+			<xsd:element name="destinatari" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="destinatario" name="destinatarioPrincipale" minOccurs="1" maxOccurs="1" />
+						<xsd:element type="destinatario" name="destinatario" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="destinatariCC" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="destinatario" name="destinatarioCC" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="destinatariInoltro" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="xsd:string" name="destinatarioInoltro" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="progressivoInoltro" minOccurs="0" maxOccurs="1" type="xsd:integer" />
+			<xsd:element name="notificaRifiutoInoltro" minOccurs="1" maxOccurs="1" type="xsd:boolean" />
+			<xsd:element name="tipoEmail" minOccurs="1" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="oggetto" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="body" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="firma" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="allegati" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="Documento" name="Documento" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hasRicevutaAccettazione" minOccurs="1" maxOccurs="1" type="xsd:boolean"></xsd:element>
+			<xsd:element name="hasRicevutaConsegna" minOccurs="1" maxOccurs="1" type="xsd:boolean"></xsd:element>
+			<xsd:element name="ricevute" type="ricevuta" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="EventiIter" minOccurs="0" maxOccurs="1" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="EventoIter" name="EventoIter" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="OperativitaRidotta">
+		<xsd:sequence>
+			<xsd:element name="operazioni" type="OperazioneOperativitaRidotta"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="OperazioneOperativitaRidotta">
+		<xsd:sequence>
+			<xsd:element name="accessiConsentiti" type="xsd:string"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="nomeOperazione" type="xsd:string"  minOccurs="1" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<!-- root element -->
+	<xsd:element name="pratica">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="_version" minOccurs="1" maxOccurs="1" type="xsd:int" />
+				<xsd:element name="_sync" minOccurs="1" maxOccurs="1" type="xsd:boolean" />
+				<xsd:element name="idDocumentale" minOccurs="1" maxOccurs="1" type="xsd:string" />
+				<xsd:element name="letto" minOccurs="1" maxOccurs="1" type="xsd:boolean" />
+				<xsd:element name="folderPath" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="consoleFileName" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="provenienza" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="stato" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="utenteCreazione" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="usernameCreazione" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="dataCreazione" minOccurs="1" maxOccurs="1" type="xsd:dateTime"></xsd:element>
+				<xsd:element name="tipo" minOccurs="1" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="titolo" minOccurs="0" maxOccurs="1" type="xsd:string"></xsd:element>
+				<xsd:element name="praticaCollegata" type="praticaCollegata" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+				<xsd:element name="gruppivisibilita" type="gruppivisibilita" maxOccurs="1" minOccurs="1"/>
+				<xsd:element name="condivisione" type="condivisione" maxOccurs="1" minOccurs="0"/>
+				<xsd:element name="incaricoa" minOccurs="0" maxOccurs="1" type="utente" />
+				<xsd:element name="assegnazioneEsterna" type="assegnazioneEsterna" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="notifiche" type="notifica" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="operatore" type="xsd:string" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="operativitaRidotta" type="OperativitaRidotta" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="assegnatarioCorrente" type="xsd:string" minOccurs="1" maxOccurs="1" />
+				
+				<xsd:choice>
+					<xsd:element type="PEC" name="PEC" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element type="Fascicolo" name="Fascicolo" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element type="modulistica" name="modulistica" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element type="template" name="template" minOccurs="0" maxOccurs="1"></xsd:element>
+					<xsd:element type="comunicazione" name="comunicazione" minOccurs="0" maxOccurs="1"></xsd:element>
+				</xsd:choice>
+				<xsd:element name="tasks" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence><!-- refactor -->
+							<xsd:element type="Task" name="Task" minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="versione" type="xsd:string" fixed="1.1" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

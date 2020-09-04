@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel ui:field="panel">
+		<g:FormPanel ui:field="form">
+			<g:HTMLPanel>
+				<g:FileUpload ui:field="upload" name="stream" />
+				<g:Hidden ui:field="metadati" name="metadati" />
+				<g:Hidden ui:field="ruolo" name="ruolo" />
+			</g:HTMLPanel>
+		</g:FormPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

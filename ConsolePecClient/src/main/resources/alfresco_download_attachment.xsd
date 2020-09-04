@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/download/attachment"
+	xmlns="http://comune.bologna.it/alfresco/download/attachment"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element name="USER" type="xs:string" />
+			<xs:element name="PASSWORD" type="xs:string" />
+			<xs:element name="PATH" type="xs:string" />
+			<xs:element name="UUID_DOC" type="xs:string" />
+			<xs:element name="VERSIONABLE" type="xs:boolean" />
+			<xs:element name="DELETEFILE" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SERVICE_RESPONSE">
+		<xs:attribute name="CODE" type="xs:string" use="required"/>
+		<xs:attribute name="DESCR" type="xs:string" use="required"/>
+		<xs:attribute name="REF_IN_STORE" type="xs:string" use="optional"/>
+		<xs:attribute name="DOC_NAME" type="xs:string" use="optional"/>
+	</xs:complexType>
+	
+	<!-- Root elemnts -->
+	<xs:element name="REQUEST" type="REQUEST"/>
+	<xs:element name="SERVICE_RESPONSE" type="SERVICE_RESPONSE"/>
+
+</xs:schema>

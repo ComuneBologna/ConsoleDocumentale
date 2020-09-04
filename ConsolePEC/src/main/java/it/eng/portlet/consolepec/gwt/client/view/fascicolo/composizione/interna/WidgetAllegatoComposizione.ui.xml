@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget">
+	<g:HTMLPanel styleName="composizione-allegato">
+		<g:InlineLabel ui:field="infoProtocollazione" />
+		<g:HTMLPanel>
+			<g:InlineLabel ui:field="infoData" styleName="upper-info" />
+			<g:HTMLPanel styleName="main-info">
+				<g:CheckBox ui:field="checkAllegato" />
+				<g:Anchor ui:field="iconaAllegato" />
+				<g:Anchor ui:field="infoAllegato" />
+			</g:HTMLPanel>
+			<g:InlineLabel ui:field="infoAggiuntive" styleName="lower-info" />
+			<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://comune.bologna.it/spagic/interrogapg"
+        xmlns="http://comune.bologna.it/spagic/interrogapg"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+        
+        <xs:element name="request" type="request" />
+        <xs:element name="response" type="response" />
+        
+        <xs:complexType name="request">
+        	<xs:sequence>
+        		<xs:element name="flag_interrogazione" type="xs:string" />
+        		<xs:element name="codice_comune" type="xs:int" />
+        		<xs:element name="tipo_protocollo" type="xs:string" />
+        		<xs:element name="anno_protocollo" type="xs:string" />
+        		<xs:element name="numero_protocollo" type="xs:string" />
+        		<xs:element name="identificativo_istanza" type="xs:string" />
+        		<xs:element name="data_inserimento" type="xs:date" />
+        		<xs:element name="progressivo_istanza" type="xs:int" />
+        		<xs:element name="codice_applicazione_esterna" type="xs:string" />
+        		<xs:element name="codice_utente_esterno" type="xs:string" />
+        		<xs:element name="codice_utente_esterno_interno" type="xs:string" />
+        		<xs:element name="codice_applicazione_interna" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="response">
+        	<xs:sequence>
+        		<xs:element name="o1" type="o1" minOccurs="0" maxOccurs="1"/>
+        		<xs:element name="o2" type="o2" minOccurs="0" maxOccurs="unbounded"/>
+        		<xs:element name="o3" type="o3" minOccurs="0" maxOccurs="1"/>
+        		<xs:element name="o4" type="o4" minOccurs="0" maxOccurs="unbounded"/>
+        		<xs:element name="o5" type="o5" minOccurs="0" maxOccurs="unbounded"/>
+        		<xs:element name="o9" type="o9" minOccurs="1" maxOccurs="1"/>
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o1">
+        	<xs:sequence>
+        		<xs:element name="codice_comune" type="xs:int" />
+        		<xs:element name="tipo_protocollo" type="xs:string" />
+        		<xs:element name="anno_protocollo" type="xs:string" />
+        		<xs:element name="numero_protocollo" type="xs:string" />
+        		<xs:element name="tipo_protocollo_capofila" type="xs:string" />
+        		<xs:element name="anno_protocollo_capofila" type="xs:string" />
+        		<xs:element name="numero_protocollo_capofila" type="xs:string" />
+        		<xs:element name="tipo_protocollazione" type="xs:string" />
+        		<xs:element name="flag_cella_capofila" type="xs:string" />
+        		<xs:element name="flag_documento_completato" type="xs:string" />
+        		<xs:element name="flag_documentazione_completa" type="xs:string" />
+        		<xs:element name="flag_fascicolo_riservato" type="xs:string" />
+        		<xs:element name="data_protocollazione" type="xs:date" />
+        		<xs:element name="data_arrivo" type="xs:date" />
+        		<xs:element name="ora_arrivo" type="xs:time" />
+        		<xs:element name="data_annullamento" type="xs:date" />
+        		<xs:element name="provenienza" type="xs:string" />
+        		<xs:element name="cf_provenienza" type="xs:string" />
+        		<xs:element name="destinatario" type="xs:string" />
+        		<xs:element name="cf_destinatario" type="xs:string" />
+        		<xs:element name="numero_allegati" type="xs:int" />
+        		<xs:element name="riferimento_provenienza" type="xs:string" />
+        		<xs:element name="codice_tipologia_documento" type="xs:string" />
+        		<xs:element name="descrizione_tipologia_documento" type="xs:string" />
+        		<xs:element name="codice_titolo" type="xs:string" />
+        		<xs:element name="descrizione_titolo" type="xs:string" />
+        		<xs:element name="codice_rubrica" type="xs:string" />
+        		<xs:element name="descrizione_rubrica" type="xs:string" />
+        		<xs:element name="codice_sezione" type="xs:string" />
+        		<xs:element name="descrizione_sezione" type="xs:string" />
+        		<xs:element name="oggetto" type="xs:string" />
+        		<xs:element name="codice_via" type="xs:int" />
+        		<xs:element name="descrizione_via" type="xs:string" />
+        		<xs:element name="numero_civico" type="xs:int" />
+        		<xs:element name="esponente_civico" type="xs:string" />
+        		<xs:element name="numero_interno" type="xs:int" />
+        		<xs:element name="esponente_interno" type="xs:string" />
+        		<xs:element name="codice_cella_assegnataria" type="xs:string" />
+        		<xs:element name="descrizione_cella_assegnataria" type="xs:string" />
+        		<xs:element name="tipo_registro_particolare" type="xs:string" />
+        		<xs:element name="anno_registro_particolare" type="xs:string" />
+        		<xs:element name="numero_registro_particolare" type="xs:string" />
+        		<xs:element name="flag_procedimento" type="xs:string" />
+        		<xs:element name="mezzo_spedizione" type="xs:string" />
+        		<xs:element name="tipo_documento" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o2">
+        	<xs:sequence>
+        		<xs:element name="tipo_nominativo" type="xs:string" />
+        		<xs:element name="descrizione_nominativo" type="xs:string" />
+        		<xs:element name="cf_nominativo" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o3">
+        	<xs:sequence>
+        		<xs:element name="anno_fascicolo" type="xs:string" />
+        		<xs:element name="numero_fascicolo" type="xs:int" />
+        		<xs:element name="codice_titolo" type="xs:string" />
+        		<xs:element name="codice_rubrica" type="xs:string" />
+        		<xs:element name="codice_sezione" type="xs:string" />
+        		<xs:element name="data_inizio" type="xs:date" />
+        		<xs:element name="data_fine" type="xs:date" />
+        		<xs:element name="oggetto" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o4">
+        	<xs:sequence>
+        		<xs:element name="codice_via" type="xs:string" />
+        		<xs:element name="numero_civico" type="xs:string" />
+        		<xs:element name="esponente_civico" type="xs:string" />
+        		<xs:element name="numero_interno" type="xs:string" />
+        		<xs:element name="esponente_interno" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o5">
+        	<xs:sequence>
+        		<xs:element name="data_nota" type="xs:date" />
+        		<xs:element name="ora_nota" type="xs:time" />
+        		<xs:element name="utente_nota" type="xs:string" />
+        		<xs:element name="nota1" type="xs:string" />
+        		<xs:element name="nota2" type="xs:string" />
+        		<xs:element name="nota3" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="o9">
+        	<xs:sequence>
+        		<xs:element name="codice" type="xs:string" />
+        		<xs:element name="messaggio" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+</xs:schema>

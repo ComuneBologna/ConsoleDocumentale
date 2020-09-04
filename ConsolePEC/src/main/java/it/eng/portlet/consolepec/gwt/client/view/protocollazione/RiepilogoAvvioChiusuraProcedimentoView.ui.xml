@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<h1 class="maintitle">
+				<g:Label>Riepilogo procedimento</g:Label>
+			</h1>
+		</g:HTMLPanel>
+		<g:HTMLPanel stylePrimaryName="single">
+			<g:HTMLPanel stylePrimaryName="filters">
+				<div class="filters">
+					<fieldset>
+						<h3 ui:field="titolo" class="abstract" />
+						<g:HTMLPanel ui:field="riepilogoProcedimentoPanel" />
+						<hr />
+						<div class="cell">
+							<g:Button ui:field="chiudiButton" text="Chiudi"	styleName="btn black" />
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

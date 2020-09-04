@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel styleName="composizione-directory">
+		<g:HTMLPanel ui:field="pathPanel">
+			<g:InlineLabel ui:field="pathLabel" />
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="gruppoDirectories" />
+		<g:HTMLPanel ui:field="gruppoElementi" />
+	</g:HTMLPanel>
+</ui:UiBinder>

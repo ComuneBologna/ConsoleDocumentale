@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel styleName="acapo" ui:field="panelloRicercaPG">
+			<span class="label">Numero/Anno: </span>
+			<g:TextBox ui:field="numeroPg" styleName="testo" visibleLength="7"></g:TextBox> /
+			<g:TextBox ui:field="annoPg" styleName="testo" visibleLength="4"></g:TextBox>
+			<g:Button ui:field="buttonCerca" text="Cerca" styleName="btn" />
+		</g:HTMLPanel>
+		<g:HTMLPanel stylePrimaryName="single">
+			<g:HTMLPanel ui:field="resultPanel" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

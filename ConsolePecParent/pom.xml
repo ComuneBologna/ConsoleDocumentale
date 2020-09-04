@@ -1,0 +1,313 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>it.eng.cobo.consolepec</groupId>
+	<artifactId>ConsolePecParent</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+
+	<name>Console Documentale Parent</name>
+	<description>Parent pom per tutti i progetti della Console Documentale</description>
+
+	<modules>
+		<module>../ConsolePecCommons</module>
+		<module>../ConsolePecUtil</module>
+		<module>../ConsolePecXMLPlugin</module>
+		<module>../ConsolePecSecurity</module>
+		<module>../ConsolePecClient</module>
+		<module>../ConsolePecIntegration</module>
+	</modules>
+
+	<properties>
+		<revision>6.3.4</revision>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sources.encoding>UTF-8</sources.encoding>
+		<java.version>1.7</java.version>
+
+		<!-- Plugin versions -->
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.build.helper.plugin.version>1.8</maven.build.helper.plugin.version>
+		<maven.jaxb2.plugin.version>1.5</maven.jaxb2.plugin.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
+		<lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
+		<flatten.plugin.version>1.0.0</flatten.plugin.version>
+		<maven.jaxws.plugin>2.5</maven.jaxws.plugin>
+
+		<!-- Dip. interne -->
+		<spagic.client.version>1.0</spagic.client.version>
+		<modulistica.spagic.version>0.0.14</modulistica.spagic.version>
+
+		<!-- Dependency versions -->
+		<junit.version>4.12</junit.version>
+		<lombok.version>1.18.12</lombok.version>
+		<slf4j.version>1.7.28</slf4j.version>
+		<commons.io.version>2.6</commons.io.version>
+		<apache.commons.lang.version>2.4</apache.commons.lang.version>
+		<guava.version>19.0</guava.version>
+		<gson.version>2.8.6</gson.version>
+		<jaxen.version>1.1.4</jaxen.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<apache.commons.codec.version>1.14</apache.commons.codec.version>
+		<junrar.version>0.7</junrar.version>
+		<http.client.version>4.5.6</http.client.version>
+		<jaxb.api.version>2.1</jaxb.api.version>
+		<commons.dbutils.version>1.7</commons.dbutils.version>
+		<http.client.async.version>4.1.3</http.client.async.version>
+
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>${maven.jaxws.plugin}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${maven.build.helper.plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>${maven.jaxb2.plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven.jar.plugin.version}</version>
+					<configuration>
+						<outputDirectory>../it.eng.cobo.consolepec.commons/lib</outputDirectory>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${lifecycle.mapping.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>flatten-maven-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>flatten</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<encoding>${sources.encoding}</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>${flatten.plugin.version}</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>jaxen</groupId>
+				<artifactId>jaxen</artifactId>
+				<version>${jaxen.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${apache.commons.lang.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${apache.commons.codec.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.junrar</groupId>
+				<artifactId>junrar</artifactId>
+				<version>${junrar.version}</version>
+			</dependency>
+
+			<!-- Dipendenze Console -->
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecCommons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecUtil</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecXMLPlugin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecIntegration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecClient</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>it.eng.cobo.consolepec</groupId>
+				<artifactId>ConsolePecSecurity</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Librerie Modulistica -->
+			<dependency>
+				<groupId>it.eng.modulistica</groupId>
+				<artifactId>modulistica-spagic</artifactId>
+				<version>${modulistica.spagic.version}</version>
+			</dependency>
+			<!-- -->
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${http.client.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpmime</artifactId>
+				<version>${http.client.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.spagic3</groupId>
+				<artifactId>remoteproxyclient</artifactId>
+				<version>${spagic.client.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-crypto</artifactId>
+				<version>${spring-security.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>${jaxb.api.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+			
+			<dependency>
+			<groupId>commons-dbutils</groupId>
+			<artifactId>commons-dbutils</artifactId>
+			<version>${commons.dbutils.version}</version>
+		</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+</project>

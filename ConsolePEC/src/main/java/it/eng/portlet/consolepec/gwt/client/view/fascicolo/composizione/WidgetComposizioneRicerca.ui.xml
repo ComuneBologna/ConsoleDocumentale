@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel stylePrimaryName="composizione-fascicolo">
+		<g:HTMLPanel stylePrimaryName="ricerca-composizione">
+			<g:SuggestBox ui:field="ricerca" stylePrimaryName="ricerca-barra" />
+			<g:Button ui:field="ricercaBtn" text="Ricerca" stylePrimaryName="btn-ricerca" />
+			<g:Button ui:field="resetBtn" text="Pulisci" stylePrimaryName="btn-reset" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

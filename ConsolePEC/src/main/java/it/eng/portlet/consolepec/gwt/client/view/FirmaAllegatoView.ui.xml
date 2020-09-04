@@ -1,0 +1,69 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat' ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:HTMLPanel>
+				<h1 class="maintitle"> Firma allegato </h1>
+			</g:HTMLPanel>
+
+			<g:HTMLPanel>
+				<div class="filters button-filters">
+					<fieldset>
+						<div class="inline-block">
+							<g:Button text="Richiedi OTP via SMS" ui:field="otpSMSButton" styleName="btn" />
+						</div>
+						<!-- <div class="inline-block"> <g:Button text="Richiedi OTP via chiamata telefonica" ui:field="otpCallButton" styleName="btn" /> </div> -->
+						<div class="inline-block">
+							<g:Button text="Firma" ui:field="firmaButton" styleName="btn" />
+						</div>
+						<div class="inline-block">
+							<g:Button ui:field="chiudiButton" text="Annulla" styleName="btn black" />
+						</div>
+					</fieldset>
+				</div>
+
+			</g:HTMLPanel>
+			<hr />
+
+			<g:HTMLPanel stylePrimaryName="single">
+				<engit:MessageAlertWidget ui:field="messaggioAlertWidget"></engit:MessageAlertWidget>
+				<g:HTMLPanel stylePrimaryName="filters">
+					<fieldset>
+						<g:HTMLPanel styleName="cell">
+							<span class="label">Utente di Firma *</span>
+							<g:TextBox ui:field="userNameTextBox" styleName="testo" />
+						</g:HTMLPanel>
+
+						<g:HTMLPanel styleName="cell">
+							<span class="label">Password di Firma *</span>
+							<g:PasswordTextBox ui:field="passwordTextBox" styleName="testo" />
+						</g:HTMLPanel>
+
+						<g:HTMLPanel styleName="cell">
+							<span class="label">OTP *</span>
+							<g:TextBox ui:field="otpTextBox" styleName="testo" />
+						</g:HTMLPanel>
+						
+						<g:HTMLPanel styleName="cell acapo">
+							<span class="label">Tipo firma *</span>
+								<g:HTMLPanel styleName="abstract">
+									<g:ListBox ui:field="tipoFirma" stylePrimaryName="selectListBox" />
+								</g:HTMLPanel>
+						</g:HTMLPanel>
+						
+						<g:HTMLPanel styleName="cell">
+							<span class="label">Ricorda credenziali</span>
+						</g:HTMLPanel>
+						<g:HTMLPanel>
+							<g:CheckBox styleName="checkbox-nonprot" ui:field="salvaCredenzialiChechBox"/>
+						</g:HTMLPanel>
+					</fieldset>
+				</g:HTMLPanel>
+
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

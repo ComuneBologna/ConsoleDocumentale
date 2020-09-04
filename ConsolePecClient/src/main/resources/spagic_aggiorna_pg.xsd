@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:b="http://comune.bologna.it/base"
+	       xmlns="http://comune.bologna.it/spagic/aggiornapg"
+		   targetNamespace="http://comune.bologna.it/spagic/aggiornapg"
+	       elementFormDefault="qualified" 
+	       attributeFormDefault="unqualified">
+	       
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element type="xs:string" name="pathPratica" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="protocollazioni" minOccurs="0" maxOccurs="unbounded"  >
+				<xs:complexType>
+					<xs:attribute name="numPG" type="xs:string" />
+					<xs:attribute name="annoPG" type="xs:int" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="request" type="request"/>
+	
+</xs:schema>

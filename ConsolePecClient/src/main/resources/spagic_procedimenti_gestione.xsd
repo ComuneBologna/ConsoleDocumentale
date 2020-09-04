@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/procedimenti/gestione"
+	targetNamespace="http://comune.bologna.it/spagic/procedimenti/gestione"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base"
+		schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="indirizzi" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Operazione" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-FLG-OPE</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="TipoProtocollo" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-TP-PROT</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="2" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodComune" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-COD-CMN</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodUtente" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-COD-UTE</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="7" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	  	<xs:attribute name="AnnoProtocollazione" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-AA-PROT</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="9999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="NumProtocollazione" use="required">
+			<xs:annotation>
+				<xs:documentation>GEIA-NRO-PROT</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="7" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DataProtocollazione" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>GEIA-DT-PROT</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CodTipologiaProcedimento">
+			<xs:annotation>
+				<xs:documentation>GEIA-TPL-PROC</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DataInizioDecorrenzaProcedimento" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>GEIA-DT-INI-DE</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ModAvvioProcedimento">
+			<xs:annotation>
+				<xs:documentation>GEIA-MDL-AVV</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodUnitaOrgResponsabile">
+			<xs:annotation>
+				<xs:documentation>GEIA-UO-RESP</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="99999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodUnitaOrgCompetenza">
+			<xs:annotation>
+				<xs:documentation>GEIA-UO-COMP</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="99999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ModalitaChiusura">
+			<xs:annotation>
+				<xs:documentation>GEIA-FLG-MD-CHI</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DataChiusura" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>GEIA-DT-CHI</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NumProtocolloDocChiusura">
+			<xs:annotation>
+				<xs:documentation>GEIA-DOC-CHI-COD</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="7" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AnnoProtocolloDocChiusura">
+			<xs:annotation>
+				<xs:documentation>GEIA-DOC-CHI-AA</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="9999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodiceEventoChiusura">
+			<xs:annotation>
+				<xs:documentation>GEIA-COD-EVE-CHI</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DataInizioInterruzione" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>GEIA-DT-INI-SSP-INT</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FlagInterruzione">
+			<xs:annotation>
+				<xs:documentation>GEIA-COD-SSP-INT</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="2" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="GiorniInterruzione">
+			<xs:annotation>
+				<xs:documentation>GEIA-GG-SSP-INT</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DataFineInterruzione" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>GEIA-DT-FIN</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NuovoCodTipologiaProcedimento">
+			<xs:annotation>
+				<xs:documentation>GEIA-TPL-PROC-NEW</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CodQuartiere">
+			<xs:annotation>
+				<xs:documentation>GEIA-COD-QUART</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="99" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element type="b:error" name="error" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Codice" use="required">
+			<xs:annotation>
+				<xs:documentation>GEOA-MSG</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="4" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Descrizione" use="required">
+			<xs:annotation>
+				<xs:documentation>GEOA-DES-MSG</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="4" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Durata" use="required">
+			<xs:annotation>
+				<xs:documentation>GEOA-DURATA</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Termine" use="required">
+			<xs:annotation>
+				<xs:documentation>GEOA-TERM-NORM</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:maxInclusive value="9999" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

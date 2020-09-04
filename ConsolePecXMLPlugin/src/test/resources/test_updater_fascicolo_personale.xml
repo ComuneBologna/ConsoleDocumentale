@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pratica versione="1.0">
+    <idDocumentale>FS148</idDocumentale>
+    <letto>true</letto>
+    <folderPath>/PEC/CONSOLE/PRATICHE/FS148</folderPath>
+    <consoleFileName>metadati.xml</consoleFileName>
+    <stato>IN_GESTIONE</stato>
+    <utenteCreazione>Luca Uguccioni</utenteCreazione>
+    <usernameCreazione>luguccio</usernameCreazione>
+    <dataCreazione>2015-02-02T11:30:40.436+01:00</dataCreazione>
+    <tipo>FASCICOLO</tipo>
+    <titolo>PERSONAL</titolo>
+    <gruppivisibilita>
+        <gruppovisibilita>Luca Uguccioni - 039940E - GCCLCU66C14L219C</gruppovisibilita>
+    </gruppivisibilita>
+    <incaricoa>
+        <username>luguccio</username>
+        <nome>Luca</nome>
+        <cognome>Uguccioni</cognome>
+        <matricola>039940E</matricola>
+    </incaricoa>
+    <Fascicolo>
+        <praticheCollegate/>
+        <note></note>
+        <EventiIter>
+            <EventoIter>
+                <serialized>true</serialized>
+                <isSerializationEnabled>false</isSerializationEnabled>
+                <tipoEvento>PRENDI_IN_CARICO</tipoEvento>
+                <testoEvento>L'utente Luca Uguccioni - 039940E ha preso in carico il fascicolo.</testoEvento>
+                <currentUser>Luca Uguccioni - 039940E</currentUser>
+                <dataEvento>2015-02-02T11:30:56.304+01:00</dataEvento>
+            </EventoIter>
+            <EventoIter>
+                <serialized>true</serialized>
+                <isSerializationEnabled>false</isSerializationEnabled>
+                <tipoEvento>CARICA_ALLEGATO</tipoEvento>
+                <testoEvento>L'utente Luca Uguccioni - 039940E ha caricato l'allegato carta identità.pdf.</testoEvento>
+                <currentUser>Luca Uguccioni - 039940E</currentUser>
+                <dataEvento>2015-02-02T11:31:40.092+01:00</dataEvento>
+            </EventoIter>
+            <EventoIter>
+                <serialized>true</serialized>
+                <isSerializationEnabled>false</isSerializationEnabled>
+                <tipoEvento>FIRMA_ALLEGATO</tipoEvento>
+                <testoEvento>L'utente Luca Uguccioni - 039940E ha firmato l'allegato carta identità.pdf.</testoEvento>
+                <currentUser>Luca Uguccioni - 039940E</currentUser>
+                <dataEvento>2015-02-02T11:34:18.711+01:00</dataEvento>
+            </EventoIter>
+        </EventiIter>
+        <allegati>
+            <Documento>
+                <nome>carta identità.pdf</nome>
+                <folderRelativePath>ALLEGATI</folderRelativePath>
+                <label>carta identità.pdf</label>
+                <currentVersion>2.0</currentVersion>
+                <dimensioneBytes>116832</dimensioneBytes>
+                <firmato>true</firmato>
+                <tipoFirma>CADES</tipoFirma>
+            </Documento>
+        </allegati>
+    </Fascicolo>
+    <tasks>
+        <Task>
+            <id>1</id>
+            <attivo>true</attivo>
+            <assegnatari>
+                <assegnatarioCorrente>
+                    <nome>Luca Uguccioni - 039940E - GCCLCU66C14L219C</nome>
+                    <dataInizio>2015-02-02T11:30:40.440+01:00</dataInizio>
+                    <dataFine>2015-02-02T11:30:41.440+01:00</dataFine>
+                </assegnatarioCorrente>
+            </assegnatari>
+            <gestioneFascicolo/>
+        </Task>
+    </tasks>
+</pratica>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/protocollazione"
+	xmlns="http://comune.bologna.it/alfresco/protocollazione"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element type="xs:string" name="tipo" minOccurs="1"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element type="tipopratica" name="tipopratica" minOccurs="0"	maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="descr" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="tipopratica">
+		<xs:sequence>
+			<xs:element type="xs:string" name="id" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:string" name="descrizione" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Request root -->
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

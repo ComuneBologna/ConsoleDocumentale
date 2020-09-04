@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://comune.bologna.it/alfresco/verifica/firma" xmlns="http://comune.bologna.it/alfresco/verifica/firma"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element name="USER" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="PASSWORD" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="UUID" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="NOMEFILE" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="PATH" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="VERSIONABLE" type="xs:boolean" maxOccurs="1" minOccurs="0" />
+			<xs:element name="FIRMAHASH" type="xs:boolean" maxOccurs="1" minOccurs="0" />
+			<xs:element name="FILELOCALE" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="FORCEDOWNLOAD" type="xs:boolean" maxOccurs="1" minOccurs="0" />
+			<xs:element name="NOMEDOC" type="xs:string" maxOccurs="1" minOccurs="0" />
+			<xs:element name="IDDOC" type="xs:string" maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CRL">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="STATUS" type="xs:string" />
+				<xs:attribute name="REVOCATO" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="SIGNER">
+		<xs:sequence>
+			<xs:element name="CA" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="VALIDODAL" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="VALIDOAL" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="DATAFIRMA" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="STATUS" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="DESCR" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="TIPOFIRMA" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="CRL" type="CRL" maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="DN" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="SERVICE_RESPONSE">
+		<xs:sequence>
+			<xs:element name="SIGNER" type="SIGNER" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="CODE" type="xs:string" use="required" />
+		<xs:attribute name="DESCR" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<!-- Request root -->
+	<xs:element name="REQUEST" type="REQUEST" />
+	<!-- Response root -->
+	<xs:element name="SERVICE_RESPONSE" type="SERVICE_RESPONSE" />
+
+</xs:schema>

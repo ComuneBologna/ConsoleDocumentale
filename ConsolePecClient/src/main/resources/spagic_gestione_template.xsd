@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/spagic/gestione/template"
+	xmlns="http://comune.bologna.it/spagic/gestione/template"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="pathFascicolo" type="xs:string" />
+			<xs:element name="pathTemplate" type="xs:string" />
+			<xs:element name="valori" maxOccurs="unbounded" >  
+					<xs:complexType>
+							<xs:sequence>
+								<xs:element name="chiave" type="xs:string"  />
+								<xs:element name="valore" type="xs:string"  />
+							</xs:sequence>				
+					</xs:complexType>
+  				</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="templatePdfRequest">
+		<xs:complexContent>
+			<xs:extension base="request">
+				<xs:sequence>
+					<xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	
+</xs:schema>

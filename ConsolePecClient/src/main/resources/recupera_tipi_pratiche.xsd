@@ -1,0 +1,30 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/spagic/recuperapratiche" xmlns="http://comune.bologna.it/spagic/recuperapratiche"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="gruppi" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="tipoPratica" type="xs:string" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="response">
+	     <xs:sequence>
+			<xs:element name="tipipratiche" type="xs:string" minOccurs="0" maxOccurs="unbounded"  />
+			<xs:element name="livelli" minOccurs="0" maxOccurs="unbounded"  >
+				<xs:complexType>
+					<xs:attribute name="livello2" type="xs:string" />
+					<xs:attribute name="livello3" type="xs:string" />
+					<xs:attribute name="alias" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="codice" type="xs:string" use="required" />
+		<xs:attribute name="descrizione" type="xs:string" use="required" />
+	</xs:complexType>
+
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

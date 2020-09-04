@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="preavviso-errore-consegna" errore="altro">
+    <intestazione>
+        <mittente>ProtocolloGenerale@pec.comune.bologna.it</mittente>
+        <destinatari tipo="certificato">protocollo@pec.comune.potenza.it</destinatari>
+        <destinatari tipo="esterno">elettorale.pref_bologna@interno.it</destinatari>
+        <risposte>ProtocolloGenerale@pec.comune.bologna.it</risposte>
+        <oggetto>Documento protocollato con PG 151456/2016 in data 06/05/2016 Oggetto: &quot;POSTA CERTIFICATA: Protocollo numero 0035657/2016 - POSTA CERTIFICATA: RICHIESTA DI COPIA INTEGRALE DELL&apos;ATTO DI NASCITA - PROTOCOLLATO CON PG 137104/20... -[id:258999]&quot;</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>07/05/2016</giorno>
+            <ora>15:25:05</ora>
+        </data>
+        <identificativo>opec281.20160506162418.27943.02.1.27@pec.actalis.it</identificativo>
+        <msgid>&lt;1580314435.8551462544716303.JavaMail.ProtocolloGenerale@pec.comune.bologna.it&gt;</msgid>
+        <consegna>protocollo@pec.comune.potenza.it</consegna>
+        <errore-esteso>5.4.1 - Actalis S.p.A. - Servizio PEC - AR - il messaggio non è stato consegnato nelle ventiquattro
+ore successive al suo invio.
+Si ritiene che la spedizione debba considerarsi non andata a buon fine.
+</errore-esteso>
+    </dati>
+</postacert>

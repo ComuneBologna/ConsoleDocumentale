@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/procedimenti/iter"
+	targetNamespace="http://comune.bologna.it/spagic/procedimenti/iter"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base"
+		schemaLocation="./base.xsd" />
+
+	<xs:complexType name="datiInput">
+		<xs:attribute name="CodComune" type="xs:int" use="required" />						<!-- GELH-COD-CMN (6 num) -->
+		<xs:attribute name="TipoProtocollo" type="xs:string" use="required" />				<!-- GELH-TP-PROT (2 char) -->
+		<xs:attribute name="AnnoProtocollazione" type="xs:string" use="required" />			<!-- GELH-AA-PROT (4 char) -->
+		<xs:attribute name="NumProtocollazione" type="xs:string" use="required" />			<!-- GELH-NRO-PROT (7 char) -->
+	</xs:complexType>
+
+	<xs:complexType name="datiOutput">
+		<xs:complexContent>
+			<xs:extension base="datiInput">
+				<xs:attribute name="TipoRecord" type="xs:string" />						<!-- GELH-TP-REC (1 char) -->
+				<xs:attribute name="CodProcedimento" type="xs:int" />					<!-- GELH-TPL-PROC (6 num) -->
+				<xs:attribute name="DataEvento" type="xs:string" />						<!-- GELH DT-EVE (8 char: AAAAMMGG) -->
+				<xs:attribute name="CodEvento" type="xs:string" />						<!-- GELH-COD-EVE (1 car) -->
+				<xs:attribute name="ProgrEvento" type="xs:string" />					<!-- GELH-PROGR (2 char) -->
+				<xs:attribute name="NumItemCoda" type="xs:int" />						<!-- GELH-ITEM-TS (3 num) -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="record0">
+		<xs:complexContent>
+			<xs:extension base="datiOutput">
+				<xs:attribute name="CodMessaggio" type="xs:string" />					<!-- GELH-COD-EVE (4 car) -->
+				<xs:attribute name="DescMessaggio" type="xs:string"  />					<!-- GELH-PROGR (130 char) -->
+				<xs:attribute name="NumTotProcedimenti" type="xs:int" />				<!-- GELH-ITEM-TS (5 num) -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="record1">
+		<xs:complexContent>
+			<xs:extension base="datiOutput">
+				<xs:attribute name="PrimaRigaDescr" type="xs:string" />					<!-- GELH-DES1-PROC (60 char) -->
+				<xs:attribute name="SecondaRigaDesc" type="xs:string" />				<!-- GELH-DES2-PROC (60 char) -->
+				<xs:attribute name="TerzaRigaDesc" type="xs:string" />					<!-- GELH-DES3-PROC (60 char) -->
+				<xs:attribute name="QuartaRigaDesc" type="xs:string" />					<!-- GELH-DES4-PROC (60 char) -->
+				<xs:attribute name="CodQuartiere" type="xs:string" />					<!-- GELH-COD-QRT (2 char) -->
+				<xs:attribute name="DescQuartiere" type="xs:string" />					<!-- GELH-DES-QRT (30 char) -->
+				<xs:attribute name="DataAvvioProc" type="xs:dateTime" />				<!-- GELH-DT-AVV (10 char) -->
+				<xs:attribute name="DataInizioDecorrenza" type="xs:dateTime" />			<!-- GELH-DT-INI-DEC (10 char) -->
+				<xs:attribute name="ForzaturaResponsabilita" type="xs:string" />		<!-- GELH-FLG-FORZ (1 char) -->
+				<xs:attribute name="CodUnitaOrgResponsabile" type="xs:int" />			<!-- GELH-UO-RESP (5 num) -->
+				<xs:attribute name="DescUnitaOrgResponsabile" type="xs:string" />		<!-- GELH-DES-UO-DESC (60 char) -->
+				<xs:attribute name="CodUnitaOrgCompetente" type="xs:int" />				<!-- GELH-UO-COMP (5 num) -->
+				<xs:attribute name="DescUnitaOrgCompetente" type="xs:string" />			<!-- GELH-DES-UO-COMP (60 char) -->
+				<xs:attribute name="CognomeResponsabile" type="xs:string" />			<!-- GELH-COGN-RESP (25 char) -->
+				<xs:attribute name="NomeResponsabile" type="xs:string" />				<!-- GELH-NOME-RESP (20 char) -->
+				<xs:attribute name="TermineNormato" type="xs:int" />					<!-- GELH-TERM-NORM (5 num) -->
+				<xs:attribute name="StatoAttualeProc" type="xs:string" />				<!-- GELH-DES-STATO (25 char) -->
+				<xs:attribute name="DataStatoAttualeProc" type="xs:dateTime" />			<!-- GELH-DT-STATO (10 char) -->
+				<xs:attribute name="DataChiusuraProc" type="xs:dateTime" />				<!-- GELH-DT-INI (10 char) -->
+				<xs:attribute name="ModalitaChisuraProc" type="xs:string" />			<!-- GELH-MD-CHI (1 char) -->
+				<xs:attribute name="TipoProtDocChiusura" type="xs:string" />			<!-- GELH-DOC-TP-CHI (2 char) -->
+				<xs:attribute name="AnnoProtDocChiusura" type="xs:string" />			<!-- GELH-DOC-AA-CHI (4 char) -->
+				<xs:attribute name="NumProtDocChiusura" type="xs:string" />				<!-- GELH-DOC-NR-CHI (7 char) -->
+				<xs:attribute name="DescEventoChiusura" type="xs:string" />				<!-- GELH-EVENTO-CHI (58 char) -->
+				<xs:attribute name="DataSospensione" type="xs:dateTime" />				<!-- GELH-DT-SSP (10 char) -->
+				<xs:attribute name="DescSospensione" type="xs:string" />				<!-- GELH-DES-SSP (58 char) -->
+				<xs:attribute name="DataInizioFaseEsterna" type="xs:dateTime" />		<!-- GELH-DT-INI-FES (10 char) -->
+				<xs:attribute name="DescFaseEsterna" type="xs:string" />				<!-- GELH-DES-FES (45 char) -->
+				<xs:attribute name="DataInizioFaseAltraUO" type="xs:dateTime" />		<!-- GELH-DT-INI-FUO (10 char) -->
+				<xs:attribute name="DescFaseAltraUO" type="xs:string" />				<!-- GELH-DES-FUO (38 char) -->
+				<xs:attribute name="DataAnnulloProc" type="xs:dateTime" />				<!-- GELH-DT-ANN (10 char) -->
+				<xs:attribute name="DataInterruzioneProc" type="xs:dateTime" />			<!-- GELH-DT-INT (10 char) -->
+				<xs:attribute name="GiorniDurataProc" type="xs:int" />					<!-- GELH-DURATA-NETTA (5 num) -->
+				<xs:attribute name="CodiceStato" type="xs:int" />						<!-- GELH-CODICE-STATO (2 num) -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="record2">
+		<xs:complexContent>
+			<xs:extension base="datiOutput">
+				<xs:attribute name="DataInizioEvento" type="xs:string" />				<!-- GELH-DT-INI-EVE (10 char) -->
+				<xs:attribute name="DescrizioneEvento" type="xs:string" />				<!-- GELH-DES-EVE (90 char) -->
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="request">
+		<xs:complexContent>
+			<xs:extension base="datiInput" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:complexContent>
+			<xs:extension base="record0">
+				<xs:sequence>
+					<xs:element type="b:error" name="error" minOccurs="0" maxOccurs="1" />
+					<!-- <xs:element name="rec0" type="record0" maxOccurs="1" minOccurs="1" /> -->
+					<xs:element name="datiProcedimento" type="record1" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="iterEventi" type="record2" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>

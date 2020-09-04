@@ -1,0 +1,7 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel ui:field="container" stylePrimaryName="drive-metadati">
+		<g:HTMLPanel ui:field="title" stylePrimaryName="drive-metadati-title" />
+		<g:HTMLPanel ui:field="metadati" stylePrimaryName="drive-metadati-box" />
+	</g:HTMLPanel>
+</ui:UiBinder>

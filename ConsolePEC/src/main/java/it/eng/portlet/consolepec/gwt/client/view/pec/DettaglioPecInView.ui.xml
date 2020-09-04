@@ -1,0 +1,291 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+		<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		<g:HTMLPanel>
+			<h1 class="maintitle"> Email in ingresso </h1>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="filters">
+			<fieldset>
+				<div>
+					<engit:MessageAlertWidget ui:field="messageWidget" />
+				</div>
+			</fieldset>
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			<div class="filters button-filters">
+				<fieldset>
+					<div class="inline-block">
+						<g:Button text="Assegna" styleName="btn" ui:field="riassegnaButton" />
+					</div>
+					
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonFascicolo">Fascicolo</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newCreaNuovoFascicolo">
+										<span>Crea nuovo fascicolo</span>
+									</li>
+									<li ui:field="newAggiungiEsistente">
+										<span>Aggiungi esistente</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonStato">Stato</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newArchivia">
+										<span>Archivia</span>
+									</li>
+									<li ui:field="newElimina">
+										<span>Elimina</span>
+									</li>
+									<li ui:field="newRiportaInGestione">
+										<span>Riporta in gestione</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonAltroDettaglio">Altro</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newVerificaMail">
+										<span>Verifica mail</span>
+									</li>
+									<li ui:field="newRielaboraMail">
+										<span>Rielabora mail</span>
+									</li>
+									<li ui:field="newRiportaInLettura">
+										<span>Riporta in lettura</span>
+									</li>
+									<li ui:field="newModificaOperatore">
+										<span>Modifica operatore</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="inline-block">
+						<g:Button ui:field="chiudiButton" text="Chiudi"
+							styleName="btn black" />
+					</div>
+					
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button text="Crea fascicolo" styleName="btn" -->
+<!-- 							ui:field="creaFascicoloButton" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button text="Agg. fascicolo esistente" ui:field="aggFascicoloButton" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button ui:field="archiviaButton" text="Archivia" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button ui:field="eliminaButton" text="Elimina" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button text="Riporta in gestione" styleName="btn" -->
+<!-- 							ui:field="riportaInGestioneButton" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button ui:field="respingiButton" text="Respinta" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button ui:field="riportaInLetturaButton" text="Riporta In Lettura" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="inline-block"> -->
+<!-- 						<g:Button ui:field="importaElettoraleButton" text="Verifica Email" -->
+<!-- 							styleName="btn" /> -->
+<!-- 					</div> -->
+					
+				</fieldset>
+			</div>
+
+		</g:HTMLPanel>
+		<hr />
+		<g:HTMLPanel stylePrimaryName="single">
+
+			<g:DisclosurePanel ui:field="dettaglioPecPanel"	animationEnabled="true" open="true">
+				<g:HTMLPanel stylePrimaryName="single">
+					<span class="label">P.G.</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="PG">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Mittente </span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="mittente">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Destinatari</span>
+					<g:HTMLPanel styleName="abstract" ui:field="destinatariPanel"></g:HTMLPanel>
+
+					<span class="label">Destinatari CC</span>
+					<g:HTMLPanel styleName="abstract" ui:field="destinatariCCPanel"></g:HTMLPanel>
+
+
+					<span class="label">Data</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="data">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Data ricezione</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="dataRicezione">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Oggetto</span>
+					<g:HTMLPanel styleName="abstract" ui:field="oggettoPanel"></g:HTMLPanel>
+
+					<span class="label">ID documentale</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="numeroRepertorio">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<!-- <span class="label">Tipo documento</span> <g:HTMLPanel styleName="abstract" 
+						> <g:Label ui:field="tipoDocumento"> </g:Label> </g:HTMLPanel> -->
+
+
+					<span class="label">Tipo documento mail</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="tipoMail">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Stato</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="stato">
+						</g:Label>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="abstract" ui:field="inoltratoDaEProtocolloPanel">
+						<span class="label">Inoltrato da EProtoccollo</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label text="Si">	</g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+					<span class="label">Visibile a</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="visibileA" text="-">
+						</g:Label>
+					</g:HTMLPanel>
+
+					<span class="label">Assegnato a</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="assegantario">
+						</g:Label>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="operatorePanel"	visible="false">
+						<span class="label">Operatore</span>
+						<g:HTMLPanel styleName="abstract" >
+								<g:Label ui:field="operatore"></g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<span class="label">Allegati</span>
+					<engit:DettaglioAllegatiWidget
+						ui:field="dettaglioAllegatiWidget"></engit:DettaglioAllegatiWidget>
+
+					<span class="label">ID mail</span>
+					<div class="abstract">
+						<g:HTMLPanel ui:field="idPanel"></g:HTMLPanel>
+					</div>
+
+					<span class="label">In carico a</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="inCaricoALabel"></g:Label>
+					</g:HTMLPanel>
+
+					<!-- <span class="label">Fascicolo Collegato</span>
+					<g:HTMLPanel styleName="abstract" ui:field="fascicoloLinkPanel">
+					</g:HTMLPanel> -->
+
+					<!-- <span class="label">Tipo mail</span> <g:HTMLPanel styleName="abstract" 
+						> <g:Label ui:field="tipoMail"> </g:Label> </g:HTMLPanel> -->
+
+
+
+					<!-- <div class="abstract">Misure organizzative in materia di rimborso 
+						spese ed altro testo tanto per simulare qualcosa che vada su più righe </div> -->
+
+					<g:HTMLPanel ui:field="interoperabilePanel" visible="false">
+						<span class="label"> Interoperabile </span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label ui:field="interoperabile" text="-"></g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+							
+
+					<hr></hr>
+					<span class="label">Corpo mail</span>
+					
+ 					<g:HTMLPanel ui:field="bodyPanel">
+ 						<!-- <g:Frame ui:field="bodyFrame"></g:Frame> -->
+					</g:HTMLPanel>
+						
+				</g:HTMLPanel>
+			</g:DisclosurePanel>
+			<hr />
+			<g:DisclosurePanel ui:field="notePanel" animationEnabled="true" open="true">
+				<g:HTMLPanel stylePrimaryName="single">
+					<span class="label">&nbsp;</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:TextArea ui:field="noteTextArea" styleName="note-textarea"></g:TextArea>
+					</g:HTMLPanel>
+					<span class="label">&nbsp;</span>
+					<g:HTMLPanel>
+						<div class="filters">
+							<fieldset>
+								<div class="cell">
+									<g:Button ui:field="salvaNote" text="Salva note"	styleName="btn" />
+									<g:Button ui:field="annullaModificheNote" text="Annulla"	styleName="btn black" />
+								</div>
+							</fieldset>
+						</div>
+					</g:HTMLPanel>
+					
+					
+				</g:HTMLPanel>
+			</g:DisclosurePanel>
+			<hr />
+			<g:DisclosurePanel ui:field="praticheCollegatePanel" animationEnabled="true" open="true"/>
+			<hr ui:field="praticheCollegateHR"/>
+			<g:DisclosurePanel ui:field="iterPecPanel" animationEnabled="true" open="true">
+				<engit:EventoIterFascicoloWidget
+					ui:field="eventiIter" />
+			</g:DisclosurePanel>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="protocollazionePanel"></g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

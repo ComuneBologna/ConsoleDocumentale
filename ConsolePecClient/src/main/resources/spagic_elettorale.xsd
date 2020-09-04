@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/elettorale"
+	targetNamespace="http://comune.bologna.it/spagic/elettorale"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="pathPratica" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element name="esito" type="esitoElettorale" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="esitoElettorale" final="restriction" >
+	    <xs:restriction base="xs:string">
+	        <xs:enumeration value="OK" />
+	        <xs:enumeration value="ERROR" />
+	        <xs:enumeration value="ERR_NOT_FOUND" />
+	        <xs:enumeration value="ERR_PARAMS" />
+	    </xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>
+	

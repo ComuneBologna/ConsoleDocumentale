@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	       xmlns="http://comune.bologna.it/spagic/gestione/allegato"
+		   targetNamespace="http://comune.bologna.it/spagic/gestione/allegato"
+	       elementFormDefault="qualified" 
+	       attributeFormDefault="unqualified">
+	       
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element type="xs:string" name="pathPratica" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="xs:string" name="tipologiaAllegato" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="xs:string" name="nomiAllegati" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+	<xs:element name="request" type="request"/>
+	
+</xs:schema>

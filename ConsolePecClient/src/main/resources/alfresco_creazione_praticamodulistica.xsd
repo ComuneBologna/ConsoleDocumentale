@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/creazione/modulistica"
+	xmlns="http://comune.bologna.it/alfresco/creazione/modulistica"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="idDocumentale" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="destination" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="titolo" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="utente" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="username" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="ruolo" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="numerocapofila" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="annocapofila" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="pathfascicolo" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="numeroFattura" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="ragioneSociale" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="partitaIva" type="xs:string" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="codicePartitaIva" type="xs:string"
+				maxOccurs="1" minOccurs="0" />
+			<xs:element name="allegati">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="allegato" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modulistica" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded"	>
+						<xs:element name="valori" type="valore" minOccurs="0" maxOccurs="unbounded" />
+						<xs:element name="sezione" type="sezione" minOccurs="0" maxOccurs="unbounded" />
+					</xs:choice>
+					<xs:attribute name="nome" type="xs:string" use="required" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="valore">
+			<xs:sequence>
+					<xs:element name="tabella" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="riga" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="colonne" type="valore"
+												minOccurs="0" maxOccurs="unbounded" />
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="tipo" type="xs:string" />
+				<xs:attribute name="nome" type="xs:string" />
+				<xs:attribute name="valore" type="xs:string" />
+				<xs:attribute name="etichetta" type="xs:string" />
+				<xs:attribute name="descrizione" type="xs:string" />
+				<xs:attribute name="visibile" type="xs:boolean" />
+	</xs:complexType>
+
+
+	<xs:complexType name="sezione">
+		<xs:choice minOccurs="0" maxOccurs="unbounded"	>
+				<xs:element name="sezione" minOccurs="0" maxOccurs="unbounded"		type="sezione" />
+				<xs:element name="valori" minOccurs="0" maxOccurs="unbounded"		type="valore" />
+				
+		</xs:choice>
+		<xs:attribute name="titolo" type="xs:string" />
+	</xs:complexType>
+
+
+	<xs:element name="request" type="request" />
+
+</xs:schema>

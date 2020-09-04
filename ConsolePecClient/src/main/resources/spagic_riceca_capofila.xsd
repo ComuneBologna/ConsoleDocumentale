@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:b="http://comune.bologna.it/base"
+	       xmlns="http://comune.bologna.it/spagic/ricercaba01/capofila"
+		   targetNamespace="http://comune.bologna.it/spagic/ricercaba01/capofila"
+	       elementFormDefault="qualified" 
+	       attributeFormDefault="unqualified">
+	       
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:attribute type="xs:int" name="codiceComune" />
+		<xs:attribute type="xs:string" name="tipoProtocollo" />
+		<xs:attribute type="xs:string" name="annoDocumento" />
+		<xs:attribute type="xs:string" name="numeroProtocolloDocumento" />
+		<xs:attribute type="xs:string" name="codiceApplicazioneEsterna" />
+		<xs:attribute type="xs:string" name="codiceUtenteEsterno" />
+		<xs:attribute type="xs:string" name="codiceUtente" />
+		<xs:attribute type="xs:string" name="codiceApplicazione" />
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element type="b:error" name="error" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="tipoProtocollo" />
+		<xs:attribute type="xs:string" name="annoProtocollo" />
+		<xs:attribute type="xs:string" name="numeroProtocollo" />
+		<xs:attribute type="xs:boolean" name="stessaCellaAppartenenza" />
+		<xs:attribute type="xs:boolean" name="completato" />
+		<xs:attribute type="xs:dateTime" name="dataProtocollazione" />
+		<xs:attribute type="xs:dateTime" name="dataArrivo" />
+		<xs:attribute type="xs:dateTime" name="oraArrivo" />
+		<xs:attribute type="xs:string" name="provenienza" />
+		<xs:attribute type="xs:int" name="numeroAllegati" />
+		<xs:attribute type="xs:string" name="riferimentoProvenienza" />
+		<xs:attribute type="xs:string" name="cfProvenienza" />
+		<xs:attribute type="xs:string" name="codTipologiaDocumento" />
+		<xs:attribute type="xs:string" name="descrTipologiaDocumento" />
+		<xs:attribute type="xs:string" name="codTitolo" />
+		<xs:attribute type="xs:string" name="descrTitolo" />
+		<xs:attribute type="xs:string" name="codRubrica" />
+		<xs:attribute type="xs:string" name="descrRubrica" />
+		<xs:attribute type="xs:string" name="codSezione" />
+		<xs:attribute type="xs:string" name="descrSezione" />
+		<xs:attribute type="xs:string" name="oggetto" />
+		<xs:attribute type="xs:int" name="codiceVia" />
+		<xs:attribute type="xs:string" name="descrizioneVia" />
+		<xs:attribute type="xs:int" name="numeroCivico" />
+		<xs:attribute type="xs:string" name="esponenteCivico" />
+		<xs:attribute type="xs:int" name="numeroInterno" />
+		<xs:attribute type="xs:string" name="esponenteInterno" />
+		<xs:attribute type="xs:string" name="codCellaAssegnataria" />
+		<xs:attribute type="xs:string" name="descrCellaAssegnataria" />
+		<xs:attribute type="xs:string" name="codiceRitorno" />
+		<xs:attribute type="xs:string" name="descrErrore" />
+		<xs:attribute type="xs:string" name="annoCircolare" />
+		<xs:attribute type="xs:string" name="numeroCircolare" />
+		<xs:attribute type="xs:boolean" name="hasProvvedimento" />
+		<xs:attribute type="xs:string" name="primoDestinatario" />
+		<xs:attribute type="xs:string" name="annoFascicolo" />
+		<xs:attribute type="xs:int" name="numeroFascicolo" />
+	</xs:complexType>
+
+	<xs:element name="request" type="request"/>
+	<xs:element name="response" type="response"/>
+
+</xs:schema>

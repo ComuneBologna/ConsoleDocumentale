@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:sara:comune:bologna:it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:sara:comune:bologna:it" xmlns:intf="urn:sara:comune:bologna:it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="urn:sara:comune:bologna:it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetRuoliProfiloRequest">
+    <complexType>
+     <sequence>
+      <element maxOccurs="1" minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+      <element maxOccurs="1" minOccurs="0" name="matricola" type="xsd:string"/>
+      <element maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetRuoliProfiloResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="1" minOccurs="0" name="UtenteTrovato" nillable="true" type="xsd:boolean"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="ListsRuolo" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getRuoliProfiloResponse">
+
+      <wsdl:part element="impl:GetRuoliProfiloResponse" name="GetRuoliProfiloResponse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRuoliProfiloRequest">
+
+      <wsdl:part element="impl:GetRuoliProfiloRequest" name="GetRuoliProfiloRequest">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="wsProfilatura">
+
+      <wsdl:operation name="getRuoliProfilo" parameterOrder="GetRuoliProfiloRequest">
+
+         <wsdl:input message="impl:getRuoliProfiloRequest" name="getRuoliProfiloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRuoliProfiloResponse" name="getRuoliProfiloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="wsProfilaturaSoapBinding" type="impl:wsProfilatura">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getRuoliProfilo">
+
+         <wsdlsoap:operation soapAction="urn:it:bologna:comune:sara/getRuoliProfilo"/>
+
+         <wsdl:input name="getRuoliProfiloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRuoliProfiloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="wsProfilatura">
+
+      <wsdl:port binding="impl:wsProfilaturaSoapBinding" name="wsProfilatura">
+
+         <wsdlsoap:address location="https://sara-collaudo.test.comune.bologna.it/WSProfilatura/services/wsProfilatura"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

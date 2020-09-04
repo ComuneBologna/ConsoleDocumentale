@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client"
+	xmlns:h="urn:import:com.gargoylesoftware.htmlunit.html">
+
+
+
+
+	<g:HTMLPanel styleName="abstract">
+		<g:SuggestBox ui:field="tipiFascicoloSuggestBox"></g:SuggestBox>
+		<g:HTMLPanel ui:field="tipiFascicoloPanel"></g:HTMLPanel>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

@@ -1,0 +1,69 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:d="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datagrid"
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	<g:HTMLPanel>
+		<g:HTMLPanel styleName="filters" ui:field="messageWidgetPanel" visible="false">
+			<fieldset>
+				<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+			</fieldset>
+		</g:HTMLPanel>
+		<h1 class="maintitle" ui:field="mainTitle"> Elenco Fascicoli </h1>
+		<g:HTMLPanel styleName="contentfilter">
+			<g:HTMLPanel styleName="columnfilter fieldfilter filters">
+				<fieldset>
+					<div class="cell">
+						<g:SuggestBox ui:field="tipologiaFascicolo" styleName="testo" />
+					</div>
+					<div class="cell">
+						<dp:DateBox ui:field="dataCreazioneDa" styleName="testo"></dp:DateBox>
+					</div>
+					<div class="cell">
+						<dp:DateBox ui:field="dataCreazioneA" styleName="testo"></dp:DateBox>
+					</div>
+					<div class="cell">
+						<g:SuggestBox ui:field="stato" styleName="testo" />
+					</div>
+				</fieldset>
+
+				<g:HTMLPanel>
+					<g:HTMLPanel>
+						<fieldset>
+							<div class="cell yesnocell">
+								<engit:YesNoRadioButton ui:field="protocollabile" />
+							</div>
+						</fieldset>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+
+			</g:HTMLPanel>
+
+			<div class="buttonfilter cell columnfilter filters">
+				<div>
+					<span class="fillerIE">&nbsp;</span>
+					<g:Button ui:field="pulisciButton" text="Pulisci"
+						styleName="btn black" />
+					<g:Button ui:field="cercaButton" text="Cerca" styleName="btn" />
+				</div>
+				<div class="cell single">
+					<span class="fillerIE">&nbsp;</span>
+					<g:Button ui:field="creaButton" text="Crea" styleName="btn disabilitato" enabled="false" />
+					<g:Button ui:field="ricaricaButton" text="Ricarica" styleName="btn" />
+				</div>
+			</div>
+		</g:HTMLPanel>
+
+		<div>
+			<div class="global-actions"></div>
+		</div>
+
+		<div class="filters sigle">
+			<d:DataGridWidget ui:field="dataGrid" />
+			<c:SimplePager ui:field="pager" stylePrimaryName="pager" />
+		</div>
+
+	</g:HTMLPanel>
+</ui:UiBinder>
+

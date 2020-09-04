@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+        xmlns="http://comune.bologna.it/spagic/protocollazionecompleta"
+        targetNamespace="http://comune.bologna.it/spagic/protocollazionecompleta"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:complexType name="reci1">
+    	<xs:sequence>
+    		<xs:element name="i1_codice_comune" type="xs:int"></xs:element>
+    		<xs:element name="i1_tipo_protocollo" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_utente" type="xs:string"></xs:element>
+    		<xs:element name="i1_data_arrivo" type="xs:date"></xs:element>
+    		<xs:element name="i1_ora_arrivo" type="xs:time"></xs:element>
+    		<xs:element name="i1_tipo_protocollazione" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_provenienza" type="xs:string"></xs:element>
+    		<xs:element name="i1_provenienza" type="xs:string"></xs:element>
+    		<xs:element name="i1_cf_provenienza" type="xs:string"></xs:element>
+    		<xs:element name="i1_riferimento_provenienza" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_destinatario" type="xs:string"></xs:element>
+    		<xs:element name="i1_destinatario" type="xs:string"></xs:element>
+    		<xs:element name="i1_cf_destinatario" type="xs:string"></xs:element>
+    		<xs:element name="i1_tipo_protocollo_capofila" type="xs:string"></xs:element>
+    		<xs:element name="i1_anno_protocollo_capofila" type="xs:string"></xs:element>
+    		<xs:element name="i1_numero_protocollo_capofila" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_titolo" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_rubrica" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_sezione" type="xs:string"></xs:element>
+    		<xs:element name="i1_cella_protocollazione" type="xs:string"></xs:element>
+    		<xs:element name="i1_cella_assegnazione" type="xs:string"></xs:element>
+    		<xs:element name="i1_numero_allegati" type="xs:int"></xs:element>
+    		<xs:element name="i1_documentazione_completa" type="xs:string"></xs:element>
+    		<xs:element name="i1_tipologia_documento" type="xs:string"></xs:element>
+    		<xs:element name="i1_oggetto" type="xs:string"></xs:element>
+    		<xs:element name="descrizione_via_principale" type="xs:string"></xs:element>
+    		<xs:element name="i1_codice_via" type="xs:string"></xs:element>
+    		<xs:element name="i1_numero_civico" type="xs:string"></xs:element>
+    		<xs:element name="i1_esponente_civico" type="xs:string"></xs:element>
+    		<xs:element name="i1_numero_interno" type="xs:string"></xs:element>
+    		<xs:element name="i1_esponente_interno" type="xs:string"></xs:element>
+    		<xs:element name="i1_fascicolo_riservato" type="xs:string"></xs:element>
+    		<xs:element name="i1_sistema_immissione" type="xs:string"></xs:element>
+    		<xs:element name="i1_utente_applicazione" type="xs:string"></xs:element>
+    		<xs:element name="i1_tipo_applicazione" type="xs:string"></xs:element>
+    		<xs:element name="i1_mezzo_spedizione" type="xs:string"></xs:element>
+    		<xs:element name="i1_tipo_registro" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+	<xs:complexType name="reci2">
+		<xs:sequence>
+			<xs:element name="i2_tipo_nominativo" type="xs:string"></xs:element>
+			<xs:element name="i2_nominativo" type="xs:string"></xs:element>
+			<xs:element name="i2_cf_piva_nominativo" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reci3">
+		<xs:sequence>
+			<xs:element name="i3_oggetto_fascicolo" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reci5">
+	<xs:sequence>
+			<xs:element name="descrizione_via" type="xs:string"></xs:element>
+			<xs:element name="i5_codice_via" type="xs:string"></xs:element>
+			<xs:element name="i5_numero_civico" type="xs:string"></xs:element>
+			<xs:element name="i5_esponente_civico" type="xs:string"></xs:element>
+			<xs:element name="i5_numero_interno" type="xs:string"></xs:element>
+			<xs:element name="i5_esponente_interno" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reci6">
+		<xs:sequence>
+			<xs:element name="i6_note" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reci7e">
+		<xs:sequence>
+			<xs:element name="i7_repository" type="xs:string"></xs:element>
+			<xs:element name="i7_tipo_iter" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_amministrazione" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_aoo" type="xs:string"></xs:element>
+			<xs:element name="i7_anno_protocollo" type="xs:string"></xs:element>
+			<xs:element name="i7_numero_protocollo" type="xs:int"></xs:element>
+			<xs:element name="i7_codice_amministrazione_e" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_aoo_e" type="xs:string"></xs:element>
+			<xs:element name="i7_anno_protocollo_e" type="xs:string"></xs:element>
+			<xs:element name="i7_numero_protocollo_e" type="xs:int"></xs:element>			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reci7u">
+		<xs:sequence>
+			<xs:element name="i7_repository" type="xs:string"></xs:element>
+			<xs:element name="i7_tipo_iter" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_amministrazione" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_aoo" type="xs:string"></xs:element>
+			<xs:element name="i7_anno_protocollo" type="xs:string"></xs:element>
+			<xs:element name="i7_numero_protocollo" type="xs:int"></xs:element>
+			<xs:element name="i7_id_registrazione" type="i7_id_registrazione" maxOccurs="100" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="reciz">
+		<xs:sequence>
+			<xs:element name="iz_identificativo_db" type="xs:string"></xs:element>
+			<xs:element name="iz_progressivo_db" type="xs:int"></xs:element>
+			<xs:element name="iz_flag_ambiente" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reco1">
+		<xs:sequence>
+			<xs:element name="o1_codice_messaggio" type="xs:string"></xs:element>
+			<xs:element name="o1_descrizione_messsaggio" type="xs:string"></xs:element>
+			<xs:element name="o1_anno_protocollo" type="xs:string"></xs:element>
+			<xs:element name="o1_numero_protocollo" type="xs:string"></xs:element>
+			<xs:element name="o1_data_protocollo" type="xs:date"></xs:element>
+			<xs:element name="o1_anno_fascicolo" type="xs:string"></xs:element>
+			<xs:element name="o1_numero_fascicolo" type="xs:int"></xs:element>
+			<xs:element name="o1_codice_titolo" type="xs:string"></xs:element>
+			<xs:element name="o1_codice_rubrica" type="xs:string"></xs:element>
+			<xs:element name="o1_codice_sezione" type="xs:string"></xs:element>
+			<xs:element name="o1_anno_capofila" type="xs:string"></xs:element>
+			<xs:element name="o1_numero_capofila" type="xs:string"></xs:element>
+			<xs:element name="o1_tipo_registro" type="xs:string"></xs:element>
+			<xs:element name="o1_anno_registro" type="xs:string"></xs:element>
+			<xs:element name="o1_numero_registro" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+							
+    <xs:complexType name="request">
+    	<xs:sequence>
+    		<xs:element name="reci1" type="reci1" maxOccurs="1" minOccurs="1"></xs:element>
+    		<xs:element name="reci2" type="reci2" maxOccurs="25" minOccurs="0"></xs:element>
+    		<xs:element name="reci3" type="reci3" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="reci5" type="reci5" maxOccurs="100" minOccurs="1"></xs:element>
+    		<xs:element name="reci6" type="reci6" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:choice>
+    			<xs:element name="reci7e" type="reci7e" maxOccurs="1" minOccurs="0"></xs:element>
+    			<xs:element name="reci7u" type="reci7u" maxOccurs="1" minOccurs="0"></xs:element>
+    		</xs:choice>
+    		<xs:element name="reciz" type="reciz" maxOccurs="1" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="response">
+    	<xs:sequence>
+    		<xs:element name="reco1" type="reco1" maxOccurs="1" minOccurs="1"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+	<xs:complexType name="i2_nominativi">
+		<xs:sequence>
+			<xs:element name="i2_tipo_nominativo" type="xs:string"></xs:element>
+			<xs:element name="i2_nominativo" type="xs:string"></xs:element>
+			<xs:element name="i2_cf_piva_nominativo" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="i7_id_registrazione">
+		<xs:sequence>
+			<xs:element name="i7_codice_amministrazione" type="xs:string"></xs:element>
+			<xs:element name="i7_codice_aoo" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:element name="request" type="request"></xs:element>
+    
+    <xs:element name="response" type="response"></xs:element>
+</xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://comune.bologna.it/spagic/versamentoparerpg"
+        xmlns="http://comune.bologna.it/spagic/versamentoparerpg"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+        
+        <xs:element name="request" type="request" />
+        <xs:element name="response" type="response" />
+        
+        <xs:complexType name="request">
+        	<xs:sequence>
+        		<xs:element name="codice_comune" type="xs:int" />
+        		<xs:element name="tipo_protocollo" type="xs:string" />
+        		<xs:element name="anno_protocollo" type="xs:string" />
+        		<xs:element name="numero_protocollo" type="xs:string" />
+        		<xs:element name="tipo_operazione" type="xs:string" />
+        		<xs:element name="chiave_ud" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+        <xs:complexType name="response">
+        	<xs:sequence>
+        		<xs:element name="codice" type="xs:string" />
+        		<xs:element name="messaggio" type="xs:string" />
+        		<xs:element name="sqlcode" type="xs:string" />
+        		<xs:element name="operazione" type="xs:string" />
+        		<xs:element name="nome_tabella" type="xs:string" />
+        	</xs:sequence>
+        </xs:complexType>
+        
+</xs:schema>

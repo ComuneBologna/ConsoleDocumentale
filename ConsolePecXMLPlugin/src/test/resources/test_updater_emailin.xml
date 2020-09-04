@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pratica versione="1.0">
+    <_version>0</_version>
+    <idDocumentale>EE34000</idDocumentale>
+    <letto>true</letto>
+    <folderPath>/PEC/CONSOLE/IN/EE34000</folderPath>
+    <consoleFileName>metadati.xml</consoleFileName>
+    <provenienza>areaterritoriale.bologna@pec.equitaliacentro.it</provenienza>
+    <stato>ARCHIVIATA</stato>
+    <dataCreazione>2015-11-06T14:25:10.272+01:00</dataCreazione>
+    <tipo>EMAIL_IN</tipo>
+    <fascicoloCollegato>
+        <alfrescoPath>/PEC/CONSOLE/PRATICHE/FS19937/metadati.xml</alfrescoPath>
+        <tipo>FASCICOLO_ALBO_PRETORIO</tipo>
+    </fascicoloCollegato>
+    <gruppivisibilita>
+        <gruppovisibilita>DOC_00000_Albo Pretorio</gruppovisibilita>
+    </gruppivisibilita>
+    <PEC>
+        <messageID>opec276.20151106142011.22651.1339.1.1@pcert.sogei.it</messageID>
+        <dataRicezione>2015-11-06T14:19:54.000+01:00</dataRicezione>
+        <mittente>areaterritoriale.bologna@pec.equitaliacentro.it</mittente>
+        <protocollazione>
+            <numeroPG>346619</numeroPG>
+            <annoPG>2015</annoPG>
+            <numerofascicolo>618</numerofascicolo>
+            <titolo>15</titolo>
+            <rubrica>1</rubrica>
+            <sezione>1</sezione>
+            <tipologiadocumento>9</tipologiadocumento>
+            <oggetto>AFFISSIONE ART.60 D.P.R.600</oggetto>
+            <provenienza>EQUITALIA CENTRO/BOLOGNA</provenienza>
+            <utenteprotocollazione>019390H</utenteprotocollazione>
+            <dataprotocollazione>2015-11-07T00:00:00.000+01:00</dataprotocollazione>
+            <tipoProtocollazione>E</tipoProtocollazione>
+        </protocollazione>
+        <destinatari>
+            <destinatarioPrincipale consegna="false" accettazione="false" tipo="esterno">
+                <email>albopretoriomessicomunali@pec.comune.bologna.it</email>
+            </destinatarioPrincipale>
+        </destinatari>
+        <destinatariCC/>
+        <destinatariInoltro/>
+        <notificaRifiutoInoltro>false</notificaRifiutoInoltro>
+        <tipoEmail>PEC</tipoEmail>
+        <oggetto>AFF ART 60</oggetto>
+        <body></body>
+        <allegati>
+            <Documento>
+                <nome>DOC.PDF</nome>
+                <folderRelativePath>MESSAGGIO</folderRelativePath>
+                <label>DOC.PDF</label>
+                <dimensioneBytes>137568</dimensioneBytes>
+                <firmato>false</firmato>
+                <firmatoHash>false</firmatoHash>
+            </Documento>
+        </allegati>
+        <hasRicevutaAccettazione>false</hasRicevutaAccettazione>
+        <hasRicevutaConsegna>false</hasRicevutaConsegna>
+        <EventiIter>
+            <EventoIter>
+                <serialized>false</serialized>
+                <isSerializationEnabled>true</isSerializationEnabled>
+                <tipoEvento>CREA_FASCICOLO</tipoEvento>
+                <testoEvento>L'utente Patrizia Tega - 019390H ha creato un nuovo fascicolo.</testoEvento>
+                <currentUser>Patrizia Tega - 019390H</currentUser>
+                <dataEvento>2015-11-07T08:53:56.993+01:00</dataEvento>
+            </EventoIter>
+        </EventiIter>
+    </PEC>
+    <tasks>
+        <Task>
+            <id>1</id>
+            <attivo>false</attivo>
+            <assegnatari>
+                <assegnatarioCorrente>
+                    <nome>DOC_00000_Albo Pretorio</nome>
+                    <dataInizio>2015-11-06T14:25:10.274+01:00</dataInizio>
+                    <dataFine>2015-11-07T08:53:56.993+01:00</dataFine>
+                </assegnatarioCorrente>
+            </assegnatari>
+            <gestionePEC/>
+        </Task>
+    </tasks>
+</pratica>

@@ -1,0 +1,45 @@
+@external childCell groupHeaderCell dataLink;
+.childCell {
+	padding-left: 30px;
+	border: 2px solid #eee !important;
+	background: #eee !important;
+}
+
+.groupHeaderCell {
+	padding: 1px 15px;
+	color: #4b4a4a;
+	text-shadow: #ddf 1px 1px 0;
+	font-size: 130%;
+	/* background: #eee; */
+}
+
+
+.dataLink {
+ background:none!important;
+     border:none; 
+     padding:0!important;
+    cursor: pointer;
+    /*optional*/
+   
+     color:#000000;
+     text-decoration:underline;
+     cursor:pointer;
+    text-decoration:none;
+	font-weight: bold;
+}
+.dataLink:hover{
+	color:#000000;
+}
+.dataLink:active{
+	color:#000000;
+}
+
+
+
+/* @media only screen and (max-width: 480px) {
+	.childCell {
+		  padding-left: 30px;
+		  border: 2px solid #eee !important;
+		  background: #AffffA !important;
+		}
+} */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="accettazione" errore="nessuno">
+    <intestazione>
+        <mittente>ProtocolloGenerale@pec.comune.bologna.it</mittente>
+        <destinatari tipo="certificato">protocollo@pec.comune.potenza.it</destinatari>
+        <destinatari tipo="esterno">elettorale.pref_bologna@interno.it</destinatari>
+        <risposte>ProtocolloGenerale@pec.comune.bologna.it</risposte>
+        <oggetto>Documento protocollato con PG 151456/2016 in data 06/05/2016 Oggetto: &quot;POSTA CERTIFICATA: Protocollo numero 0035657/2016 - POSTA CERTIFICATA: RICHIESTA DI COPIA INTEGRALE DELL&apos;ATTO DI NASCITA - PROTOCOLLATO CON PG 137104/20... -[id:258999]&quot;</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>09/05/2016</giorno>
+            <ora>12:49:11</ora>
+        </data>
+        <identificativo>opec281.20160509124911.27819.09.1.28@pec.actalis.it</identificativo>
+        <msgid>&lt;1580314435.8551462544716303.JavaMail.ProtocolloGenerale@pec.comune.bologna.it&gt;</msgid>
+    </dati>
+</postacert>

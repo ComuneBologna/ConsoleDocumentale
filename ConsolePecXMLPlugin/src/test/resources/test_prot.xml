@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pratica versione="1.0">
+    <idDocumentale>FS592</idDocumentale>
+    <letto>true</letto>
+    <folderPath>/PEC/CONSOLE/PRATICHE/FS592</folderPath>
+    <consoleFileName>metadati.xml</consoleFileName>
+    <stato>IN_GESTIONE</stato>
+    <usernameCreazione>UTENTE DI PROVA</usernameCreazione>
+    <dataCreazione>2014-02-21T10:25:51.837+01:00</dataCreazione>
+    <tipo>FASCICOLO</tipo>
+    <titolo>PROVA CREAZIONE FASCICOLO</titolo>
+    <gruppivisibilita>
+        <gruppovisibilita>Gestori Protocollo Generale</gruppovisibilita>
+        <gruppovisibilita>Utenti Portale</gruppovisibilita>
+    </gruppivisibilita>
+    <Fascicolo>
+        <protocollazione>
+            <numeroPG>605</numeroPG>
+            <annoPG>2014</annoPG>
+            <praticheCollegateProtocollate/>
+            <allegatiProtocollati>
+                <allegatoProtocollato>
+                    <nome>._vuoto.png</nome>
+                    <folderRelativePath>ALLEGATI</folderRelativePath>
+                    <label>._vuoto.png</label>
+                    <currentVersion>1.0</currentVersion>
+                    <dimensioneBytes>120</dimensioneBytes>
+                    <firmato>false</firmato>
+                </allegatoProtocollato>
+            </allegatiProtocollati>
+            <protocollazioniCollegate>
+                <numeroPG>606</numeroPG>
+                <annoPG>2014</annoPG>
+                <praticheCollegateProtocollate/>
+                <allegatiProtocollati>
+                    <allegatoProtocollato>
+                        <nome>._ok.png</nome>
+                        <folderRelativePath>ALLEGATI</folderRelativePath>
+                        <label>._ok.png</label>
+                        <currentVersion>1.0</currentVersion>
+                        <dimensioneBytes>120</dimensioneBytes>
+                        <firmato>false</firmato>
+                    </allegatoProtocollato>
+                </allegatiProtocollati>
+            </protocollazioniCollegate>
+        </protocollazione>
+        <praticheCollegate/>
+        <note>Prova inserimento note via client</note>
+        <allegati/>
+    </Fascicolo>
+    <tasks>
+        <Task>
+            <id>1</id>
+            <attivo>true</attivo>
+            <assegnatari>
+                <assegnatarioCorrente>
+                    <nome>user portale</nome>
+                    <dataInizio>2014-02-21T10:25:51.838+01:00</dataInizio>
+                    <dataFine>2014-02-21T10:25:52.838+01:00</dataFine>
+                </assegnatarioCorrente>
+            </assegnatari>
+            <gestioneFascicolo/>
+        </Task>
+    </tasks>
+</pratica>

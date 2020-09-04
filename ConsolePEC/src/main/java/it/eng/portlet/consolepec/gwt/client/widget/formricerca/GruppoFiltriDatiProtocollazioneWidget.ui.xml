@@ -1,0 +1,80 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:dp="urn:import:com.google.gwt.user.datepicker.client">
+	<g:HTMLPanel >
+		<div>
+		<!-- <div class="filters"> -->
+			<fieldset>
+				
+				<div class="cell">
+						<dp:DateBox ui:field="dataDocumentoProtocollazione" styleName="testo"></dp:DateBox>
+				</div>
+				
+				<div class="cell">
+						<g:TextBox ui:field="oggettoTextBox" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:TextBox ui:field="riferimentoProvenienzaTextBox" styleName="testo" />
+				</div>
+				
+				
+				
+			</fieldset>
+		</div>
+		<div>
+		<!-- <div class="filters"> -->
+			<fieldset>
+				
+				<div class="cell">
+						<g:TextBox ui:field="provenienzaTextBox" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:TextBox ui:field="cfProvenienzaTextBox" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:HTMLPanel ui:field="tipologiaDelDocumentoHTMLPanel" styleName="testo" />
+				</div>
+				
+			</fieldset>
+		</div>
+		<div>
+		<!-- <div class="filters"> -->
+			<fieldset>
+			
+				<div class="cell">
+						<g:HTMLPanel ui:field="titoloDocumentoHTMLPanel" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:HTMLPanel ui:field="rubricaProtocolloHTMLPanel" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:HTMLPanel ui:field="sezioneProtocolloHTMLPanel" styleName="testo" />
+				</div>
+				
+			</fieldset>
+		</div>
+		<div>
+		<!-- <div class="filters"> -->
+			<fieldset>
+			
+				<div class="cell">
+						<g:TextBox ui:field="numeroFascicoloTextBox" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:TextBox ui:field="annoRegistroTextBox" styleName="testo" />
+				</div>
+				<div class="cell">
+						<g:TextBox ui:field="numeroRegistroTextBox" styleName="testo" />
+				</div>
+				
+			</fieldset>
+		</div>
+		<div>
+		<!-- <div class="filters"> -->
+			<fieldset>
+			<div class="cell">
+				<g:SuggestBox ui:field="tipoProt" styleName="testo"></g:SuggestBox>
+			</div>		
+			</fieldset>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

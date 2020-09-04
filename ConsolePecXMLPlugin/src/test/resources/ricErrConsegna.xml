@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="errore-consegna" errore="no-dest">
+    <intestazione>
+        <mittente>entrate@pec.comune.bologna.it</mittente>
+        <destinatari tipo="certificato">ing.fini@ingpec.eu</destinatari>
+        <destinatari tipo="esterno">ataulfo.rossi@esterno.it</destinatari>
+        <risposte>entrate@pec.comune.bologna.it</risposte>
+        <oggetto>comunicazione relativa a istanza rettifica accertamento tari.</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>ARUBA PEC S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>12/04/2016</giorno>
+            <ora>11:29:04</ora>
+        </data>
+        <identificativo>opec281.20160412112902.20035.02.5.3@pec.actalis.it</identificativo>
+        <msgid>&lt;825137845.495.1460453342566@spagicintrabld01&gt;</msgid>
+        <consegna>ing.fini@ingpec.eu</consegna>
+        <errore-esteso>5.1.1 - Aruba Pec S.p.A. - indirizzo non valido</errore-esteso>
+    </dati>
+</postacert>

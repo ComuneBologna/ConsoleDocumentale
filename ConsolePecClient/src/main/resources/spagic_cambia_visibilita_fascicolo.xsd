@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:b="http://comune.bologna.it/base" xmlns="http://comune.bologna.it/spagic/cambiavisibilita/fascicolo"
+	targetNamespace="http://comune.bologna.it/spagic/cambiavisibilita/fascicolo"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://comune.bologna.it/base"
+		schemaLocation="./base.xsd" />
+
+	<xs:complexType name="request">
+		<xs:sequence>
+			<xs:element name="listaGruppi" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="praticaPath" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:choice>
+			<xs:element type="b:error" name="error" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element type="b:lockedPratica" name="lockedPratica"	maxOccurs="1" minOccurs="0" />
+		</xs:choice>
+
+	</xs:complexType>
+
+	<xs:element name="request" type="request" />
+	<xs:element name="response" type="response" />
+
+</xs:schema>
+	

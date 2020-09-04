@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.lag.quix.it" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://model.ws.lag.quix.it/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.lag.quix.it">
+    <wsdl:documentation>LagService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.ws.lag.quix.it/xsd">
+            <xs:complexType name="RicercaComuneResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="comune" nillable="true" type="ax21:Comune"/>
+                    <xs:element minOccurs="0" name="descErrore" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="flagErrore" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Comune">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cap" type="xs:int"/>
+                    <xs:element minOccurs="0" name="codComune" type="xs:int"/>
+                    <xs:element minOccurs="0" name="codiceFiscale" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="codiceIstat" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataIstituz" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nome" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="provincia" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LoginResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="descErrore" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="flagErrore" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Soggetto">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="codiceFiscale" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataUltimoAggiornamento" nillable="true" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="flagModificato" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="matricola" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AggiornamentoAnagrafeResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="descErrore" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="flagErrore" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="soggetti" nillable="true" type="ax21:Soggetto"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServizioResult">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="datiRisultato" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="descErrore" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="flagErrore" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="EventiAnagraficiResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="descErrore" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="flagAncoraRecords" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="flagErrore" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="soggetti" nillable="true" type="ax21:SoggettoAnagrafe"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SoggettoAnagrafe">
+                <xs:complexContent>
+                    <xs:extension base="ax21:Soggetto">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="codiceVariazione" nillable="true" type="xs:string"/>
+                            <xs:element minOccurs="0" name="flagResidente" type="xs:boolean"/>
+                            <xs:element minOccurs="0" name="subcodiceVariazione" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://model.ws.lag.quix.it/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.lag.quix.it">
+            <xs:import namespace="http://model.ws.lag.quix.it/xsd"/>
+            <xs:element name="ricercaComune2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="codiceComune" type="xs:int"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ricercaComune2Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:RicercaComuneResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ricercaComune1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="codiceComune" type="xs:int"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ricercaComune1Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:RicercaComuneResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="logout">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="logoutResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:LoginResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="login">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:LoginResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato3">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="soggetti" nillable="true" type="ax22:Soggetto"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato3Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:AggiornamentoAnagrafeResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="soggetto" nillable="true" type="ax22:Soggetto"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato2Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:AggiornamentoAnagrafeResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="soggetto" nillable="true" type="ax22:Soggetto"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isModificato1Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:AggiornamentoAnagrafeResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio4">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="numServizio" type="xs:int"/>
+                        <xs:element minOccurs="0" name="datoInput" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio4Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ServizioResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio3">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="numServizio" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="datiInput" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio3Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ServizioResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="numServizio" type="xs:int"/>
+                        <xs:element minOccurs="0" name="datoInput" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio2Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ServizioResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="numServizio" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="datiInput" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invocaServizio1Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ServizioResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eventiAnagrafici2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="dataUltimoAggiornamento" nillable="true" type="xs:dateTime"/>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eventiAnagrafici2Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:EventiAnagraficiResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eventiAnagrafici1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="dataUltimoAggiornamento" nillable="true" type="xs:dateTime"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eventiAnagrafici1Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:EventiAnagraficiResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="invocaServizio3Request">
+        <wsdl:part name="parameters" element="ns:invocaServizio3"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio3Response">
+        <wsdl:part name="parameters" element="ns:invocaServizio3Response"/>
+    </wsdl:message>
+    <wsdl:message name="logoutRequest">
+        <wsdl:part name="parameters" element="ns:logout"/>
+    </wsdl:message>
+    <wsdl:message name="logoutResponse">
+        <wsdl:part name="parameters" element="ns:logoutResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eventiAnagrafici1Request">
+        <wsdl:part name="parameters" element="ns:eventiAnagrafici1"/>
+    </wsdl:message>
+    <wsdl:message name="eventiAnagrafici1Response">
+        <wsdl:part name="parameters" element="ns:eventiAnagrafici1Response"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato2Request">
+        <wsdl:part name="parameters" element="ns:isModificato2"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato2Response">
+        <wsdl:part name="parameters" element="ns:isModificato2Response"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio2Request">
+        <wsdl:part name="parameters" element="ns:invocaServizio2"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio2Response">
+        <wsdl:part name="parameters" element="ns:invocaServizio2Response"/>
+    </wsdl:message>
+    <wsdl:message name="eventiAnagrafici2Request">
+        <wsdl:part name="parameters" element="ns:eventiAnagrafici2"/>
+    </wsdl:message>
+    <wsdl:message name="eventiAnagrafici2Response">
+        <wsdl:part name="parameters" element="ns:eventiAnagrafici2Response"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio4Request">
+        <wsdl:part name="parameters" element="ns:invocaServizio4"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio4Response">
+        <wsdl:part name="parameters" element="ns:invocaServizio4Response"/>
+    </wsdl:message>
+    <wsdl:message name="loginRequest">
+        <wsdl:part name="parameters" element="ns:login"/>
+    </wsdl:message>
+    <wsdl:message name="loginResponse">
+        <wsdl:part name="parameters" element="ns:loginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ricercaComune1Request">
+        <wsdl:part name="parameters" element="ns:ricercaComune1"/>
+    </wsdl:message>
+    <wsdl:message name="ricercaComune1Response">
+        <wsdl:part name="parameters" element="ns:ricercaComune1Response"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio1Request">
+        <wsdl:part name="parameters" element="ns:invocaServizio1"/>
+    </wsdl:message>
+    <wsdl:message name="invocaServizio1Response">
+        <wsdl:part name="parameters" element="ns:invocaServizio1Response"/>
+    </wsdl:message>
+    <wsdl:message name="ricercaComune2Request">
+        <wsdl:part name="parameters" element="ns:ricercaComune2"/>
+    </wsdl:message>
+    <wsdl:message name="ricercaComune2Response">
+        <wsdl:part name="parameters" element="ns:ricercaComune2Response"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato3Request">
+        <wsdl:part name="parameters" element="ns:isModificato3"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato3Response">
+        <wsdl:part name="parameters" element="ns:isModificato3Response"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato1Request">
+        <wsdl:part name="parameters" element="ns:isModificato1"/>
+    </wsdl:message>
+    <wsdl:message name="isModificato1Response">
+        <wsdl:part name="parameters" element="ns:isModificato1Response"/>
+    </wsdl:message>
+    <wsdl:portType name="LagServicePortType">
+        <wsdl:operation name="invocaServizio3">
+            <wsdl:input message="ns:invocaServizio3Request" wsaw:Action="urn:invocaServizio3"/>
+            <wsdl:output message="ns:invocaServizio3Response" wsaw:Action="urn:invocaServizio3Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="logout">
+            <wsdl:input message="ns:logoutRequest" wsaw:Action="urn:logout"/>
+            <wsdl:output message="ns:logoutResponse" wsaw:Action="urn:logoutResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici1">
+            <wsdl:input message="ns:eventiAnagrafici1Request" wsaw:Action="urn:eventiAnagrafici1"/>
+            <wsdl:output message="ns:eventiAnagrafici1Response" wsaw:Action="urn:eventiAnagrafici1Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato2">
+            <wsdl:input message="ns:isModificato2Request" wsaw:Action="urn:isModificato2"/>
+            <wsdl:output message="ns:isModificato2Response" wsaw:Action="urn:isModificato2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio2">
+            <wsdl:input message="ns:invocaServizio2Request" wsaw:Action="urn:invocaServizio2"/>
+            <wsdl:output message="ns:invocaServizio2Response" wsaw:Action="urn:invocaServizio2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici2">
+            <wsdl:input message="ns:eventiAnagrafici2Request" wsaw:Action="urn:eventiAnagrafici2"/>
+            <wsdl:output message="ns:eventiAnagrafici2Response" wsaw:Action="urn:eventiAnagrafici2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio4">
+            <wsdl:input message="ns:invocaServizio4Request" wsaw:Action="urn:invocaServizio4"/>
+            <wsdl:output message="ns:invocaServizio4Response" wsaw:Action="urn:invocaServizio4Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <wsdl:input message="ns:loginRequest" wsaw:Action="urn:login"/>
+            <wsdl:output message="ns:loginResponse" wsaw:Action="urn:loginResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune1">
+            <wsdl:input message="ns:ricercaComune1Request" wsaw:Action="urn:ricercaComune1"/>
+            <wsdl:output message="ns:ricercaComune1Response" wsaw:Action="urn:ricercaComune1Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio1">
+            <wsdl:input message="ns:invocaServizio1Request" wsaw:Action="urn:invocaServizio1"/>
+            <wsdl:output message="ns:invocaServizio1Response" wsaw:Action="urn:invocaServizio1Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune2">
+            <wsdl:input message="ns:ricercaComune2Request" wsaw:Action="urn:ricercaComune2"/>
+            <wsdl:output message="ns:ricercaComune2Response" wsaw:Action="urn:ricercaComune2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato3">
+            <wsdl:input message="ns:isModificato3Request" wsaw:Action="urn:isModificato3"/>
+            <wsdl:output message="ns:isModificato3Response" wsaw:Action="urn:isModificato3Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato1">
+            <wsdl:input message="ns:isModificato1Request" wsaw:Action="urn:isModificato1"/>
+            <wsdl:output message="ns:isModificato1Response" wsaw:Action="urn:isModificato1Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="LagServiceSoap11Binding" type="ns:LagServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="logout">
+            <soap:operation soapAction="urn:logout" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio3">
+            <soap:operation soapAction="urn:invocaServizio3" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici1">
+            <soap:operation soapAction="urn:eventiAnagrafici1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato2">
+            <soap:operation soapAction="urn:isModificato2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio2">
+            <soap:operation soapAction="urn:invocaServizio2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici2">
+            <soap:operation soapAction="urn:eventiAnagrafici2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune1">
+            <soap:operation soapAction="urn:ricercaComune1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap:operation soapAction="urn:login" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio4">
+            <soap:operation soapAction="urn:invocaServizio4" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio1">
+            <soap:operation soapAction="urn:invocaServizio1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato3">
+            <soap:operation soapAction="urn:isModificato3" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune2">
+            <soap:operation soapAction="urn:ricercaComune2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato1">
+            <soap:operation soapAction="urn:isModificato1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LagServiceSoap12Binding" type="ns:LagServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="logout">
+            <soap12:operation soapAction="urn:logout" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio3">
+            <soap12:operation soapAction="urn:invocaServizio3" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici1">
+            <soap12:operation soapAction="urn:eventiAnagrafici1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato2">
+            <soap12:operation soapAction="urn:isModificato2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio2">
+            <soap12:operation soapAction="urn:invocaServizio2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici2">
+            <soap12:operation soapAction="urn:eventiAnagrafici2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune1">
+            <soap12:operation soapAction="urn:ricercaComune1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap12:operation soapAction="urn:login" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio4">
+            <soap12:operation soapAction="urn:invocaServizio4" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio1">
+            <soap12:operation soapAction="urn:invocaServizio1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato3">
+            <soap12:operation soapAction="urn:isModificato3" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune2">
+            <soap12:operation soapAction="urn:ricercaComune2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato1">
+            <soap12:operation soapAction="urn:isModificato1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LagServiceHttpBinding" type="ns:LagServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="logout">
+            <http:operation location="LagService/logout"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="logout"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="logout"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio3">
+            <http:operation location="LagService/invocaServizio3"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="invocaServizio3"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="invocaServizio3"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici1">
+            <http:operation location="LagService/eventiAnagrafici1"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="eventiAnagrafici1"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="eventiAnagrafici1"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato2">
+            <http:operation location="LagService/isModificato2"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="isModificato2"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="isModificato2"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio2">
+            <http:operation location="LagService/invocaServizio2"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="invocaServizio2"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="invocaServizio2"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eventiAnagrafici2">
+            <http:operation location="LagService/eventiAnagrafici2"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="eventiAnagrafici2"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="eventiAnagrafici2"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune1">
+            <http:operation location="LagService/ricercaComune1"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="ricercaComune1"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="ricercaComune1"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <http:operation location="LagService/login"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="login"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="login"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio4">
+            <http:operation location="LagService/invocaServizio4"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="invocaServizio4"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="invocaServizio4"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="invocaServizio1">
+            <http:operation location="LagService/invocaServizio1"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="invocaServizio1"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="invocaServizio1"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato3">
+            <http:operation location="LagService/isModificato3"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="isModificato3"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="isModificato3"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ricercaComune2">
+            <http:operation location="LagService/ricercaComune2"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="ricercaComune2"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="ricercaComune2"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isModificato1">
+            <http:operation location="LagService/isModificato1"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="isModificato1"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="isModificato1"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LagService">
+        <wsdl:port name="LagServiceHttpSoap11Endpoint" binding="ns:LagServiceSoap11Binding">
+            <soap:address location="http://wsperfce.ssi.comune.bologna.it/lag/services/LagService.LagServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LagServiceHttpSoap12Endpoint" binding="ns:LagServiceSoap12Binding">
+            <soap12:address location="http://wsperfce.ssi.comune.bologna.it/lag/services/LagService.LagServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LagServiceHttpEndpoint" binding="ns:LagServiceHttpBinding">
+            <http:address location="http://wsperfce.ssi.comune.bologna.it/lag/services/LagService.LagServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

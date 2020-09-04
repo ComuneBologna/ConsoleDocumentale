@@ -1,0 +1,413 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'
+	xmlns:s="urn:import:it.eng.portlet.consolepec.gwt.client.widget.suggestBox" 
+	xmlns:f="urn:import:it.eng.portlet.consolepec.gwt.client.view.fascicolo.composizione">
+	<g:HTMLPanel>
+		<engit:DownloadAllegatoWidget
+			ui:field="downloadWidget" />
+		<engit:UploadAllegatoWidget
+			ui:field="uploadWidget" />
+		<engit:UploadAllegatoWidget ui:field="uploadZipWidget" />
+		<g:HTMLPanel>
+			<h1 class="maintitle" ui:field="titoloFascicolo">
+			</h1>
+		</g:HTMLPanel>
+		<!-- <g:HTMLPanel styleName="filters"> <fieldset> <div> <engit:MessageAlertWidget 
+			ui:field="messageWidget" /> </div> </fieldset> </g:HTMLPanel> -->
+		<g:HTMLPanel>
+			<div class="filters button-filters">
+				<fieldset ui:field="fildsetPulsantiera">
+					<!-- Messaggio d'errore -->
+					<engit:MessageAlertWidget
+						ui:field="messageWidget" />
+
+
+					<div class="inline-block">
+						<g:Button styleName="btn" ui:field="riassegnaButton"
+							text="Assegna" />
+					</div>
+
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonMail">Mail</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newMail">
+										<span>Nuova email</span>
+									</li>
+									<li ui:field="newRispondiMail">
+										<span>Rispondi</span>
+									</li>
+									<li ui:field="newMailInteroperabile" style="display: none">
+										<span>Nuova email interoperabile</span>
+									</li>
+									<li ui:field="newMailDaTemplate">
+										<span>Nuova email da modello</span>
+									</li>
+									<li ui:field="newSeparaDaFascicolo">
+										<span>Separa da fascicolo</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonStato">Stato</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newArchivia">
+										<span>Archivia</span>
+									</li>
+									<li ui:field="newElimina">
+										<span>Elimina</span>
+									</li>
+									<li ui:field="newRiportaInGestione">
+										<span>Riporta in gestione</span>
+									</li>
+									<li ui:field="newInAffissione">
+										<span>In affissione</span>
+									</li>
+									<li ui:field="newConcludi">
+										<span>Concludi</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="inline-block" ui:field="menuIter">
+						<div class="dropdown">
+							<button class="btn btn-arw" ui:field="buttonIter">Iter</button>
+							<div class="dropdown-content">
+								<ul ui:field="listaStepIter">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="inline-block">
+						<div class="dropdown">
+							<button class="btn btn-arw"
+								ui:field="buttonAltroDettaglio">Altro</button>
+							<div class="dropdown-content">
+								<ul>
+									<li ui:field="newPrendiInCarico">
+										<span>Prendi in carico</span>
+									</li>
+									<li ui:field="newRiportaInLettura">
+										<span>Riporta in lettura</span>
+									</li>
+									<li ui:field="newAssegnaEsterno">
+										<span>Assegna via mail</span>
+									</li>
+									<li ui:field="newModificaAbilitazioni">
+										<span>Modifica abilitazioni</span>
+									</li>
+									<li ui:field="newCollega">
+										<span>Collega</span>
+									</li>
+									<li ui:field="newModificaCollegamento">
+										<span>Modifica collegamento</span>
+									</li>
+									<li ui:field="newEliminaCollegamento">
+										<span>Elimina collegamento</span>
+									</li>
+									<li ui:field="newModificaOperatore">
+										<span>Modifica operatore</span>
+									</li>
+									<li ui:field="newRiversamentoCartaceo">
+										<span>Riversamento cartaceo</span>
+									</li>
+									<li ui:field="newPdfDaTemplate">
+										<span>Nuovo documento da modello</span>
+									</li>
+
+									<li ui:field="newModificaFascicolo">
+										<span>Modifica Fascicolo</span>
+									</li>
+
+									<li ui:field="collegaPraticaProcedi">
+										<span>Collega Pratica Procedi</span>
+									</li>
+
+									<li ui:field="emissionePermesso" style="display: none">
+										<span>Emissione Permesso</span>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="inline-block">
+						<g:Button styleName="btn" ui:field="ricaricaButton"
+							text="Ricarica" />
+					</div>
+					
+					<div class="inline-block">
+						<g:Button ui:field="chiudiButton" text="Chiudi"
+							styleName="btn black" />
+					</div>
+				</fieldset>
+			</div>
+		</g:HTMLPanel>
+
+		<hr />
+		<g:HTMLPanel stylePrimaryName="single">
+			<g:ConsoleDisclosurePanel
+				ui:field="dettaglioFascicoloPanel" animationEnabled="true"
+				open="true">
+				<g:HTMLPanel stylePrimaryName="single">
+					<span class="label">P.G.</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="pgLabel"></g:Label>
+					</g:HTMLPanel>
+
+					<g:HTMLPanel ui:field="titoloOriginalePanel" visible="false">
+						<span class="label" visible="false">Titolo originale</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label ui:field="titoloOriginaleLabel"></g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+
+					<span class="label">Titolo</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="titoloLabel"></g:Label>
+					</g:HTMLPanel>
+					<span class="label">Tipo documento</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="tipoDocumento"></g:Label>
+					</g:HTMLPanel>
+					<span class="label">In carico a</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="inCaricoALabel"></g:Label>
+					</g:HTMLPanel>
+					<span class="label">Assegnato a</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="assegnatarioLabel"></g:Label>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="operatorePanel" visible="false">
+						<span class="label">Operatore</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label ui:field="operatore"></g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					<span class="label">Note</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:TextArea ui:field="noteTextArea"
+							styleName="note-textarea"></g:TextArea>
+					</g:HTMLPanel>
+					<span class="label">&nbsp; </span>
+					<g:HTMLPanel>
+						<div class="filters">
+							<fieldset>
+								<div class="cell">
+									<g:Button ui:field="salvaButton" text="Salva note"
+										styleName="btn" />
+									<g:Button ui:field="annullaModificheButton"
+										text="Annulla" styleName="btn black" />
+								</div>
+							</fieldset>
+						</div>
+					</g:HTMLPanel>
+					<span class="label">Stato</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="stato"></g:Label>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="stepIterPanel" visible="false">
+						<span class="label">Iter</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label ui:field="stepIter"></g:Label>
+						</g:HTMLPanel>
+						<span class="label">Data Aggiornamento Iter</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:Label ui:field="dataAggiornamentoIter"></g:Label>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					<span class="label">ID documentale</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="numeroRepertorioLabel"></g:Label>
+					</g:HTMLPanel>
+					<span class="label">Utente creazione</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="utenteCreatoreLabel"></g:Label>
+					</g:HTMLPanel>
+					<span class="label">Data creazione</span>
+					<g:HTMLPanel styleName="abstract">
+						<g:Label ui:field="dataCreazioneLabel"></g:Label>
+					</g:HTMLPanel>
+					<g:HTMLPanel ui:field="destinatariInoltroPanel"
+						visible="false">
+						<span class="label">Destinatari Inoltro</span>
+						<g:HTMLPanel styleName="abstract"
+							ui:field="destinatariInoltroLabelPanel">
+
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+			</g:ConsoleDisclosurePanel>
+
+			<hr />
+
+			<g:ConsoleDisclosurePanel
+				ui:field="composizioneFascicoloPanel" animationEnabled="true"
+				open="true">
+				<g:HTMLPanel>
+
+					<!-- Ricerca composizione -->
+					<f:WidgetComposizioneRicerca ui:field="widgetComposizioneRicerca" />
+				
+					<!-- MENU COMPOSIZIONE -->
+					<div class="filters button-filters">
+						<fieldset style="display: block;">
+
+							<div class="inline-block">
+								<g:Button styleName="btn" ui:field="firmaButton"
+									text="Firma" />
+							</div>
+							<div class="inline-block">
+								<g:Button styleName="btn"
+									ui:field="caricaAllegatoButton" text="Carica" />
+							</div>
+							<div class="inline-block">
+								<g:Button styleName="btn"
+									ui:field="caricaZipButton" text="Carica ZIP" />
+							</div>
+							<div class="inline-block">
+								<g:Button styleName="btn" ui:field="protocollaButton"
+									text="Protocolla" />
+							</div>
+
+							<div class="inline-block">
+								<div class="dropdown">
+									<button class="btn btn-arw"
+										ui:field="buttonAltroComposizione">Altro</button>
+									<div class="dropdown-content">
+										<ul>
+											<li ui:field="newScaricaAllegati">
+												<span>Scarica allegati</span>
+											</li>
+											<li ui:field="newAvvioProcedimento">
+												<span>Avvio procedimento</span>
+											</li>
+											<li ui:field="newChiudiProcedimento">
+												<span>Chiudi procedimento</span>
+											</li>
+											<li ui:field="newEliminaAllegato">
+												<span>Elimina allegato</span>
+											</li>
+											<li ui:field="newImportaAllegati">
+												<span>Importa da mail</span>
+											</li>
+											<li ui:field="newPubblicaAllegato">
+												<span>Pubblica allegato</span>
+											</li>
+											<li ui:field="newRimuoviPubblicazioneAllegato">
+												<span>Rimuovi pubblicazione allegato</span>
+											</li>
+											<li ui:field="newVisibilitaAllegato">
+												<span>Visibilità allegato</span>
+											</li>
+											<li ui:field="newRicevutaDiConsegna">
+												<span>Ricevuta di consegna</span>
+											</li>
+											<li ui:field="newRichiediFirma">
+												<span>Richiedi approvazione</span>
+											</li>
+											<li ui:field="newRitiraTaskFirma">
+												<span>Ritira richiesta di approvazione</span>
+											</li>
+											<li ui:field="newEstraiEML">
+												<span>Estrai EML</span>
+											</li>
+											<li ui:field="newInviaDaCSV">
+												<span>Invia mail da CSV</span>
+											</li>
+											<li ui:field="newAggiornaPG">
+												<span>Aggiorna PG</span>
+											</li>
+											<li ui:field="newSpostaAllegati">
+												<span>Sposta allegati</span>
+											</li>
+											<li ui:field="newSpostaProtocollazioni">
+												<span>Sposta elementi protocollati</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="inline-block">
+								<g:Button styleName="btn" ui:field="tipologieAllegatoButton" text="Tag" />
+							</div>
+							
+							<g:HTMLPanel ui:field="bottoniComposizionePanel"
+								styleName="organizza-per">
+							</g:HTMLPanel>
+
+
+							<!-- FINE MENU COMPOSIZIONE -->
+
+						</fieldset>
+					</div>
+					
+					<f:WidgetComposizioneFascicolo ui:field="widgetComposizioneFascicolo" />
+					<!--
+					<g:HTMLPanel styleName="elencoAllegati">
+						<g:HTMLPanel ui:field="elencoPanel" />
+					</g:HTMLPanel>
+					-->
+				</g:HTMLPanel>
+			</g:ConsoleDisclosurePanel>
+			
+			<hr />
+
+			<g:ConsoleDisclosurePanel ui:field="datiAggiuntiviFascicoloPanel" animationEnabled="true" open="true">
+				<g:HTMLPanel styleName="cell acapo" ui:field="datiAggiuntiviPanel">
+				</g:HTMLPanel>
+			</g:ConsoleDisclosurePanel>
+			
+			<hr ui:field="datiAggiuntiviFascicoloHR" />
+			
+			<g:ConsoleDisclosurePanel ui:field="autorizzazioniFascicoloPanel" animationEnabled="true" open="true">
+				<g:HTMLPanel styleName="cell acapo" ui:field="autorizzazioniSubPanel">
+				</g:HTMLPanel>
+			</g:ConsoleDisclosurePanel>
+
+			<hr />
+			
+			<g:ConsoleDisclosurePanel
+				ui:field="fascicoliCollegatiPanel" animationEnabled="true"
+				open="true">
+				<g:HTMLPanel>
+					<g:HTMLPanel ui:field="elencoPraticheCollegatePanel" />
+					<g:HTMLPanel ui:field="elencoFascicoliCollegatiPanel" />
+				</g:HTMLPanel>
+			</g:ConsoleDisclosurePanel>
+			<hr ui:field="elencoFascicoliCollegatiHR" />
+			<g:ConsoleDisclosurePanel
+				ui:field="procedimentiPanel" animationEnabled="true" open="true" />
+			<hr ui:field="procedimentiHR" />
+
+			<g:ConsoleDisclosurePanel
+				ui:field="catenaDocumentalePanel" animationEnabled="true"
+				open="true" />
+			<hr ui:field="catenaDocumentaleHR" />
+
+			<g:ConsoleDisclosurePanel
+				ui:field="iterFascicoloPanel" animationEnabled="true" open="true">
+				<engit:EventoIterFascicoloWidget
+					ui:field="eventiIter" />
+			</g:ConsoleDisclosurePanel>
+
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

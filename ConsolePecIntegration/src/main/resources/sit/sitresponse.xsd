@@ -1,0 +1,153 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="response_from"/>
+              <xs:element name="is_error">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="value"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="message"/>
+              <xs:element type="xs:string" name="err_code"/>
+              <xs:element type="xs:byte" name="rows_ret"/>
+              <xs:element type="xs:byte" name="rows_found"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="data_output">
+          <xs:complexType>
+            <xs:sequence>
+            <xs:element name="via">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="ente_cod"/>
+                    <xs:element type="xs:int" name="via_cod"/>
+                    <xs:element type="xs:string" name="via_denom"/>
+                    <xs:element type="xs:string" name="via_tipo"/>
+                    <xs:element type="xs:string" name="via_denom_ext"/>
+                    <xs:element name="data_ini">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:short" name="aaaa"/>
+                            <xs:attribute type="xs:byte" name="gg"/>
+                            <xs:attribute type="xs:byte" name="mm"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="indirizzo" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="via">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="ente_cod"/>
+                          <xs:element type="xs:int" name="via_cod"/>
+                          <xs:element type="xs:string" name="via_denom"/>
+                          <xs:element type="xs:string" name="via_tipo"/>
+                          <xs:element type="xs:string" name="via_denom_ext"/>
+                          <xs:element name="data_ini">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:short" name="aaaa"/>
+                                  <xs:attribute type="xs:byte" name="gg"/>
+                                  <xs:attribute type="xs:byte" name="mm"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="civico">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="civico_num"/>
+                          <xs:element type="xs:string" name="civico_esp"/>
+                          <xs:element name="centro_storico">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="value"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:byte" name="civico_serv_rsu"/>
+                          <xs:element name="coordinate">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:float" name="x"/>
+                                <xs:element type="xs:float" name="y"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="zone_inclusione">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="zona" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="zona_cod"/>
+                                <xs:element type="xs:string" name="zona_denom"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="nome" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="elenco_vie" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="via" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:byte" name="ente_cod"/>
+                          <xs:element type="xs:int" name="via_cod"/>
+                          <xs:element type="xs:string" name="via_denom"/>
+                          <xs:element type="xs:string" name="via_tipo"/>
+                          <xs:element type="xs:string" name="via_denom_ext"/>
+                          <xs:element name="data_ini">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:short" name="aaaa" use="optional"/>
+                                  <xs:attribute type="xs:byte" name="gg" use="optional"/>
+                                  <xs:attribute type="xs:byte" name="mm" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

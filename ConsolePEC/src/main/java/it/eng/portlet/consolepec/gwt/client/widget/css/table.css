@@ -1,0 +1,41 @@
+@external cellTableKeyboardSelectedRow cellTableKeyboardSelectedRowCell cellTableKeyboardSelectedCell cellTableHoveredRowCell cellTableHoveredRow cellTableWidget cellTableFirstColumn cellTableFooter cellTableHeader cellTableCell cellTableFirstColumnFooter cellTableFirstColumnHeader cellTableLastColumnFooter cellTableLastColumnHeader cellTableSortableHeader cellTableSortableHeader:hover cellTableSortedHeaderAscending cellTableSortedHeaderDescending cellTableEvenRow cellTableSelectedRowCell cellTableEvenRowCell;
+
+.cellTableHeader {
+
+}
+.cellTableFirstColumnHeader {
+
+}
+.cellTableLastColumnHeader {
+
+}
+.cellTableCell {
+
+}
+.cellTableEvenRow {
+
+}
+.cellTableOddRow {
+
+}
+.cellTableSelectedRow {
+
+}
+.cellTableSelectedRowCell {
+
+}
+.cellTableHoveredRow {
+background: transparent;
+}
+.cellTableHoveredRowCell {
+border: none;
+}
+.cellTableKeyboardSelectedRow {
+
+}
+.cellTableKeyboardSelectedRowCell {
+border: none;
+}
+.cellTableKeyboardSelectedCell {
+border: none;
+}

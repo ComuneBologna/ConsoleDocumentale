@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:it.eng.portlet.consolepec.gwt.client.drive.widget">
+	<g:HTMLPanel stylePrimaryName="drive-detail">
+		<h1 class="title">Dettaglio Elemento</h1>
+		<d:DriveMessageWidget ui:field="message" />
+		<g:HTMLPanel ui:field="errorPanel" stylePrimaryName="drive-detail-error" />
+		<g:HTMLPanel stylePrimaryName="drive-detail-main">
+			<g:HTMLPanel stylePrimaryName="drive-detail-box">
+				<g:HTMLPanel ui:field="title" stylePrimaryName="drive-detail-title" />
+				<g:HTMLPanel ui:field="info" stylePrimaryName="drive-detail-info" />
+				<g:HTMLPanel stylePrimaryName="drive-detail-desc">
+					<g:HTMLPanel stylePrimaryName="drive-detail-div">
+						<g:InlineLabel>Descrizione</g:InlineLabel>
+						<g:TextArea ui:field="descArea" />
+					</g:HTMLPanel>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="ruoliPanel" />
+			<g:HTMLPanel ui:field="metadatiPanel" />
+			<g:HTMLPanel ui:field="buttonPanel" stylePrimaryName="drive-fun-box" />
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

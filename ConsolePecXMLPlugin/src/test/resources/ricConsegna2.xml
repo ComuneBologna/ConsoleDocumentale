@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="avvenuta-consegna" errore="nessuno">
+  <intestazione>
+    <mittente>ufficioelettorale@pec.comune.bologna.it</mittente>
+    <destinatari tipo="certificato">protocollo.prefbo@pec.interno.it</destinatari>
+    <destinatari tipo="esterno">elettorale.pref_bologna@interno.it</destinatari>
+    <destinatari tipo="certificato">mario.rossi@pec.pec.it</destinatari>
+    <risposte>ufficioelettorale@pec.comune.bologna.it</risposte>
+    <oggetto>Trasmissione verbali Comune di Bologna</oggetto>
+  </intestazione>
+  <dati>
+    <gestore-emittente>Telecom Italia Trust Technologies S.r.l.</gestore-emittente>
+    <data zona="+0200">
+      <giorno>09/05/2016</giorno>
+      <ora>12:49:29</ora>
+    </data>
+    <identificativo>opec281.19761508coiao@pec.actalis.it</identificativo>
+    <msgid>&lt;1597644098.885.1462790950615@spagicintrabld01&gt;</msgid>
+    <ricevuta tipo="completa" />
+    <consegna>mario.rossi@pec.pec.it</consegna>
+  </dati>
+</postacert>
+

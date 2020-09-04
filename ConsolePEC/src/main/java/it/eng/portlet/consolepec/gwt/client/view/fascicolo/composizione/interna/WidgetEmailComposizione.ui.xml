@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget">
+	<g:HTMLPanel stylePrimaryName="composizione-email">
+		<g:InlineLabel ui:field="infoProtocollazione" />
+		<g:HTMLPanel>
+			<g:InlineLabel ui:field="infoData" stylePrimaryName="upper-info" />
+			<g:HTMLPanel stylePrimaryName="main-info">
+				<g:CheckBox ui:field="checkEmail" />
+				<g:Anchor ui:field="iconaEmail" />
+				<g:Anchor ui:field="infoEmail" />
+				<g:Button ui:field="allegatiMailBtn" stylePrimaryName="btn-allegati-email" />
+			</g:HTMLPanel>
+			<g:HTMLPanel stylePrimaryName="lower-info">
+				<g:HTMLPanel ui:field="mittentePanel" stylePrimaryName="info-mittente">
+					<span>Mittente: </span>
+					<g:InlineLabel ui:field="mittente" />
+				</g:HTMLPanel>
+				<g:HTMLPanel ui:field="destinatariPanel" stylePrimaryName="info-destinatari">
+					<span>Destinatari: </span>
+					<g:InlineLabel ui:field="destinatari" />
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="allegatiMail" stylePrimaryName="allegati-email" />
+			<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="elencoGruppo" stylePrimaryName="gruppo-conversazione" />
+	</g:HTMLPanel>
+</ui:UiBinder>

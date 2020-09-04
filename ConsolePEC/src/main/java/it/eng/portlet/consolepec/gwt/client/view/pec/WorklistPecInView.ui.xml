@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+xmlns:engitform="urn:import:it.eng.portlet.consolepec.gwt.client.widget.formricerca" 
+xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+
+
+	<g:HTMLPanel>
+		<engit:DownloadAllegatoWidget ui:field="downloadWidget" />
+		<g:HTMLPanel ui:field="cellTablePanel">
+			<div><!-- -->
+				<g:Label ui:field="errorLabel"></g:Label>
+			</div>
+			<h1 class="maintitle" ui:field="titoloWorklist"/>
+			
+			<g:HTMLPanel styleName="filters">
+				<fieldset>
+					<div>
+						<engit:MessageAlertWidget ui:field="messageWidget" />
+					</div>
+				</fieldset>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel ui:field="pannelloRicerca">
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel>
+				<div class="global-actions">
+					<g:Button text="Archivia" styleName="btn " ui:field="archiviaButton" enabled="false" />
+					<g:Button text="Elimina" styleName="btn " ui:field="eliminaButton" enabled="false" />
+					<g:Button text="Riporta in gestione" styleName="btn disabled" ui:field="riportaInGestioneButton" enabled="false" />
+					<g:Button text="Assegna" styleName="btn " ui:field="assegnaButton" enabled="false" />
+				</div>
+			</g:HTMLPanel>
+
+
+			<c:CellTable ui:field="dataGrid" styleName="cellTable" />
+
+			<c:SimplePager ui:field="pager" stylePrimaryName="pager" />
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="dettaglioPanel">
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="firmaPanel">
+		</g:HTMLPanel>
+
+
+		<!-- <g:HTMLPanel> <div id="panelLeft"> <div class="clearfix" id="nav-block"> <div class="column" id="st-trigger-effects"> <a href="#header" data-effect="st-effect-2" id="nav-open-btn" class="open-btn">Open</a> </div> <h2 class="block-title">PEC &amp; Firma Digitale</h2> <a href="#header" id="nav-close-btn" 
+			class="close-btn">Close</a> </div> <nav role="navigation" class="st-menu st-effect-2" id="naviga"> <ul> <li> <a href="#">[+] NUOVO DOCUMENTO</a> </li> </ul> <ul> <li class="is-active"> <a href="#">INBOX (4)</a> <ul> <li class=""> <a href="#">Delibere (2)</a> </li> <li class=""> <a href="#">Determine</a> 
+			</li> <li class=""> <a href="#">Messaggi PEC</a> </li> </ul> </li> <li class=""> <a href="#">IN LAVORAZIONE</a> </li> </ul> </nav> </div> </g:HTMLPanel> -->
+	</g:HTMLPanel>
+</ui:UiBinder>

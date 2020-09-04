@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:b="http://comune.bologna.it/base"
+	       xmlns="http://comune.bologna.it/spagic/ba01/inserimentonote"
+		   targetNamespace="http://comune.bologna.it/spagic/ba01/inserimentonote"
+	       elementFormDefault="qualified" 
+	       attributeFormDefault="unqualified">
+	       
+	<xs:import namespace="http://comune.bologna.it/base" schemaLocation="./base.xsd" />
+	
+	<xs:complexType name="request">
+		<xs:attribute type="xs:int" name="codiceComune" use="required" />
+		<xs:attribute type="xs:string" name="tipoProtocollo" use="required"/>
+		<xs:attribute type="xs:string" name="annoDocumento" use="required"/>
+		<xs:attribute type="xs:string" name="numeroProtocolloDocumento" use="required"/>
+		<xs:attribute type="xs:string" name="codiceApplicazioneEsterna" use="required"/>
+		<xs:attribute type="xs:string" name="codiceUtenteEsterno" use="required"/>
+		<xs:attribute type="xs:string" name="codiceUtente" use="required"/>
+		<xs:attribute type="xs:string" name="codiceApplicazione" use="required"/>
+		<xs:attribute type="xs:string" name="primaRigaNote" use="required"/>
+		<xs:attribute type="xs:string" name="secondaRigaNote" use="required"/>
+		<xs:attribute type="xs:string" name="terzaRigaNote" use="required"/>
+		<xs:attribute type="xs:string" name="utenteApplicazioneClient" use="required"/>
+		<xs:attribute type="xs:string" name="tipoApplicazioneClient" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="response">
+		<xs:sequence>
+			<xs:element type="b:error" name="error" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="codiceRitorno"/>
+		<xs:attribute type="xs:string" name="descrizioneRitorno"/>
+	</xs:complexType>
+
+	<xs:element name="request" type="request"/>
+	<xs:element name="response" type="response"/>
+	
+</xs:schema>
+	

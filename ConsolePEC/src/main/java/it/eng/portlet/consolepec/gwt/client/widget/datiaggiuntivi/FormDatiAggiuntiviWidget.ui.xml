@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:HTMLPanel ui:field="datiAggiuntiviPanel">
+
+		<g:HTMLPanel ui:field="bottoneSalvaPanel" visible="false">
+			<span class="label">&nbsp;</span>
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<div class="cell">
+							<g:Button ui:field="salvaButton" text="Salva" styleName="btn" />
+
+						</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

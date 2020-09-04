@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:HTMLPanel visible="false" ui:field="uploadPanel">
+		<g:FormPanel ui:field="formUpload" method="post" encoding="multipart/form-data" action="">
+			<g:HTMLPanel>
+				<g:FileUpload ui:field="uploadField" name="uploader" />
+			</g:HTMLPanel>
+		</g:FormPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

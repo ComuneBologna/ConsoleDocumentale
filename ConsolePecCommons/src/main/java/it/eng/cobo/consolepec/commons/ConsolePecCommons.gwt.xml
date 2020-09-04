@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module>
+	<source path='profilazione' />
+	<source path='rubrica' />
+	<source path='pratica' />
+	<source path='urbanistica' />
+	<source path='configurazioni' />
+	<source path='datigenerici' />
+	<source path='firmadigitale' />
+	<source path='procedimento' />
+	<source path='drive' />
+</module>

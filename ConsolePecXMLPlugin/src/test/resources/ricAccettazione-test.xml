@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postacert tipo="accettazione" errore="nessuno">
+    <intestazione>
+        <mittente>comune.bologna2@actaliscertymail.it</mittente>
+        <destinatari tipo="certificato">comune.bologna1@actaliscertymail.it</destinatari>
+        <risposte>comune.bologna2@actaliscertymail.it</risposte>
+        <oggetto>ric-cons-ok</oggetto>
+    </intestazione>
+    <dati>
+        <gestore-emittente>Actalis S.p.A.</gestore-emittente>
+        <data zona="+0200">
+            <giorno>31/05/2016</giorno>
+            <ora>10:17:52</ora>
+        </data>
+        <identificativo>opec281.20160531101742.19209.04.1.28@pec.actalis.it</identificativo>
+        <msgid>&lt;1149645887.3.1464682562952.JavaMail.spagic@engispagic01&gt;</msgid>
+    </dati>
+</postacert>

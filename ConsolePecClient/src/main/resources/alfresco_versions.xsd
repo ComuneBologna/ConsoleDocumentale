@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/alfresco/versioning" xmlns="http://comune.bologna.it/alfresco/versioning"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="get_versions">
+		<xs:sequence>
+			<xs:element type="xs:string" name="uuid" minOccurs="0" maxOccurs="1" />
+			<xs:element type="xs:string" name="pathfile" minOccurs="0" maxOccurs="1" />
+			<xs:element type="xs:string" name="namefile" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="version">
+		<xs:sequence>
+			<xs:element type="xs:string" name="node_uuid" minOccurs="1"	maxOccurs="1" />
+			<xs:element type="xs:string" name="creator" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:string" name="modifier" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:string" name="pecUser" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:string" name="title" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:dateTime" name="creationDate" minOccurs="1" maxOccurs="1" />
+			<xs:element type="xs:dateTime" name="versionDate" minOccurs="1"	maxOccurs="1" />
+			<xs:element type="xs:string" name="hash" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="version" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="all_versions">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" type="version" name="versions"/>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="required"/>
+		<xs:attribute name="version_number" type="xs:int" use="required"/>
+	</xs:complexType>
+	
+	<xs:element name="all_versions" type="all_versions"/>
+	<xs:element name="get_versions" type="get_versions"/>
+
+</xs:schema>

@@ -1,0 +1,132 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget"
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+	ui:generateLocales='default'>
+
+	<g:HTMLPanel>
+	
+		<g:HTMLPanel>
+			<h1 class="maintitle" ui:field="titolo"/>
+		</g:HTMLPanel>
+		
+		<g:HTMLPanel stylePrimaryName="single">
+			<engit:MessageAlertWidget ui:field="messageWidget" />
+			
+			<g:HTMLPanel stylePrimaryName="filters">			
+				<fieldset>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Proponente *</span>
+						<g:TextBox ui:field="gruppoProponenteTextBox" styleName="disabilitato" enabled="false"/>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Data proposta *</span>
+						<dp:DateBox ui:field="propostaDateBox" styleName="disabilitato" enabled="false"></dp:DateBox>
+					</g:HTMLPanel>
+						
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Oggetto proposta *</span>
+						<g:TextBox ui:field="oggettoDocumento" styleName="testo" />
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Data/Ora scadenza proposta</span>
+						<dp:DateBox ui:field="dataScadenzaDateBox" width="190px"></dp:DateBox>
+						<g:SuggestBox ui:field="timeScadenzaSuggestBox" width="85px"></g:SuggestBox>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Mittente originale</span>
+						<g:TextBox ui:field="mittenteOriginale" styleName="testo" />
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Note</span>
+						<g:HTMLPanel styleName="abstract">
+							<g:TextArea ui:field="noteTextArea" styleName="note-textarea"></g:TextArea>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell" ui:field="indirizziNotificaPanel">
+						<span class="label">Indirizzi Notifica</span>
+						<g:HTMLPanel styleName="abstract" ui:field="indirizziNotificaContainer"/>
+					</g:HTMLPanel>
+					
+				</fieldset>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel stylePrimaryName="filters">			
+				<fieldset>
+					<hr />
+					<h6>Ricerca i destinatari</h6>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Tipo proposta *</span>
+						
+						<g:HTMLPanel styleName="abstract">
+							<g:ListBox ui:field="tipoRichiestaListBox" stylePrimaryName="selectListBox">
+							</g:ListBox>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Tipo destinatario</span>
+						
+						<g:HTMLPanel>
+							<g:RadioButton ui:field="utenteRadioButton" name="yesno" value="true" enabled="true" styleName="yesNoButton">Utente</g:RadioButton>
+							<g:RadioButton ui:field="gruppoRadioButton" name="yesno" value="false" enabled="true" styleName="yesNoButton">Gruppo</g:RadioButton>	
+						</g:HTMLPanel>
+						
+					</g:HTMLPanel>
+
+					<g:HTMLPanel ui:field="gruppiPanel">
+						<g:HTMLPanel styleName="abstract">
+							<g:HTMLPanel ui:field="gruppiSuggestPanel" />
+							<g:HTMLPanel styleName="abstract">
+								<g:Button ui:field="aggiungiRuolo" text="Aggiungi" styleName="btn" />
+							</g:HTMLPanel>
+						</g:HTMLPanel>
+						
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel ui:field="utentiPanel" styleName="cell">
+						<span class="label">Utente</span>
+						<g:HTMLPanel styleName="abstract">
+						   	<g:HTMLPanel ui:field="utentiSuggestPanel" />
+							<g:HTMLPanel styleName="abstract">
+								<g:Button ui:field="aggiungiUtente" text="Aggiungi" styleName="btn" />
+							</g:HTMLPanel>
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+					<g:HTMLPanel styleName="cell acapo">
+						<span class="label">Elenco destinatari *</span>
+						<g:HTMLPanel styleName="abstract" ui:field="destinatariContainer">
+							<g:HTMLPanel styleName="box-mail" ui:field="destinatariPanel" />
+						</g:HTMLPanel>
+					</g:HTMLPanel>
+					
+				</fieldset>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel>
+				<div class="filters">
+					<fieldset>
+						<hr />
+							<div class="cell">
+								<g:Button ui:field="annullaButton" text="Annulla" styleName="btn black" />
+								<g:Button ui:field="confermaButton" text="Conferma"	styleName="btn" />
+							</div>
+					</fieldset>
+				</div>
+			</g:HTMLPanel>
+
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

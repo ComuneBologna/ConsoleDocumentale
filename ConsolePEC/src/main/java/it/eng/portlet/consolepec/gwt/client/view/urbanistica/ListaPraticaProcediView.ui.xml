@@ -1,0 +1,58 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:engit="urn:import:it.eng.portlet.consolepec.gwt.client.widget" xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:d="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datagrid" xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+		xmlns:engitgrid="urn:import:it.eng.portlet.consolepec.gwt.client.widget.datagrid">
+	<g:HTMLPanel>
+		<engit:MessageAlertWidget ui:field="messageAlertWidget"></engit:MessageAlertWidget>
+		<h1 class="maintitle"> Lista Pratica Procedi </h1>
+
+		<g:HTMLPanel styleName="contentfilter">
+			<g:HTMLPanel styleName="columnfilter fieldfilter filters">
+				<fieldset>
+					<div class="cell">
+						<g:TextBox ui:field="numeroProtocollo" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="annoProtocollo" styleName="testo" />
+					</div>
+					<div class="cell">	
+						<g:TextBox ui:field="oggetto" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="tipoPratica" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="ambito" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="indirizzoVia" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="indirizzoCivico" styleName="testo" />
+					</div>
+					<div class="cell">
+						<g:TextBox ui:field="nominativo" styleName="testo" />
+					</div>
+				</fieldset>
+			</g:HTMLPanel>
+			<div class="buttonfilter cell columnfilter filters">
+				<span class="fillerIE">&nbsp;</span>
+				<g:Button ui:field="pulisciButton" text="Pulisci" styleName="btn black" />
+				<g:Button ui:field="cercaButton" text="Cerca" styleName="btn" />
+			</div>
+		</g:HTMLPanel>
+
+		<div>
+			<div class="global-actions">
+				<g:Button ui:field="annullaButton" text="Annulla" styleName="btn black" />
+				<g:Button ui:field="confermaButton" text="Conferma" styleName="btn" />
+			</div>
+		</div>
+
+		<g:HTMLPanel>
+			<engitgrid:DataGridWidget ui:field="dataGrid"></engitgrid:DataGridWidget>
+			<c:SimplePager ui:field="pager" stylePrimaryName="pager" />
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder>

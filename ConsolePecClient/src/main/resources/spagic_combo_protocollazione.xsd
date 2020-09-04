@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://comune.bologna.it/spagic/combo/protocollazione"
+	xmlns="http://comune.bologna.it/spagic/combo/protocollazione"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+<!-- 	<xs:annotation> -->
+<!--     	<xs:appinfo> -->
+<!--       		<jaxb:globalBindings generateIsSetMethod="true"> -->
+<!--         		<xjc:serializable uid="1"/> -->
+<!--       		</jaxb:globalBindings> -->
+<!--     	</xs:appinfo> -->
+<!--   </xs:annotation> -->
+	
+
+	<xs:complexType name="combo">
+		<xs:sequence>
+			<xs:element type="row" name="elementi_combo" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="nome_combo" />
+	</xs:complexType>
+
+	<xs:complexType name="row">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+			<xs:element name="descrizione" type="xs:string" />
+			<xs:element name="reflev1" type="xs:string" />
+			<xs:element name="reflev2" type="xs:string" />
+			<xs:element name="flagentrata" type="xs:string"/>
+			<xs:element name="flaguscita" type="xs:string"/>
+			<xs:element name="flaginterna" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="combos">
+		<xs:sequence>
+			<xs:element type="combo" name="combos" minOccurs="3"
+				maxOccurs="4" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="request" type="combos" />
+
+</xs:schema>

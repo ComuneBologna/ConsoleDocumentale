@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" 
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop 
+		                   http://www.springframework.org/schema/aop/spring-aop-3.2.xsd   
+		                   http://www.springframework.org/schema/beans 
+		                   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd   
+		                   http://www.springframework.org/schema/context 
+		                   http://www.springframework.org/schema/context/spring-context-3.2.xsd   
+		                   ttp://www.springframework.org/schema/jee 
+		                   http://www.springframework.org/schema/jee/spring-jee-3.2.xsd   
+		                   ttp://www.springframework.org/schema/tx 
+		                   http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+		                   http://www.springframework.org/schema/util 
+		                   http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		                   http://www.springframework.org/schema/cache 
+	                       http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
+
+
+	<util:properties id="portlet" location="classpath:portlet.properties" /> <!-- Caricamento properties da file. -->
+	<util:constant id="current_user_session_key" static-field="it.eng.portlet.consolepec.gwt.shared.SessionUtils.CURRENT_USER_SESSION_KEY" />
+	<context:component-scan base-package="com.gwtplatform.dispatch.server.spring" /> <!-- richiesto da GWTP-spring integration -->
+	<context:annotation-config />
+
+	<!-- CONFIGURAZIONE DEL LOGGING -->
+	<bean id="logger" class="com.gwtplatform.dispatch.server.spring.LoggerFactoryBean">
+		<constructor-arg>
+			<bean class="java.util.logging.Logger" factory-method="getAnonymousLogger">
+				<property name="level">
+					<value>FINEST</value>
+				</property>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<!-- CONFIGURAZIONE CACHE SERVER SIDE -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcache" />
+	</bean>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+		<property name="shared" value="true" />
+	</bean>
+	<cache:annotation-driven />
+	
+	<bean id="gestioneCollegamentiFascicolo" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestioneCollegamentiFascicoloImpl"/>
+	<bean id="gestioneCondivisioniFascicolo" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestioneCondivisioniFascicoloImpl"/>
+	<bean id="gestioneGruppiUtentiVisibilita" class="it.eng.portlet.consolepec.spring.bean.visibilita.impl.GestioneGruppiUtentiVisibilitaImpl" />
+	<bean id="aggiornaStatoFascicolo" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.AggiornaStatoFascicoloImpl"/>
+	<bean id="aggiornaStatoPraticaModulistica" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.AggiornaStatoPraticaModulisticaImpl"/>
+	<bean id="comboBoxesTitolazione" class="it.eng.portlet.consolepec.spring.bean.titolazione.impl.ComboBoxesTitolazioneImpl"/>
+	<bean id="xmlPluginToDTOConverter" class="it.eng.portlet.consolepec.gwt.server.XMLPluginToDTOConverter" />
+	<bean id="xmlPluginToDTOConverterUtil" class="it.eng.portlet.consolepec.gwt.server.XMLPluginToDTOConverterUtil" />
+	<bean id="comboBoxProtocollazione" class="it.eng.portlet.consolepec.gwt.server.protocollazione.impl.ElenchiComboBoxProtocollazioneImpl" />
+	<bean id="elenchiCatagorieProtocollazioneImpl" class="it.eng.portlet.consolepec.gwt.server.protocollazione.impl.ElenchiCatagorieProtocollazioneImpl" />
+	<bean id="requestFascicoloConverter" class="it.eng.portlet.consolepec.spring.bean.converters.requestfascicolo.impl.RequestFascicoloConverterImpl" />
+	<bean id="gestioneConfigurazioni" class="it.eng.portlet.consolepec.spring.bean.configurazioni.impl.GestioneConfigurazioniImpl" init-method="init" />
+	<bean id="gestioneProfilazioneUtente" class="it.eng.portlet.consolepec.spring.bean.profilazione.impl.GestioneProfilazioneUtenteImpl" scope="session" init-method="init">
+		<aop:scoped-proxy />
+	</bean>
+	<bean id="gestioneStampe" class="it.eng.portlet.consolepec.spring.bean.stampe.impl.GestioneStampeImpl"/>
+	<bean id="verificaFirmaUtil" class="it.eng.portlet.consolepec.gwt.server.VerificaFirmaInvoker" />
+	<bean id="driveUtil" class="it.eng.portlet.consolepec.spring.bean.drive.impl.DriveUtilImpl" scope="session" init-method="init">
+		<aop:scoped-proxy />
+	</bean>
+	
+	<bean id="stringEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="password">
+			<value>KxkzJaqy87hmhbQR9qLDcfCS</value><!-- PASSWORD APPLICATIVA PER L'UTIL DI CIFRATURA STRINGHE. NON MODIFICARE -->
+		</property>
+	</bean>
+	
+	<bean id="indirizziEmailCacheInit" class="it.eng.portlet.consolepec.spring.genericdata.impl.IndirizziEmailCacheInit"/>
+	<bean id="indirizzoEmailCachePrimoLivello" class="it.eng.portlet.consolepec.spring.genericdata.impl.IndirizzoEmailCachePrimoLivelloImpl"/>
+	<bean id="indirizzoEmailCacheSecondoLivello" class="it.eng.portlet.consolepec.spring.genericdata.impl.IndirizzoEmailCacheSecondoLivelloImpl" />
+	<bean id="cartellaFirmaWizardUtil" class="it.eng.portlet.consolepec.spring.bean.cartellafirma.impl.CartellaFirmaWizardUtilImpl"/>
+	
+	<!-- CONFIGURAZIONI DIPENDENTI DALL'ESECUZIONE IN CONTAINER. PER MODALITA MOCK O SPAGIC, ATTIVARE IL RELATIVO PROFILO SPRING NEL FILE DI PROPERTIES PERSONALE -->
+
+	<beans>
+		<import resource="classpath:servizi-spagic-context.xml" />
+	</beans>
+
+	<beans profile="spagicMOCK">
+		<bean class="it.eng.portlet.consolepec.gwt.servermock.ServerModuleMock" />
+		<bean id="gestioneAllegati" class="it.eng.portlet.consolepec.spring.bean.servermockimpl.GestioneAllegati"></bean>
+		<bean id="springApplicationContext" class="it.eng.portlet.consolepec.spring.SpringApplicationContext" />
+	</beans>
+
+	<beans profile="spagic">
+		<!-- <bean class="it.eng.portlet.consolepec.gwt.server.validators.IONOIValidatorsChain" /> -->
+
+		<bean class="it.eng.portlet.consolepec.gwt.server.ServerModule">
+			<property name="interceptors">
+				<util:list>
+					<bean class="it.eng.portlet.consolepec.gwt.server.validators.SessionMonitorValidator" scope="request">
+						<aop:scoped-proxy />
+						<property name="keyToCheck" ref="current_user_session_key"/>
+					</bean>
+				</util:list>
+			</property>
+		</bean>
+
+		<bean id="gestionePresaInCarico" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestionePresaInCarico" />
+		<bean id="gestioneAllegati" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestioneAllegati" />
+		<bean id="praticaSessionlUtil" class="it.eng.portlet.consolepec.spring.bean.session.pratiche.impl.PraticaSessionUtilImpl" />
+		<bean id="gestioneTaskPratiche" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestioneTaskPraticheImpl" />
+		<bean id="gestioneMetadatiPratica" class="it.eng.portlet.consolepec.spring.bean.gestionepratiche.impl.GestioneMetadatiPraticaImpl" />
+		<bean id="mongoDbSearchResponseParser" class="it.eng.portlet.consolepec.spring.bean.search.impl.MongoDbSearchResponseParserImpl" init-method="init"/>
+		<bean id="newMongoDbSearchAdapter" class="it.eng.portlet.consolepec.spring.bean.search.impl.NewMongoDbSearchAdapterImpl" />
+		<bean id="newMongoDbSearchDocumentRequestGenerator" class="it.eng.portlet.consolepec.spring.bean.search.impl.NewMongoDbSearchDocumentRequestGeneratorImpl" />
+		<bean id="userCustomFields" class="it.eng.portlet.consolepec.spring.bean.session.user.impl.UserCustomFieldsImpl" />
+		<bean id="gestioneFirma" class="it.eng.portlet.consolepec.spring.firma.impl.GestioneFirmaImpl" />
+		<bean id="recuperoTipologiaProcedimenti" class="it.eng.portlet.consolepec.spring.bean.tipologiaprocedimenti.impl.RecuperoTipologiaProcedimentiImpl" />
+		<bean id="GestioneProcedimenti" class="it.eng.portlet.consolepec.spring.bean.procedimenti.impl.GestioneProcedimentiImpl" />
+		<bean id="GestioneElettorale" class="it.eng.portlet.consolepec.spring.bean.elettorale.impl.GestioneElettoraleImpl" />
+		<bean id="PraticaProcediSearchUtil" class="it.eng.portlet.consolepec.spring.bean.search.impl.PraticaProcediSearchUtilImpl" />
+		
+		<bean id="spagicClientGestioneComunicazioniMassive" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneComunicazioniMassiveRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="SpagicClientGestioneProcedimenti" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneProcedimentiRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientRecuperaTipologiaProcedimenti" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientRecuperaTipologiaProcedimentiRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestioneElettorale" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneElettoraleRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientDownloadDocument" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientDownloadDocumentRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientVerifySingnatureDocument" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientVerifySingnatureDocumentRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientVerifySingnatureFile" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientVerifySignatureFileRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGetTipoPraticaProtocollazione" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGetTipoPraticaProtocollazioneRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientDettaglioPraticaProtocollozione" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientDettaglioPraticaProtocollozioneRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientProtocollazioneCompleta" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientProtocollazioneCompletaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestioneAllegatoPratica" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneAllegatoPraticaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientCreateFascicolo" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientCreateFascicoloRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientCreatePraticaModulistica" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientCreatePraticaModulisticaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientCreateTemplate" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientCreateTemplateRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientSaveTemplate" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientSaveTemplateRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientVersioning" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientVersioningRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestioneFascicolo" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneFascicoloRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestioneTemplate" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneTemplateRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGetComboBoxesProtocollazione" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGetComboBoxesProtocollazioneRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientRiattivaPratica" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientRiattivaPraticaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientHandleLockedMetadata" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientHandleLockedMetadataRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientDownlodAllegatoOriginale" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientDownlodAllegatoOriginaleRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientRicercaCapofila" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientRicercaCapofilaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestionePraticaModulistica" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestionePraticaModulisticaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="springApplicationContext" class="it.eng.portlet.consolepec.spring.SpringApplicationContext" />
+		<bean id="spagicClientPubblicazioneAllegato" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientPubblicazioneAllegatoRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientDatiAggiuntivi" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientDatiAggiuntiviRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientIperFascicoloHandler" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientIperFascicoloHandlerRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientSganciaEmailDaFascicolo" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientSganciaEmailDaFascicoloRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientRiportaInLettura" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientRiportaInLetturaRemoteProxy">
+						<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientEstrazioneAmianto" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientEstrazioneAmiantoRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientDownloadStampe" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientDownloadStampeRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientNewSearchPratiche" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientNewSearchPraticheRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientOperatore" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientOperatoreRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientTaskFirma" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientTaskFirmaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<bean id="spagicClientGestioneMetadatiPratica" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientGestioneMetadatiPraticaRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		
+		<bean id="spagicClientModificaFascicolo" class="it.eng.consolepec.spagicclient.remoteproxy.impl.SpagicClientModificaFascicoloRemoteProxy">
+			<constructor-arg index="0" value="#{portlet['serviceProxyUrl']}" />
+			<constructor-arg index="1" value="#{portlet['alfrescouser']}" />
+			<constructor-arg index="2" value="#{portlet['alfrescopassword']}" />
+			<constructor-arg index="3" value="#{portlet['serviceuser']}" />
+			<constructor-arg index="4" value="#{portlet['servicepassword']}" />
+			<constructor-arg index="5" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		
+		<!-- Inizio Client Generico -->
+		<bean id="clientInvoker" class="it.eng.consolepec.client.RestClientInvoker">
+			<constructor-arg index="0" value="#{portlet['restServiceUrl']}" />
+		</bean>
+		<!-- 
+		<context:component-scan base-package="it.eng.consolepec.client.impl" /> --> <!-- richiesto da GWTP-spring integration -->
+		<bean id="rubricaClient" class="it.eng.consolepec.client.impl.RubricaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="integrazionePraticaProcediClient" class="it.eng.consolepec.client.impl.IntegrazionePraticaProcediClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="collegaPraticaProcediClient" class="it.eng.consolepec.client.impl.CollegaPraticaProcediClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="archiviaPraticaClient" class="it.eng.consolepec.client.impl.ArchiviaPraticaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="riassegnaPraticaClient" class="it.eng.consolepec.client.impl.RiassegnaPraticaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="emissionePermessoClient" class="it.eng.consolepec.client.impl.EmissionePermessoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="amministrazioneAnagraficaFascicoloClient" class="it.eng.consolepec.client.impl.AmministrazioneAnagraficaFascicoloClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="amministrazioneAnagraficaRuoloClient" class="it.eng.consolepec.client.impl.AmministrazioneAnagraficaRuoloClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="amministrazioneAbilitazioniRuoloClient" class="it.eng.consolepec.client.impl.AmministrazioneAbilitazioniRuoloClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="amministrazioneAnagraficaIngressoClient" class="it.eng.consolepec.client.impl.AmministrazioneAnagraficaIngressoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="configurazioniClient" class="it.eng.consolepec.client.impl.ConfigurazioniClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<bean id="profilazioneUtenteClient" class="it.eng.consolepec.client.impl.ProfilazioneUtenteClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="downloadAllegatoClient" class="it.eng.consolepec.client.impl.DownloadAllegatoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="gestioneAllegatoClient" class="it.eng.consolepec.client.impl.GestioneAllegatoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="taskFirmaClient" class="it.eng.consolepec.client.impl.TaskFirmaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="generaTitoloFascicoloClient" class="it.eng.consolepec.client.impl.GeneraTitoloFascicoloClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="collegamentoPraticheClient" class="it.eng.consolepec.client.impl.CollegamentoPraticheClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="cambiaVisibilitaAllegatoClient" class="it.eng.consolepec.client.impl.CambiaVisibilitaAllegatoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="lagClient" class="it.eng.consolepec.client.impl.LagClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="cambiaVisibilitaFascicoloClient" class="it.eng.consolepec.client.impl.CambiaVisibilitaFascicoloClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="indirizziEmailRubricaClient" class="it.eng.consolepec.client.impl.IndirizziEmailRubricaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="stepIterClient" class="it.eng.consolepec.client.impl.StepIterClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="uploadFileZipClient" class="it.eng.consolepec.client.impl.UploadFileZipClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="spostaAllegatiClient" class="it.eng.consolepec.client.impl.SpostaAllegatiClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="spostaProtocollazioniClient" class="it.eng.consolepec.client.impl.SpostaProtocollazioniClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="gestioneEmailOutClient" class="it.eng.consolepec.client.impl.GestioneEmailOutClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="gestioneProcedimentiClient" class="it.eng.consolepec.client.impl.GestioneProcedimentiClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="estraiEMLPecClient" class="it.eng.consolepec.client.impl.EstraiEMLPecClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="presaInCaricoClient" class="it.eng.consolepec.client.impl.PresaInCaricoClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="modificaNoteClient" class="it.eng.consolepec.client.impl.ModificaNoteClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		
+		<bean id="assegnazioneEsternaClient" class="it.eng.consolepec.client.impl.AssegnazioneEsternaClientImpl">
+			<constructor-arg index="0" ref="clientInvoker" />
+		</bean>
+		<!-- Fine Client Generico -->
+		
+		<!-- Inizio Client REST -->		
+		<bean id="restClientInvoker" class="it.eng.portlet.consolepec.gwt.server.rest.RestClientInvoker">
+			<constructor-arg index="0" ref="userSessionUtil" />
+			<constructor-arg index="1" value="#{portlet['rest.service.host']}" />
+			<constructor-arg index="2" value="#{portlet['rest.service.port']}" />
+			<constructor-arg index="3" value="#{portlet['rest.service.portlet.password']}" />
+			<constructor-arg index="4" value="#{portlet['rest.service.federa.password']}" />
+			<constructor-arg index="5" value="#{portlet['rest.service.utenteesterno.password']}" />
+	</bean>
+		
+		<bean id="driveClient" class="it.eng.portlet.consolepec.gwt.server.rest.client.impl.DriveClientImpl" />
+		<!-- Fine Client REST -->
+	</beans>
+
+	<beans profile="containerMOCK">
+		<bean id="userSessionUtil" class="it.eng.portlet.consolepec.spring.bean.servermockimpl.UserSessionUtilImpl" />
+	</beans>
+	
+	<beans profile="container">
+		<bean id="userSessionUtil" class="it.eng.portlet.consolepec.spring.bean.session.user.impl.UserSessionUtilImpl" scope="session">
+			<property name="currentUserSessionKey" ref="current_user_session_key"/>
+			<aop:scoped-proxy />
+		</bean>
+	</beans>
+</beans>
